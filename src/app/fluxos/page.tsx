@@ -7,7 +7,7 @@ import { AppHeader } from "@/components/layout/AppHeader";
 
 export default function FluxosPage() {
   const router = useRouter();
-  const { flows, moveLead } = useApp();
+  const { flows } = useApp();
   
   // Track open stages for accordion
   const [openStages, setOpenStages] = useState<Record<string, boolean>>({

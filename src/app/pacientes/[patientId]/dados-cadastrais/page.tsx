@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useApp } from "@/context/AppContext";
 import { BackHeader } from "@/components/layout/BackHeader";
@@ -14,25 +14,13 @@ export default function DadosCadastraisPage() {
   const patient = patients.find((p) => p.id === patientId);
 
   // Form states
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [birthDate, setBirthDate] = useState("");
-  const [status, setStatus] = useState<"active" | "alert" | "inactive">("active");
-  const [nextAction, setNextAction] = useState("");
-  const [notes, setNotes] = useState("");
-
-  useEffect(() => {
-    if (patient) {
-      setName(patient.name);
-      setPhone(patient.phone);
-      setEmail(patient.email);
-      setBirthDate(patient.birthDate);
-      setStatus(patient.status);
-      setNextAction(patient.nextAction || "");
-      setNotes(patient.notes || "");
-    }
-  }, [patient]);
+  const [name, setName] = useState(patient?.name ?? "");
+  const [phone, setPhone] = useState(patient?.phone ?? "");
+  const [email, setEmail] = useState(patient?.email ?? "");
+  const [birthDate, setBirthDate] = useState(patient?.birthDate ?? "");
+  const [status, setStatus] = useState<"active" | "alert" | "inactive">(patient?.status ?? "active");
+  const [nextAction, setNextAction] = useState(patient?.nextAction ?? "");
+  const [notes, setNotes] = useState(patient?.notes ?? "");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -111,7 +99,7 @@ export default function DadosCadastraisPage() {
           <select 
             className="form-control" 
             value={status} 
-            onChange={(e) => setStatus(e.target.value as any)}
+            onChange={(e) => setStatus(e.target.value as "active" | "alert" | "inactive")}
           >
             <option value="active">Ativo (Em tratamento / Manutenção)</option>
             <option value="alert">Atenção (Necessita ação urgente)</option>

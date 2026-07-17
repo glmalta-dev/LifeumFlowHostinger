@@ -2,14 +2,9 @@
 
 import React from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useApp } from "@/context/AppContext";
 import { AppHeader } from "@/components/layout/AppHeader";
 
 export default function MaisPage() {
-  const router = useRouter();
-  const { showToast } = useApp();
-
   const menuItems = [
     {
       id: "contatos",
@@ -39,7 +34,7 @@ export default function MaisPage() {
       id: "relatorios",
       title: "Relatórios e Estatísticas",
       subtitle: "Métricas de conversão de tratamentos",
-      action: () => showToast("Carregando relatório operacional simulado...", "success"),
+      url: "/mais/relatorios",
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <line x1="18" y1="20" x2="18" y2="10"></line>
@@ -56,8 +51,7 @@ export default function MaisPage() {
 
       <div style={styles.menuList}>
         {menuItems.map((item) => {
-          if (item.url) {
-            return (
+          return (
               <Link href={item.url} key={item.id} style={styles.menuCard}>
                 <div style={styles.iconWrap}>{item.icon}</div>
                 <div style={styles.textCol}>
@@ -69,20 +63,6 @@ export default function MaisPage() {
                 </svg>
               </Link>
             );
-          } else {
-            return (
-              <div onClick={item.action} key={item.id} style={styles.menuCard}>
-                <div style={styles.iconWrap}>{item.icon}</div>
-                <div style={styles.textCol}>
-                  <h4 style={styles.menuTitle}>{item.title}</h4>
-                  <p style={styles.menuSubtitle}>{item.subtitle}</p>
-                </div>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ color: "var(--outline-variant)" }}>
-                  <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-              </div>
-            );
-          }
         })}
       </div>
     </>

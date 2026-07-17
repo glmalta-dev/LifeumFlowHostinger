@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useApp } from "@/context/AppContext";
 import { BackHeader } from "@/components/layout/BackHeader";
+import type { Appointment } from "@/types";
 
 export default function NovoAgendamentoPage() {
   const params = useParams();
@@ -16,7 +17,7 @@ export default function NovoAgendamentoPage() {
   // Form states
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
-  const [type, setType] = useState<any>("consulta");
+  const [type, setType] = useState<Appointment["type"]>("consulta");
   const [professional, setProfessional] = useState("Dr. Gabriel Mendes");
   const [notes, setNotes] = useState("");
 
@@ -82,7 +83,7 @@ export default function NovoAgendamentoPage() {
           <select 
             className="form-control" 
             value={type} 
-            onChange={(e) => setType(e.target.value)}
+            onChange={(e) => setType(e.target.value as Appointment["type"])}
           >
             <option value="consulta">Consulta de Avaliação</option>
             <option value="retorno">Retorno de Acompanhamento</option>

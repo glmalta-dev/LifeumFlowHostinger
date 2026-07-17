@@ -13,7 +13,7 @@ interface AppShellProps {
 export const AppShell: React.FC<AppShellProps> = ({ children }) => {
   const pathname = usePathname();
   const router = useRouter();
-  const { quickCaptureOpen, setQuickCaptureOpen, addTask, patients } = useApp();
+  const { quickCaptureOpen, setQuickCaptureOpen, addTask } = useApp();
 
   const [isCreatingTask, setIsCreatingTask] = React.useState(false);
   const [quickTitle, setQuickTitle] = React.useState("");

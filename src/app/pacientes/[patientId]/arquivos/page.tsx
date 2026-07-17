@@ -95,10 +95,10 @@ export default function ArquivosPage() {
                 )}
               </div>
               
-              <div style={styles.fileInfo}>
+              <button type="button" onClick={() => router.push(`/pacientes/${patientId}/arquivos/${file.id}`)} style={styles.fileInfoButton}>
                 <span style={styles.fileName}>{file.name}</span>
                 <span style={styles.fileMeta}>Enviado em: {file.uploadDate} • {file.size}</span>
-              </div>
+              </button>
 
               <div style={styles.actions}>
                 <a 
@@ -176,6 +176,17 @@ const styles = {
     display: "flex",
     flexDirection: "column" as const,
     minWidth: 0,
+  },
+  fileInfoButton: {
+    flex: 1,
+    minWidth: 0,
+    display: "flex",
+    flexDirection: "column" as const,
+    padding: 0,
+    border: 0,
+    background: "transparent",
+    cursor: "pointer",
+    textAlign: "left" as const,
   },
   fileName: {
     fontSize: "13px",

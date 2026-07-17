@@ -15,14 +15,22 @@ import {
 
 // --- Mappers para Supabase (camelCase <-> snake_case) ---
 
-const mapPatientFromDb = (db: any): Patient => ({
+interface PatientDbRow { id: string; name: string; birth_date: string; cpf?: string | null; phone: string; email: string; status: Patient["status"]; next_action?: string | null; next_action_date?: string | null; notes?: string | null; }
+interface AppointmentDbRow { id: string; patient_id: string; patient_name: string; date: string; time: string; type: Appointment["type"]; status: Appointment["status"]; professional: string; notes?: string | null; }
+interface TaskDbRow { id: string; patient_id: string; patient_name: string; title: string; description: string; due_date: string; status: Task["status"]; priority: Task["priority"]; }
+interface EvolutionDbRow { id: string; patient_id: string; date: string; professional: string; procedure: string; description: string; next_step?: string | null; recommended_return_days?: number | null; }
+interface FileDbRow { id: string; patient_id: string; name: string; upload_date: string; size: string; mime_type: string; download_url: string; }
+interface LeadDbRow { id: string; name: string; phone: string; source: string; status: Lead["status"]; last_contact_date?: string | null; notes?: string | null; }
+interface FlowDbRow { id: string; title: string; stages?: PatientFlow["stages"] | null; }
+
+const mapPatientFromDb = (db: PatientDbRow): Patient => ({
   id: db.id,
   name: db.name,
   birthDate: db.birth_date,
   cpf: db.cpf || undefined,
   phone: db.phone,
   email: db.email,
-  status: db.status as any,
+  status: db.status,
   nextAction: db.next_action || undefined,
   nextActionDate: db.next_action_date || undefined,
   notes: db.notes || undefined,
@@ -41,14 +49,14 @@ const mapPatientToDb = (p: Partial<Patient>) => ({
   ...(p.notes !== undefined && { notes: p.notes }),
 });
 
-const mapAppointmentFromDb = (db: any): Appointment => ({
+const mapAppointmentFromDb = (db: AppointmentDbRow): Appointment => ({
   id: db.id,
   patientId: db.patient_id,
   patientName: db.patient_name,
   date: db.date,
   time: db.time,
-  type: db.type as any,
-  status: db.status as any,
+  type: db.type,
+  status: db.status,
   professional: db.professional,
   notes: db.notes || undefined,
 });
@@ -65,15 +73,15 @@ const mapAppointmentToDb = (a: Partial<Appointment>) => ({
   ...(a.notes !== undefined && { notes: a.notes }),
 });
 
-const mapTaskFromDb = (db: any): Task => ({
+const mapTaskFromDb = (db: TaskDbRow): Task => ({
   id: db.id,
   patientId: db.patient_id,
   patientName: db.patient_name,
   title: db.title,
   description: db.description,
   dueDate: db.due_date,
-  status: db.status as any,
-  priority: db.priority as any,
+  status: db.status,
+  priority: db.priority,
 });
 
 const mapTaskToDb = (t: Partial<Task>) => ({
@@ -87,7 +95,7 @@ const mapTaskToDb = (t: Partial<Task>) => ({
   ...(t.priority && { priority: t.priority }),
 });
 
-const mapEvolutionFromDb = (db: any): ClinicalEvolution => ({
+const mapEvolutionFromDb = (db: EvolutionDbRow): ClinicalEvolution => ({
   id: db.id,
   patientId: db.patient_id,
   date: db.date,
@@ -109,7 +117,7 @@ const mapEvolutionToDb = (e: Partial<ClinicalEvolution>) => ({
   ...(e.recommendedReturnDays !== undefined && { recommended_return_days: e.recommendedReturnDays }),
 });
 
-const mapFileFromDb = (db: any): PatientFile => ({
+const mapFileFromDb = (db: FileDbRow): PatientFile => ({
   id: db.id,
   patientId: db.patient_id,
   name: db.name,
@@ -129,36 +137,20 @@ const mapFileToDb = (f: Partial<PatientFile>) => ({
   ...(f.downloadUrl && { download_url: f.downloadUrl }),
 });
 
-const mapLeadFromDb = (db: any): Lead => ({
+const mapLeadFromDb = (db: LeadDbRow): Lead => ({
   id: db.id,
   name: db.name,
   phone: db.phone,
   source: db.source,
-  status: db.status as any,
+  status: db.status,
   lastContactDate: db.last_contact_date || undefined,
   notes: db.notes || undefined,
 });
 
-const mapLeadToDb = (l: Partial<Lead>) => ({
-  ...(l.id && { id: l.id }),
-  ...(l.name && { name: l.name }),
-  ...(l.phone && { phone: l.phone }),
-  ...(l.source && { source: l.source }),
-  ...(l.status && { status: l.status }),
-  ...(l.lastContactDate !== undefined && { last_contact_date: l.lastContactDate }),
-  ...(l.notes !== undefined && { notes: l.notes }),
-});
-
-const mapFlowFromDb = (db: any): PatientFlow => ({
+const mapFlowFromDb = (db: FlowDbRow): PatientFlow => ({
   id: db.id,
   title: db.title,
   stages: db.stages || [],
-});
-
-const mapFlowToDb = (f: Partial<PatientFlow>) => ({
-  ...(f.id && { id: f.id }),
-  ...(f.title && { title: f.title }),
-  ...(f.stages && { stages: f.stages }),
 });
 
 // --- Context Definition ---
@@ -184,7 +176,7 @@ interface AppContextType {
   completeTask: (id: string) => void;
   addEvolution: (evolution: Omit<ClinicalEvolution, "id">) => void;
   addFile: (file: Omit<PatientFile, "id">) => void;
-  moveLead: (leadId: string, targetStage: string) => void;
+  moveLead: (leadId: string, targetStage: Lead["status"]) => void;
   quickCaptureOpen: boolean;
   setQuickCaptureOpen: (open: boolean) => void;
 }
@@ -437,9 +429,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   };
 
-  const moveLead = (leadId: string, targetStage: string) => {
+  const moveLead = (leadId: string, targetStage: Lead["status"]) => {
     setLeads((prev) =>
-      prev.map((l) => (l.id === leadId ? { ...l, status: targetStage as any } : l))
+      prev.map((l) => (l.id === leadId ? { ...l, status: targetStage } : l))
     );
     showToast("Lead movido de etapa!", "success");
 

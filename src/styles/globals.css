@@ -18,6 +18,13 @@ body {
   overflow: hidden;
 }
 
+button, a, input, select, textarea { font: inherit; }
+button:focus-visible, a:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible, [role="button"]:focus-visible {
+  outline: 3px solid rgba(20, 99, 230, 0.35);
+  outline-offset: 2px;
+}
+
 /* Container do Simulador Mobile (390x844px) */
 .mobile-simulator {
   width: 390px;
@@ -38,9 +45,27 @@ body {
   }
   .mobile-simulator {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     border-radius: 0;
     box-shadow: none;
+  }
+  .simulator-content {
+    padding: 14px;
+    padding-bottom: calc(90px + env(safe-area-inset-bottom));
+  }
+}
+
+@media (max-width: 360px) {
+  .simulator-content { padding-inline: 10px; }
+  .btn { padding-inline: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
 

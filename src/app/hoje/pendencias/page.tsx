@@ -73,7 +73,7 @@ export default function PendenciasPage() {
                 <select
                   className="form-control"
                   value={taskPriority}
-                  onChange={e => setTaskPriority(e.target.value as any)}
+                  onChange={e => setTaskPriority(e.target.value as "high" | "medium" | "low")}
                 >
                   <option value="high">Alta Prioridade</option>
                   <option value="medium">Média Prioridade</option>
@@ -115,7 +115,9 @@ export default function PendenciasPage() {
           filteredTasks.map((task) => (
             <div key={task.id} style={styles.taskCard}>
               <div style={styles.taskInfo}>
-                <h3 style={styles.taskTitle}>{task.title}</h3>
+                <button type="button" onClick={() => router.push(`/hoje/pendencias/${task.id}`)} style={styles.taskLink}>
+                  <h3 style={styles.taskTitle}>{task.title}</h3>
+                </button>
                 <p style={styles.taskPatient}>Paciente: {task.patientName}</p>
                 <p style={styles.taskDesc}>{task.description}</p>
                 <span style={{ 
@@ -127,7 +129,7 @@ export default function PendenciasPage() {
                 </span>
               </div>
               {task.status === "pending" && (
-                <button onClick={() => completeTask(task.id)} style={styles.checkBtn} title="Concluir">
+                <button onClick={() => completeTask(task.id)} style={styles.checkBtn} title="Concluir" aria-label={`Concluir pendência ${task.title}`}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
@@ -201,6 +203,14 @@ const styles = {
     fontSize: "14px",
     fontWeight: 700,
     color: "var(--text-primary)",
+  },
+  taskLink: {
+    appearance: "none" as const,
+    padding: 0,
+    border: 0,
+    background: "transparent",
+    cursor: "pointer",
+    textAlign: "left" as const,
   },
   taskPatient: {
     fontSize: "11px",

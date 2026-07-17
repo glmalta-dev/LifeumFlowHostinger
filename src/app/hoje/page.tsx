@@ -8,7 +8,7 @@ import { AppHeader } from "@/components/layout/AppHeader";
 
 export default function HojePage() {
   const router = useRouter();
-  const { patients, appointments, tasks, completeTask, showToast } = useApp();
+  const { appointments, tasks, completeTask, showToast } = useApp();
   
   // States and filters
   const [activeFilter, setActiveFilter] = useState<string>("atrasados");

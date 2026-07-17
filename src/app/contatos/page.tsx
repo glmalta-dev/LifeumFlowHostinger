@@ -3,11 +3,12 @@
 import React from "react";
 import { useApp } from "@/context/AppContext";
 import { BackHeader } from "@/components/layout/BackHeader";
+import type { Lead } from "@/types";
 
 export default function ContatosPage() {
   const { leads, moveLead, showToast } = useApp();
 
-  const handleLeadContact = (lead: any) => {
+  const handleLeadContact = (lead: Lead) => {
     showToast(`Disparando WhatsApp para Lead ${lead.name}...`, "success");
     window.open(`https://wa.me/5511987654321?text=Olá ${lead.name}, recebemos seu interesse pelo canal ${lead.source}.`, "_blank");
     

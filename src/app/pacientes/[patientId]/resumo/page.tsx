@@ -7,7 +7,7 @@ import { useApp } from "@/context/AppContext";
 export default function ResumoPage() {
   const params = useParams();
   const router = useRouter();
-  const { patients, appointments, tasks, showToast } = useApp();
+  const { patients, appointments, showToast } = useApp();
 
   const patientId = params.patientId as string;
   const patient = patients.find((p) => p.id === patientId);
@@ -17,8 +17,6 @@ export default function ResumoPage() {
   const nextApp = appointments
     .filter((a) => a.patientId === patientId && a.status === "agendado")
     .sort((a, b) => a.date.localeCompare(b.date))[0];
-
-  const pendingTasks = tasks.filter((t) => t.patientId === patientId && t.status === "pending");
 
   const handleWhatsApp = () => {
     showToast("Abrindo conversa via WhatsApp...", "success");
