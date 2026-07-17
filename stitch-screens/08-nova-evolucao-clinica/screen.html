@@ -1,0 +1,308 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Nova Evolução Clínica - Ana Silva</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#eff0fb",
+                        "secondary-fixed": "#cfe5ff",
+                        "accent-indigo": "#5C78F0",
+                        "tertiary-fixed-dim": "#ffb598",
+                        "primary-container": "#1463e6",
+                        "on-surface-variant": "#424654",
+                        "surface-glass": "rgba(255, 255, 255, 0.72)",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "on-background": "#191b23",
+                        "on-secondary": "#ffffff",
+                        "success": "#26B978",
+                        "outline-variant": "#c2c6d7",
+                        "surface": "rgba(255, 255, 255, 0.88)",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#001d34",
+                        "on-tertiary-container": "#ffe8e0",
+                        "tertiary-container": "#ba4500",
+                        "on-primary-fixed": "#001847",
+                        "primary": "#004cba",
+                        "background": "#F6F8FC",
+                        "surface-variant": "#e1e2ed",
+                        "secondary-container": "#51aeff",
+                        "surface-container-highest": "#e1e2ed",
+                        "surface-tint": "#0056d1",
+                        "on-surface": "#191b23",
+                        "surface-container-low": "#f2f3fe",
+                        "tertiary-fixed": "#ffdbcd",
+                        "on-secondary-container": "#00406a",
+                        "secondary-fixed-dim": "#9acbff",
+                        "surface-bright": "#faf8ff",
+                        "surface-container": "#ecedf8",
+                        "primary-fixed": "#dae2ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#e7e7f3",
+                        "on-error-container": "#93000a",
+                        "text-primary": "#102044",
+                        "on-secondary-fixed-variant": "#004a79",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#923400",
+                        "warning": "#D99214",
+                        "on-tertiary-fixed-variant": "#7e2c00",
+                        "inverse-primary": "#b2c5ff",
+                        "on-primary-fixed-variant": "#0040a0",
+                        "text-secondary": "#5E6C86",
+                        "inverse-surface": "#2e3039",
+                        "surface-dim": "#d8d9e4",
+                        "secondary": "#00629e",
+                        "on-primary-container": "#e9edff",
+                        "on-tertiary-fixed": "#360f00",
+                        "error": "#E5484D",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#737786"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "inline": "8px",
+                        "base-unit": "4px",
+                        "touch-target-min": "44px",
+                        "base": "4px",
+                        "card-gap": "12px",
+                        "compact-card-padding": "14px",
+                        "screen-top": "12px",
+                        "screen-horizontal": "16px",
+                        "inline-gap": "8px",
+                        "screen-margin": "16px",
+                        "card-padding": "16px",
+                        "section-gap": "20px"
+                    },
+                    "fontFamily": {
+                        "body": ["Inter"],
+                        "page-title": ["Inter"],
+                        "body-strong": ["Inter"],
+                        "caption": ["Inter"],
+                        "card-title": ["Inter"],
+                        "section-title": ["Inter"],
+                        "status": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "page-title": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-strong": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "caption": ["11px", { "lineHeight": "15px", "fontWeight": "400" }],
+                        "card-title": ["16px", { "lineHeight": "21px", "fontWeight": "700" }],
+                        "section-title": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+                        "status": ["10px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "label": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+            background-color: theme('colors.background');
+        }
+        
+        .glass-card {
+            background: theme('colors.surface');
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 0.5px solid theme('colors.surface-variant');
+            box-shadow: 0 4px 24px rgba(31, 67, 126, 0.08);
+        }
+
+        .input-glass {
+            background: theme('colors.surface-container-low');
+            border: 1px solid theme('colors.surface-variant');
+            transition: all 0.2s ease;
+        }
+
+        .input-glass:focus-within {
+            border-color: theme('colors.primary');
+            box-shadow: 0 0 0 2px theme('colors.primary-fixed');
+            background: theme('colors.surface-container-lowest');
+        }
+
+        .chip-active {
+            background: theme('colors.primary-container');
+            color: theme('colors.on-primary-container');
+            border: 1px solid theme('colors.primary');
+        }
+
+        .chip-inactive {
+            background: theme('colors.surface-container');
+            color: theme('colors.on-surface-variant');
+            border: 1px solid transparent;
+        }
+        
+        /* Hide scrollbar for clean UI */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Ensures the footer area doesn't overlap content */
+        .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom, 80px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body text-body text-text-primary antialiased max-w-[390px] mx-auto min-h-screen relative pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface-glass backdrop-blur-xl border-b border-surface-variant/30 shadow-sm shadow-primary/5 flex items-center justify-between px-screen-horizontal h-14 w-full">
+<button aria-label="Back" class="flex items-center justify-center w-touch-target-min h-touch-target-min -ml-2 text-primary active:scale-95 duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<h1 class="font-page-title text-page-title text-primary">Nova Evolução</h1>
+<span class="font-caption text-caption text-text-secondary">Ana Silva</span>
+</div>
+<button class="font-body-strong text-body-strong text-primary active:scale-95 duration-200 px-2 h-touch-target-min flex items-center">
+            Salvar
+        </button>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 px-screen-horizontal flex flex-col gap-section-gap">
+<!-- Section 1: Evolution Type -->
+<section class="flex flex-col gap-inline-gap">
+<h2 class="font-card-title text-card-title text-text-primary">Tipo de Evolução</h2>
+<div class="flex flex-wrap gap-inline">
+<button class="chip-active rounded-full px-4 h-9 flex items-center font-label text-label transition-colors active:scale-95">
+                    Clínica
+                </button>
+<button class="chip-inactive rounded-full px-4 h-9 flex items-center font-label text-label transition-colors active:scale-95">
+                    Administrativa
+                </button>
+<button class="chip-inactive rounded-full px-4 h-9 flex items-center font-label text-label transition-colors active:scale-95">
+                    Retorno
+                </button>
+<button class="chip-inactive rounded-full px-4 h-9 flex items-center font-label text-label transition-colors active:scale-95">
+                    Urgência
+                </button>
+</div>
+</section>
+<!-- Section 2: Main text area -->
+<section class="flex flex-col gap-inline-gap">
+<div class="flex justify-between items-end">
+<h2 class="font-card-title text-card-title text-text-primary">Descrição</h2>
+<button class="text-primary flex items-center gap-1 font-label text-label hover:opacity-80">
+<span class="material-symbols-outlined text-[16px]">mic</span>
+                    Gravar
+                </button>
+</div>
+<div class="input-glass rounded-xl overflow-hidden p-1">
+<textarea class="w-full bg-transparent border-none outline-none resize-none p-3 font-body text-body text-text-primary placeholder:text-text-secondary min-h-[160px]" placeholder="Descreva a evolução do paciente..."></textarea>
+<!-- Quick Actions row inside the text area for context -->
+<div class="flex justify-end gap-2 p-2 border-t border-surface-variant/30">
+<button class="w-8 h-8 rounded-full flex items-center justify-center bg-surface-container text-text-secondary hover:bg-surface-variant hover:text-primary transition-colors" title="Adicionar template">
+<span class="material-symbols-outlined text-[18px]">subject</span>
+</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center bg-surface-container text-text-secondary hover:bg-surface-variant hover:text-primary transition-colors" title="Anexar arquivo">
+<span class="material-symbols-outlined text-[18px]">attach_file</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Section 3: Metadata grid -->
+<section class="glass-card rounded-xl p-card-padding">
+<h2 class="font-card-title text-card-title text-text-primary mb-4">Metadados</h2>
+<div class="grid grid-cols-2 gap-card-gap">
+<!-- Profissional -->
+<div class="flex flex-col gap-1 col-span-2">
+<label class="font-caption text-caption text-text-secondary">Profissional</label>
+<div class="flex items-center gap-2 bg-surface-container-low rounded-lg p-2 border border-surface-variant">
+<div class="w-6 h-6 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-status text-status">
+                            JD
+                        </div>
+<span class="font-body text-body text-text-primary">Dr. João Doe</span>
+</div>
+</div>
+<!-- Date -->
+<div class="flex flex-col gap-1">
+<label class="font-caption text-caption text-text-secondary">Data</label>
+<div class="flex items-center gap-2 bg-surface-container-low rounded-lg p-2 border border-surface-variant">
+<span class="material-symbols-outlined text-text-secondary text-[16px]">calendar_today</span>
+<span class="font-body text-body text-text-primary">15 Out 2023</span>
+</div>
+</div>
+<!-- Time -->
+<div class="flex flex-col gap-1">
+<label class="font-caption text-caption text-text-secondary">Hora</label>
+<div class="flex items-center gap-2 bg-surface-container-low rounded-lg p-2 border border-surface-variant">
+<span class="material-symbols-outlined text-text-secondary text-[16px]">schedule</span>
+<span class="font-body text-body text-text-primary">14:30</span>
+</div>
+</div>
+<!-- Status -->
+<div class="flex flex-col gap-1 col-span-2">
+<label class="font-caption text-caption text-text-secondary">Status</label>
+<div class="flex items-center gap-2">
+<span class="bg-success/10 text-success border border-success/20 px-3 py-1 rounded-full font-status text-status flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+                            Em andamento
+                        </span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Attachments -->
+<section class="flex flex-col gap-inline-gap">
+<h2 class="font-card-title text-card-title text-text-primary">Anexos</h2>
+<div class="grid grid-cols-3 gap-2">
+<button class="flex flex-col items-center justify-center gap-2 h-20 bg-surface-container-low border border-dashed border-outline-variant rounded-xl hover:border-primary hover:bg-primary/5 transition-colors active:scale-95">
+<span class="material-symbols-outlined text-text-secondary">photo_camera</span>
+<span class="font-caption text-caption text-text-secondary">Foto</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 h-20 bg-surface-container-low border border-dashed border-outline-variant rounded-xl hover:border-primary hover:bg-primary/5 transition-colors active:scale-95">
+<span class="material-symbols-outlined text-text-secondary">radiology</span>
+<span class="font-caption text-caption text-text-secondary">Exame</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 h-20 bg-surface-container-low border border-dashed border-outline-variant rounded-xl hover:border-primary hover:bg-primary/5 transition-colors active:scale-95">
+<span class="material-symbols-outlined text-text-secondary">description</span>
+<span class="font-caption text-caption text-text-secondary">Documento</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Fixed Footer Actions -->
+<nav class="fixed bottom-0 left-0 w-full bg-surface-glass backdrop-blur-2xl border-t border-surface-variant/30 px-screen-horizontal pb-safe pt-2 shadow-[0_-4px_20px_rgba(31,67,126,0.08)] z-50 flex items-center justify-between">
+  <button class="flex flex-col items-center justify-center gap-1 w-touch-target-min h-touch-target-min text-text-secondary hover:text-primary transition-colors">
+    <span class="material-symbols-outlined text-[24px]">calendar_today</span>
+    <span class="font-caption text-caption">Hoje</span>
+  </button>
+  <button class="flex flex-col items-center justify-center gap-1 w-touch-target-min h-touch-target-min text-text-secondary hover:text-primary transition-colors">
+    <span class="material-symbols-outlined text-[24px]">groups</span>
+    <span class="font-caption text-caption">Pacientes</span>
+  </button>
+  <button class="flex items-center justify-center w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg shadow-primary/30 -mt-8 active:scale-95 transition-all">
+    <span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+  </button>
+  <button class="flex flex-col items-center justify-center gap-1 w-touch-target-min h-touch-target-min text-text-secondary hover:text-primary transition-colors">
+    <span class="material-symbols-outlined text-[24px]">account_tree</span>
+    <span class="font-caption text-caption">Fluxos</span>
+  </button>
+  <button class="flex flex-col items-center justify-center gap-1 w-touch-target-min h-touch-target-min text-text-secondary hover:text-primary transition-colors">
+    <span class="material-symbols-outlined text-[24px]">more_horiz</span>
+    <span class="font-caption text-caption">Mais</span>
+  </button>
+</nav>
+
+
+</body></html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Ficha do Paciente - Resumo</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "on-tertiary-fixed": "#360f00",
+                "error": "#E5484D",
+                "on-background": "#191b23",
+                "on-secondary-fixed-variant": "#004a79",
+                "success": "#26B978",
+                "text-secondary": "#5E6C86",
+                "tertiary-fixed": "#ffdbcd",
+                "on-secondary-container": "#00406a",
+                "surface": "rgba(255, 255, 255, 0.88)",
+                "primary-fixed-dim": "#b2c5ff",
+                "surface-container-lowest": "#ffffff",
+                "surface-container": "#ecedf8",
+                "surface-bright": "#faf8ff",
+                "on-secondary": "#ffffff",
+                "tertiary-container": "#ba4500",
+                "outline-variant": "#c2c6d7",
+                "surface-container-highest": "#e1e2ed",
+                "secondary-container": "#51aeff",
+                "on-primary": "#ffffff",
+                "surface-glass": "rgba(255, 255, 255, 0.72)",
+                "on-tertiary-fixed-variant": "#7e2c00",
+                "on-primary-container": "#e9edff",
+                "on-error-container": "#93000a",
+                "surface-container-high": "#e7e7f3",
+                "surface-dim": "#d8d9e4",
+                "surface-container-low": "#f2f3fe",
+                "on-secondary-fixed": "#001d34",
+                "tertiary": "#923400",
+                "on-surface-variant": "#424654",
+                "accent-indigo": "#5C78F0",
+                "on-tertiary": "#ffffff",
+                "background": "#F6F8FC",
+                "surface-variant": "#e1e2ed",
+                "secondary-fixed-dim": "#9acbff",
+                "inverse-on-surface": "#eff0fb",
+                "inverse-primary": "#b2c5ff",
+                "primary-fixed": "#dae2ff",
+                "surface-tint": "#0056d1",
+                "on-tertiary-container": "#ffe8e0",
+                "on-primary-fixed-variant": "#0040a0",
+                "error-container": "#ffdad6",
+                "primary": "#004cba",
+                "text-primary": "#102044",
+                "on-surface": "#191b23",
+                "on-error": "#ffffff",
+                "inverse-surface": "#2e3039",
+                "on-primary-fixed": "#001847",
+                "secondary-fixed": "#cfe5ff",
+                "tertiary-fixed-dim": "#ffb598",
+                "outline": "#737786",
+                "warning": "#D99214",
+                "primary-container": "#1463e6",
+                "secondary": "#00629e"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "card-gap": "12px",
+                "section-gap": "20px",
+                "compact-card-padding": "14px",
+                "touch-target-min": "44px",
+                "inline-gap": "8px",
+                "base-unit": "4px",
+                "screen-top": "12px",
+                "screen-margin": "16px",
+                "inline": "8px",
+                "card-padding": "16px",
+                "screen-horizontal": "16px",
+                "base": "4px"
+        },
+        "fontFamily": {
+                "card-title": [
+                        "Inter"
+                ],
+                "body-strong": [
+                        "Inter"
+                ],
+                "page-title": [
+                        "Inter"
+                ],
+                "label": [
+                        "Inter"
+                ],
+                "section-title": [
+                        "Inter"
+                ],
+                "body": [
+                        "Inter"
+                ],
+                "status": [
+                        "Inter"
+                ],
+                "caption": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+                "card-title": [
+                        "16px",
+                        {
+                                "lineHeight": "21px",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-strong": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "page-title": [
+                        "22px",
+                        {
+                                "lineHeight": "28px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "label": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "fontWeight": "500"
+                        }
+                ],
+                "section-title": [
+                        "18px",
+                        {
+                                "lineHeight": "24px",
+                                "letterSpacing": "-0.015em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "status": [
+                        "10px",
+                        {
+                                "lineHeight": "14px",
+                                "letterSpacing": "0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "caption": [
+                        "11px",
+                        {
+                                "lineHeight": "15px",
+                                "fontWeight": "400"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .primary-button { background: linear-gradient(135deg, #1463e6 0%, #004cba 100%); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen pb-24">
+<!-- Header / TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-surface backdrop-blur-md border-b border-surface-variant pt-2 pb-2 px-screen-horizontal flex flex-col gap-2">
+<div class="flex justify-between items-center w-full">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<div class="flex gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-success/10 text-success">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">more_vert</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<img alt="Ana Silva" class="w-12 h-12 rounded-full object-cover shadow-sm border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjnymCY1cnSFubTjTQf0b_WVVwjVkemW2x7540RzailW8o33DRxBC_X6TAYI-Z_wBBeg7u_89FAoUZr-EVw8GxS5X_5x0IDN1JHVgK6dJyBOdBVwwUJayz79Qc6PdSrWVtvxGoafqoa0JcWV0I85WOPcNeyPm7tDCLk8QA8IiiCExSKukdqmC7kZ1NfsLcJpwfbrbQN4_7uuC7w5DasahDXX21yVzi3W7DzRWNNa5cIgBWfMOey67v5A">
+<div class="flex flex-col">
+<h1 class="font-page-title text-page-title text-text-primary">Ana Silva</h1>
+<div class="flex items-center gap-2">
+<p class="font-caption text-caption text-text-secondary">
+                    32 anos • (11) 99999-9999
+                </p>
+<div class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+<span class="font-status text-status text-text-secondary uppercase">Paciente Ativo</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Horizontal Scrollable Tabs -->
+<nav class="w-full bg-surface/90 backdrop-blur-sm border-b border-surface-variant sticky top-[100px] z-30">
+<div class="flex overflow-x-auto hide-scrollbar px-screen-horizontal gap-4">
+<button class="py-2 border-b-2 border-primary-container text-primary-container font-label whitespace-nowrap">Resumo</button>
+<button class="py-2 border-b-2 border-transparent text-text-secondary font-label whitespace-nowrap hover:text-text-primary transition-colors">Planejamento</button>
+<button class="py-2 border-b-2 border-transparent text-text-secondary font-label whitespace-nowrap hover:text-text-primary transition-colors">Agendamentos</button>
+<button class="py-2 border-b-2 border-transparent text-text-secondary font-label whitespace-nowrap hover:text-text-primary transition-colors">Evoluções</button>
+<button class="py-2 border-b-2 border-transparent text-text-secondary font-label whitespace-nowrap hover:text-text-primary transition-colors">Arquivos</button>
+<button class="py-2 border-b-2 border-transparent text-text-secondary font-label whitespace-nowrap hover:text-text-primary transition-colors">Histórico</button>
+<button class="py-2 border-b-2 border-transparent text-text-secondary font-label whitespace-nowrap hover:text-text-primary transition-colors">Dados</button>
+</div>
+</nav>
+<main class="px-screen-horizontal py-section-gap flex flex-col gap-card-gap">
+<!-- Action Card -->
+<section class="bg-error-container/40 border border-error/20 rounded-lg p-compact-card-padding shadow-sm flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center w-fit px-1.5 py-0.5 rounded text-error font-status text-status uppercase gap-1 bg-error/10">
+<span class="w-1 h-1 rounded-full bg-error"></span>
+                        Alta Prioridade
+                    </span>
+<h2 class="font-body-strong text-body-strong text-text-primary leading-tight mt-1">Responder solicitação de agendamento</h2>
+<p class="font-caption text-caption text-error font-medium">Atraso de 2 dias</p>
+</div>
+<div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-error shadow-sm shrink-0">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+</div>
+<div class="flex gap-2 mt-1">
+<button class="flex-1 primary-button text-white py-2 px-3 rounded font-label hover:opacity-90 transition-opacity">Responder</button>
+<button class="flex-1 bg-white border border-outline-variant text-text-primary py-2 px-3 rounded font-label hover:bg-surface-container-low transition-colors">Reagendar</button>
+<button class="w-9 h-9 flex items-center justify-center bg-white border border-outline-variant text-text-primary rounded hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">check</span>
+</button>
+</div>
+</section>
+<!-- Treatment Summary -->
+<section class="bg-white border border-surface-variant rounded-lg p-compact-card-padding shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<h3 class="font-card-title text-card-title text-text-primary">Resumo do Tratamento</h3>
+<span class="font-caption text-caption text-text-secondary">Dentística e Prótese</span>
+</div>
+<div class="flex gap-4 items-center">
+<div class="flex flex-col gap-0.5 flex-1">
+<span class="font-status text-status text-text-secondary uppercase">Profissional</span>
+<div class="flex items-center gap-1.5">
+<img alt="Dr. Gabriel" class="w-5 h-5 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUrjiI7N9eqVWp8y2QxXyaYnD56wKRhHOxeGAJjeNz--gtGgRi3ObqA11jEkW4TgQKXMdkpdi2F_DjCNSaGvbcgoUB-HrY1jUv0R43rqQYpQqYVIoBHTlh5ljVYLKl580M-N0tTCq37Xmt4kCNxS65KFSaTCe9EmDWJgjehWgHskb_a333ZMbhe2WwI9RZ9NsFMhSRPbfBhB7p7UayhgYkSowg4FuwVuZHuvPA1Kc5afCQUMR05i8TpA">
+<span class="font-body-strong text-body-strong text-text-primary text-[13px]">Dr. Gabriel</span>
+</div>
+</div>
+<div class="w-px h-8 bg-surface-variant"></div>
+<div class="flex flex-col gap-0.5 flex-1">
+<span class="font-status text-status text-text-secondary uppercase">Progresso Geral</span>
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-1/4 rounded-full"></div>
+</div>
+<span class="font-body-strong text-body-strong text-text-primary text-[13px]">25%</span>
+</div>
+</div>
+</div>
+<div class="h-px w-full bg-surface-variant my-1"></div>
+<div class="grid grid-cols-2 gap-3">
+<div class="flex items-start gap-2">
+<div class="mt-0.5 w-5 h-5 rounded-full bg-success/10 flex items-center justify-center text-success shrink-0">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex flex-col">
+<span class="font-status text-status text-text-secondary uppercase">Etapa Atual</span>
+<span class="font-body text-body text-text-primary text-[13px] leading-tight">Avaliação Inicial</span>
+</div>
+</div>
+<div class="flex items-start gap-2">
+<div class="mt-0.5 w-5 h-5 rounded-full bg-primary-container/10 flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 0;">radio_button_unchecked</span>
+</div>
+<div class="flex flex-col">
+<span class="font-status text-status text-text-secondary uppercase">Próxima Etapa</span>
+<span class="font-body-strong text-body-strong text-text-primary text-[13px] leading-tight">Moldagem Protética</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Planning -->
+<section class="bg-white border border-surface-variant rounded-lg p-3 shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<h3 class="font-card-title text-card-title text-text-primary text-[14px]">Planejamento</h3>
+<p class="font-caption text-caption text-text-secondary">8 procedimentos (2 concl., 6 pend.)</p>
+</div>
+<button class="text-primary-container font-label hover:underline flex items-center gap-0.5">
+                Abrir <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</section>
+<!-- Next Appointment -->
+<section class="flex flex-col gap-2">
+<h3 class="font-section-title text-section-title text-text-primary px-1">Próximo Agendamento</h3>
+<div class="bg-white rounded-lg p-compact-card-padding shadow-sm flex flex-col gap-3 border border-surface-variant">
+<div class="flex justify-between items-start">
+<div class="flex items-start gap-2.5">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex flex-col items-center justify-center text-primary-container shrink-0">
+<span class="font-body-strong leading-none">26</span>
+<span class="font-status leading-none uppercase mt-0.5">OUT</span>
+</div>
+<div class="flex flex-col">
+<span class="font-card-title text-card-title text-text-primary text-[15px] leading-tight">Restauração complexa</span>
+<span class="font-caption text-caption text-text-secondary flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 09:30
+                                <span class="mx-1">•</span>
+<img alt="Dra. Camila" class="w-4 h-4 rounded-full inline" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANhDG_T8BLxGBziWh9cOjaXK6eBHE7LyORHWhMkTNpGVPdopfXllo1rhQ_rgOlwLrHo1rx8BGFWi5z2J-7fYnnXwS-a4eFzLw0rvBVXL-GYVkQzCAEas06OyaWkI0dQxpeSbrxWJnu9LqXo3TEHJr9_V1PkKHJkW-84EUjKyCr5SWMJMBvhKIso3L1fCLA6G_On9Kzf9nGkyd6RWPClTE90Y8lJGsa4MPNpg0-T5yIvGyd-AMmDHbd8A">
+                                Dra. Camila • Sala 2
+                            </span>
+</div>
+</div>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded bg-success/10 text-success font-status uppercase shrink-0">Confirmado</span>
+</div>
+<div class="flex gap-2 mt-1">
+<button class="flex-1 bg-surface-container hover:bg-surface-container-high transition-colors text-text-primary py-1.5 rounded font-label">Remarcar</button>
+<button class="flex-1 bg-primary-container/10 hover:bg-primary-container/20 transition-colors text-primary-container py-1.5 rounded font-label">Detalhes</button>
+</div>
+</div>
+</section>
+<!-- Pending Items -->
+<section class="flex flex-col gap-2">
+<h3 class="font-section-title text-section-title text-text-primary px-1">Pendências</h3>
+<div class="bg-white rounded-lg p-1 shadow-sm flex flex-col border border-surface-variant">
+<div class="p-2.5 flex items-center justify-between border-b border-surface-variant last:border-0">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded bg-surface-container flex items-center justify-center text-text-secondary shrink-0">
+<span class="material-symbols-outlined text-[16px]">imagesmode</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-strong text-[13px] text-text-primary leading-tight">Solicitar radiografia panorâmica</span>
+<span class="font-caption text-error font-medium">Prazo: Hoje</span>
+</div>
+</div>
+<button class="w-7 h-7 flex items-center justify-center text-outline hover:text-text-primary transition-colors shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">radio_button_unchecked</span>
+</button>
+</div>
+<div class="p-2.5 flex items-center justify-between border-b border-surface-variant last:border-0">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded bg-surface-container flex items-center justify-center text-text-secondary shrink-0">
+<span class="material-symbols-outlined text-[16px]">inventory_2</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-strong text-[13px] text-text-primary leading-tight">Confirmar componentes implante</span>
+<span class="font-caption text-warning font-medium">Prazo: Amanhã</span>
+</div>
+</div>
+<button class="w-7 h-7 flex items-center justify-center text-outline hover:text-text-primary transition-colors shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">radio_button_unchecked</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Last Evolutions -->
+<section class="flex flex-col gap-2">
+<div class="flex items-center justify-between px-1">
+<h3 class="font-section-title text-section-title text-text-primary">Últimas Evoluções</h3>
+<button class="text-primary-container font-label hover:underline">Ver todas</button>
+</div>
+<div class="bg-white rounded-lg p-compact-card-padding shadow-sm flex flex-col gap-3 relative border border-surface-variant">
+<div class="absolute left-[21px] top-4 bottom-4 w-px bg-surface-variant z-0"></div>
+<div class="flex items-start gap-3 relative z-10">
+<div class="w-2.5 h-2.5 mt-1 rounded-full bg-primary-container border-2 border-white flex-shrink-0"></div>
+<div class="flex flex-col gap-0.5 pb-2">
+<div class="flex items-center gap-1.5">
+<span class="font-status text-status text-text-secondary uppercase">20 OUT</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-caption text-text-secondary">Dr. Gabriel</span>
+</div>
+<p class="font-body text-[13px] text-text-primary leading-snug line-clamp-2">Finalização de preparo e provisório cimentado. Paciente relatou leve sensibilidade, anestesia local aplicada.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 relative z-10">
+<div class="w-2.5 h-2.5 mt-1 rounded-full bg-surface-container-high border-2 border-white flex-shrink-0"></div>
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-1.5">
+<span class="font-status text-status text-text-secondary uppercase">15 OUT</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-caption text-text-secondary">Dra. Camila</span>
+</div>
+<p class="font-body text-[13px] text-text-primary leading-snug line-clamp-2">Limpeza preventiva realizada e orientação de higiene oral. Remoção de tártaro superficial na região lingual inferior.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-white/70 backdrop-blur-[24px] border-t border-surface-variant shadow-sm">
+  <button class="flex flex-col items-center justify-center text-text-secondary p-1.5 hover:bg-surface-container/50 transition-all rounded">
+    <span class="material-symbols-outlined mb-0.5 text-[22px]">calendar_today</span>
+    <span class="font-status text-status">Hoje</span>
+  </button>
+  <button class="flex flex-col items-center justify-center bg-primary-container/10 text-primary-container rounded p-1.5 transition-all">
+    <span class="material-symbols-outlined mb-0.5 text-[22px]" style="font-variation-settings: 'FILL' 1;">groups</span>
+    <span class="font-status text-status">Pacientes</span>
+  </button>
+  <button class="flex flex-col items-center justify-center -mt-5 primary-button text-white rounded-full w-12 h-12 shadow-sm hover:opacity-90 transition-all border-[3px] border-white">
+    <span class="material-symbols-outlined text-[28px]">add_circle</span>
+  </button>
+  <button class="flex flex-col items-center justify-center text-text-secondary p-1.5 hover:bg-surface-container/50 transition-all rounded">
+    <span class="material-symbols-outlined mb-0.5 text-[22px]">account_tree</span>
+    <span class="font-status text-status">Fluxos</span>
+  </button>
+  <button class="flex flex-col items-center justify-center text-text-secondary p-1.5 hover:bg-surface-container/50 transition-all rounded">
+    <span class="material-symbols-outlined mb-0.5 text-[22px]">more_horiz</span>
+    <span class="font-status text-status">Mais</span>
+  </button>
+</nav>
+
+
+</body></html>

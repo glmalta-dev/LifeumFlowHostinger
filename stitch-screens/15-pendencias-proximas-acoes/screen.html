@@ -1,0 +1,394 @@
+<!DOCTYPE html><html class="light" lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>DentalPro Premium - Pendências</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config injected from Style Guidance -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#7e2c00",
+                        "text-secondary": "#5E6C86",
+                        "tertiary-fixed-dim": "#ffb598",
+                        "warning": "#D99214",
+                        "on-surface": "#191b23",
+                        "on-secondary-fixed": "#001d34",
+                        "primary": "#004cba",
+                        "surface-tint": "#0056d1",
+                        "secondary-fixed": "#cfe5ff",
+                        "outline": "#737786",
+                        "on-primary-fixed": "#001847",
+                        "on-background": "#191b23",
+                        "primary-fixed": "#dae2ff",
+                        "surface-dim": "#d8d9e4",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#0040a0",
+                        "tertiary-container": "#ba4500",
+                        "on-tertiary-container": "#ffe8e0",
+                        "error-container": "#ffdad6",
+                        "accent-indigo": "#5C78F0",
+                        "inverse-surface": "#2e3039",
+                        "surface-bright": "#faf8ff",
+                        "surface-glass": "rgba(255, 255, 255, 0.72)",
+                        "on-tertiary-fixed": "#360f00",
+                        "surface-container": "#ecedf8",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#ffdbcd",
+                        "background": "#F6F8FC",
+                        "secondary-fixed-dim": "#9acbff",
+                        "on-surface-variant": "#424654",
+                        "success": "#26B978",
+                        "primary-container": "#1463e6",
+                        "outline-variant": "#c2c6d7",
+                        "tertiary": "#923400",
+                        "surface-container-highest": "#e1e2ed",
+                        "on-secondary-container": "#00406a",
+                        "inverse-primary": "#b2c5ff",
+                        "surface-container-high": "#e7e7f3",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#eff0fb",
+                        "secondary-container": "#51aeff",
+                        "on-primary-container": "#e9edff",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "error": "#E5484D",
+                        "text-primary": "#102044",
+                        "surface-container-low": "#f2f3fe",
+                        "surface": "rgba(255, 255, 255, 0.88)",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e1e2ed",
+                        "on-secondary-fixed-variant": "#004a79",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#00629e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "touch-target-min": "44px",
+                        "section-gap": "20px",
+                        "card-padding": "16px",
+                        "screen-top": "12px",
+                        "inline": "8px",
+                        "base": "4px",
+                        "screen-horizontal": "16px",
+                        "screen-margin": "16px",
+                        "compact-card-padding": "14px",
+                        "card-gap": "12px",
+                        "base-unit": "4px",
+                        "inline-gap": "8px"
+                    },
+                    "fontFamily": {
+                        "caption": ["Inter"],
+                        "page-title": ["Inter"],
+                        "body-strong": ["Inter"],
+                        "section-title": ["Inter"],
+                        "label": ["Inter"],
+                        "card-title": ["Inter"],
+                        "status": ["Inter"],
+                        "body": ["Inter"]
+                    },
+                    "fontSize": {
+                        "caption": ["11px", { "lineHeight": "15px", "fontWeight": "400" }],
+                        "page-title-mobile": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-strong": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "section-title": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+                        "label": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "card-title": ["16px", { "lineHeight": "21px", "fontWeight": "700" }],
+                        "status": ["10px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            /* Mobile baseline setup */
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+            background-color: theme('colors.background');
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 90px; /* Space for BottomNavBar */
+        }
+        
+        /* Glassmorphism utility classes */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 0.5px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px rgba(31, 67, 126, 0.04);
+        }
+        
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        
+        /* Hide scrollbar for clean horizontal scrolls */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 h-14 bg-surface-glass backdrop-blur-xl border-b border-outline-variant/30 flex items-center">
+  <div class="flex justify-between items-center px-4 w-full max-w-xl mx-auto">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-surface shadow-sm">
+        <img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAESeIqlp8uVG2w77hyqAmk_EADyPpMtHmfFzNIzpxZ_ce6rbZoS3__suqvT1eubafQ3Ezh8SHZ5iSMl02Sm-eNAWL0VUDHY7UYOPj3-w0vb53sGtP0ES0l2jDXPeFN667vUoUx47JRNC54GE9KVPrOlr-MKDsJBIZbt9yq7SwAiJZ08JBeC-pV52iGFe_32xX2LSqxC7qHCSz9U30WDNf8rxN7KsJX566uIlqCnzgKtwpeS1gd1p4PKg">
+      </div>
+      <h1 class="font-page-title text-[18px] text-primary tracking-tight">Pendências</h1>
+    </div>
+    <div class="flex items-center gap-1">
+      <button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low/50 rounded-full transition-all active:scale-95">
+        <span class="material-symbols-outlined text-[22px]">search</span>
+      </button>
+      <button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low/50 rounded-full transition-all active:scale-95">
+        <span class="material-symbols-outlined text-[22px]">filter_list</span>
+      </button>
+    </div>
+  </div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-14 px-screen-horizontal pb-section-gap flex flex-col gap-section-gap">
+<!-- Resumo Superior (Bento Grid Style) -->
+<section class="grid grid-cols-2 gap-card-gap">
+<!-- Total -->
+<div class="col-span-2 glass-panel rounded-xl p-card-padding flex items-center justify-between">
+<div>
+<h2 class="font-label text-label text-text-secondary uppercase tracking-wider">Total de Pendências</h2>
+<p class="font-page-title text-page-title-mobile text-text-primary mt-1">24</p>
+</div>
+<div class="w-12 h-12 rounded-full bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assignment</span>
+</div>
+</div>
+<!-- Atrasadas -->
+<div class="glass-panel rounded-xl p-compact-card-padding flex flex-col gap-2 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-16 h-16 bg-error/5 rounded-bl-full -z-10 transition-transform group-hover:scale-110"></div>
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">warning</span>
+<div>
+<p class="font-page-title text-page-title-mobile text-text-primary">4</p>
+<p class="font-caption text-caption text-text-secondary">Atrasadas</p>
+</div>
+</div>
+<!-- Vencem Hoje -->
+<div class="glass-panel rounded-xl p-compact-card-padding flex flex-col gap-2 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-16 h-16 bg-warning/5 rounded-bl-full -z-10 transition-transform group-hover:scale-110"></div>
+<span class="material-symbols-outlined text-warning" style="font-variation-settings: 'FILL' 1;">today</span>
+<div>
+<p class="font-page-title text-page-title-mobile text-text-primary">12</p>
+<p class="font-caption text-caption text-text-secondary">Vencem Hoje</p>
+</div>
+</div>
+<!-- Concluídas -->
+<div class="col-span-2 glass-panel rounded-xl p-compact-card-padding flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-success/10 flex items-center justify-center text-success shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<p class="font-body-strong text-body-strong text-text-primary">8 Concluídas</p>
+<p class="font-caption text-caption text-text-secondary">Nos últimos 7 dias</p>
+</div>
+<div class="ml-auto">
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Filtros Rápidos (Horizontal Scroll) -->
+<section class="-mx-screen-horizontal px-screen-horizontal overflow-x-auto no-scrollbar">
+<div class="flex gap-inline-gap w-max pb-2">
+<button class="px-4 py-2 rounded-full bg-primary text-on-primary font-body-strong text-body-strong shadow-md transition-all active:scale-95">Todas</button>
+<button class="px-4 py-2 rounded-full glass-panel text-text-secondary font-body-strong text-body-strong hover:bg-surface-container-low transition-all active:scale-95">Atrasadas</button>
+<button class="px-4 py-2 rounded-full glass-panel text-text-secondary font-body-strong text-body-strong hover:bg-surface-container-low transition-all active:scale-95">Hoje</button>
+<button class="px-4 py-2 rounded-full glass-panel text-text-secondary font-body-strong text-body-strong hover:bg-surface-container-low transition-all active:scale-95">Clínicas</button>
+<button class="px-4 py-2 rounded-full glass-panel text-text-secondary font-body-strong text-body-strong hover:bg-surface-container-low transition-all active:scale-95">Administrativas</button>
+<button class="px-4 py-2 rounded-full glass-panel text-text-secondary font-body-strong text-body-strong hover:bg-surface-container-low transition-all active:scale-95">Agendamentos</button>
+<button class="px-4 py-2 rounded-full glass-panel text-text-secondary font-body-strong text-body-strong hover:bg-surface-container-low transition-all active:scale-95">Planejamento</button>
+</div>
+</section>
+<!-- Card Urgente Agora -->
+<section>
+<h3 class="font-section-title text-section-title text-text-primary mb-3">Urgente Agora</h3>
+<div class="glass-panel rounded-xl p-card-padding border-l-4 border-l-error relative overflow-hidden shadow-[0_8px_30px_rgba(229,72,77,0.12)]">
+<!-- Background Subtle Warning -->
+<div class="absolute inset-0 bg-error/5 pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-text-primary font-body-strong">
+                                AS
+                            </div>
+<div>
+<h4 class="font-card-title text-card-title text-text-primary">Ana Silva</h4>
+<p class="font-caption text-caption text-text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_month</span>
+                                    Agendamento
+                                </p>
+</div>
+</div>
+<span class="px-2 py-1 bg-error-container text-on-error-container font-status text-status rounded-full flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> ALTA
+                        </span>
+</div>
+<div>
+<p class="font-body-strong text-body-strong text-text-primary">Responder solicitação de agendamento</p>
+<p class="font-body text-body text-error mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+                            Prazo: 2 dias atrás
+                        </p>
+</div>
+<div class="flex gap-2 mt-2">
+<button class="flex-1 py-2 px-3 bg-primary text-on-primary rounded-lg font-body-strong text-body-strong text-center transition-all active:scale-95 shadow-sm">
+                            Abrir
+                        </button>
+<button class="flex-1 py-2 px-3 bg-surface text-primary border border-outline-variant/50 rounded-lg font-body-strong text-body-strong text-center transition-all active:scale-95 shadow-sm">
+                            Reagendar
+                        </button>
+<button class="w-[touch-target-min] flex items-center justify-center bg-surface text-success border border-success/30 rounded-lg transition-all active:scale-95 shadow-sm">
+<span class="material-symbols-outlined">done</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Lista de Pendências -->
+<section>
+<h3 class="font-section-title text-section-title text-text-primary mb-3">Próximas Ações</h3>
+<div class="flex flex-col gap-card-gap">
+<!-- Card 1 -->
+<div class="glass-panel rounded-xl p-compact-card-padding flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-text-primary font-body-strong shrink-0 mt-1">
+                        CM
+                    </div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-body-strong text-body-strong text-text-primary">Carlos Mendes</h4>
+<span class="px-2 py-0.5 bg-warning/10 text-warning font-status text-status rounded-full">MÉDIA</span>
+</div>
+<p class="font-body text-body text-text-secondary mb-2">Aprovar orçamento</p>
+<div class="flex items-center gap-1 font-caption text-caption text-text-secondary">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                            Hoje, 14:00
+                        </div>
+</div>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-outline-variant hover:text-primary transition-colors shrink-0">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Card 2 -->
+<div class="glass-panel rounded-xl p-compact-card-padding flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-text-primary font-body-strong shrink-0 mt-1">
+                        RL
+                    </div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-body-strong text-body-strong text-text-primary">Rafael Lima</h4>
+<span class="px-2 py-0.5 bg-success/10 text-success font-status text-status rounded-full">BAIXA</span>
+</div>
+<p class="font-body text-body text-text-secondary mb-2">Confirmar radiografia</p>
+<div class="flex items-center gap-1 font-caption text-caption text-text-secondary">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                            Hoje, 16:30
+                        </div>
+</div>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-outline-variant hover:text-primary transition-colors shrink-0">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Card 3 -->
+<div class="glass-panel rounded-xl p-compact-card-padding flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-text-primary font-body-strong shrink-0 mt-1">
+                        JC
+                    </div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-body-strong text-body-strong text-text-primary">Juliana Costa</h4>
+<span class="px-2 py-0.5 bg-warning/10 text-warning font-status text-status rounded-full">MÉDIA</span>
+</div>
+<p class="font-body text-body text-text-secondary mb-2">Definir planejamento</p>
+<div class="flex items-center gap-1 font-caption text-caption text-text-secondary">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                            Amanhã
+                        </div>
+</div>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-outline-variant hover:text-primary transition-colors shrink-0">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Ações Rápidas de Rodapé -->
+<section class="grid grid-cols-3 gap-2 mt-4 mb-6">
+<button class="flex flex-col items-center gap-1 p-3 glass-panel rounded-xl text-primary transition-all active:scale-95">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined">add</span>
+</div>
+<span class="font-label text-label text-center">Nova Pendência</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-3 glass-panel rounded-xl text-text-secondary transition-all active:scale-95">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined">person_add</span>
+</div>
+<span class="font-label text-label text-center">Atribuir</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-3 glass-panel rounded-xl text-text-secondary transition-all active:scale-95">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined">notifications_active</span>
+</div>
+<span class="font-label text-label text-center">Lembrete</span>
+</button>
+</section>
+</main>
+<!-- BottomNavBar -->
+<!-- Applying exact styling logic from JSON: "style_bg_color": "bg-surface-glass dark:bg-inverse-surface/95 backdrop-blur-xl", etc. -->
+<nav class="fixed bottom-0 left-0 w-full z-50 rounded-t-xl bg-surface-glass backdrop-blur-xl border-t border-outline-variant/30 shadow-[0_-4px_20px_rgba(31,67,126,0.08)]">
+<div class="flex justify-around items-center px-2 pb-[env(safe-area-inset-bottom)] pt-2 max-w-xl mx-auto h-[72px]">
+<button class="w-[touch-target-min] flex flex-col items-center justify-center text-on-surface-variant font-label text-label hover:opacity-80 transition-transform duration-300 active:scale-90">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">calendar_today</span>
+                Hoje
+            </button>
+<button class="w-[touch-target-min] flex flex-col items-center justify-center text-on-surface-variant font-label text-label hover:opacity-80 transition-transform duration-300 active:scale-90">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">groups</span>
+                Pacientes
+            </button>
+<button class="w-[touch-target-min] flex flex-col items-center justify-center text-primary font-label text-label hover:opacity-80 transition-transform duration-300 active:scale-90">
+<span class="material-symbols-outlined mb-1 text-[28px]" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+                Captura
+            </button>
+<button class="w-[touch-target-min] flex flex-col items-center justify-center text-on-surface-variant font-label text-label hover:opacity-80 transition-transform duration-300 active:scale-90">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">account_tree</span>
+                Fluxos
+            </button>
+<button class="w-[touch-target-min] flex flex-col items-center justify-center text-on-surface-variant font-label text-label hover:opacity-80 transition-transform duration-300 active:scale-90">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">more_horiz</span>
+                Mais
+            </button>
+</div>
+</nav>
+
+
+
+
+</body></html>

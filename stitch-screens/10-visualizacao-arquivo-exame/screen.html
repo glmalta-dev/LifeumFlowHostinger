@@ -1,0 +1,299 @@
+<!DOCTYPE html><html class="light" lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Visualização de Exame - Lifeum Flow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#004a79",
+                        "surface-container": "#ecedf8",
+                        "on-primary-container": "#e9edff",
+                        "tertiary-container": "#ba4500",
+                        "inverse-surface": "#2e3039",
+                        "tertiary-fixed-dim": "#ffb598",
+                        "secondary": "#00629e",
+                        "warning": "#D99214",
+                        "primary": "#004cba",
+                        "text-primary": "#102044",
+                        "secondary-fixed": "#cfe5ff",
+                        "background": "#F6F8FC",
+                        "error-container": "#ffdad6",
+                        "text-secondary": "#5E6C86",
+                        "surface-container-high": "#e7e7f3",
+                        "accent-indigo": "#5C78F0",
+                        "surface-dim": "#d8d9e4",
+                        "on-secondary-fixed": "#001d34",
+                        "inverse-on-surface": "#eff0fb",
+                        "surface-container-low": "#f2f3fe",
+                        "surface-glass": "rgba(255, 255, 255, 0.72)",
+                        "surface-tint": "#0056d1",
+                        "surface-bright": "#faf8ff",
+                        "on-surface-variant": "#424654",
+                        "success": "#26B978",
+                        "secondary-fixed-dim": "#9acbff",
+                        "surface": "rgba(255, 255, 255, 0.88)",
+                        "surface-container-highest": "#e1e2ed",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#191b23",
+                        "primary-container": "#1463e6",
+                        "on-primary-fixed-variant": "#0040a0",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e1e2ed",
+                        "on-tertiary-fixed-variant": "#7e2c00",
+                        "secondary-container": "#51aeff",
+                        "inverse-primary": "#b2c5ff",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "primary-fixed": "#dae2ff",
+                        "on-background": "#191b23",
+                        "tertiary": "#923400",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-primary-fixed": "#001847",
+                        "on-secondary-container": "#00406a",
+                        "on-primary": "#ffffff",
+                        "outline": "#737786",
+                        "error": "#E5484D",
+                        "tertiary-fixed": "#ffdbcd",
+                        "outline-variant": "#c2c6d7",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#ffe8e0",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base-unit": "4px",
+                        "inline-gap": "8px",
+                        "screen-horizontal": "16px",
+                        "compact-card-padding": "14px",
+                        "touch-target-min": "44px",
+                        "screen-margin": "16px",
+                        "card-gap": "12px",
+                        "base": "4px",
+                        "card-padding": "16px",
+                        "screen-top": "12px",
+                        "section-gap": "20px",
+                        "inline": "8px"
+                    },
+                    "fontFamily": {
+                        "label": ["Inter"],
+                        "section-title": ["Inter"],
+                        "status": ["Inter"],
+                        "card-title": ["Inter"],
+                        "caption": ["Inter"],
+                        "page-title": ["Inter"],
+                        "body": ["Inter"],
+                        "body-strong": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "section-title": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+                        "status": ["10px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "card-title": ["16px", { "lineHeight": "21px", "fontWeight": "700" }],
+                        "caption": ["11px", { "lineHeight": "15px", "fontWeight": "400" }],
+                        "page-title": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "page-title-mobile": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-strong": ["14px", { "lineHeight": "20px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Hide scrollbar for clean UI while maintaining functionality */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-text-primary antialiased font-body flex justify-center">
+<!-- Mobile Device Simulator Container -->
+<main class="w-full max-w-[390px] min-h-screen bg-background relative shadow-2xl overflow-x-hidden flex flex-col">
+<!-- TopAppBar (Semantic Context: Detail View, Navigation Shell Omitted) -->
+<header class="fixed top-0 left-0 w-full max-w-[390px] z-50 flex justify-between items-center px-screen-horizontal h-14 bg-surface-glass backdrop-blur-xl border-outline-variant shadow-sm transition-all duration-300 left-1/2 -translate-x-1/2 border-b border-outline-variant/30">
+<button aria-label="Voltar" class="w-touch-target-min h-touch-target-min flex items-center justify-start text-primary active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<div class="flex flex-col items-center justify-center text-center flex-1"><h1 class="font-page-title text-page-title-mobile text-text-primary truncate max-w-[200px]">Visualização de Exame</h1><p class="font-caption text-caption text-text-secondary truncate max-w-[200px]">Ana Silva</p></div>
+<button aria-label="Mais opções" class="w-touch-target-min h-touch-target-min flex items-center justify-end text-primary active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-2xl">more_vert</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<div class="flex-1 w-full pt-[72px] px-screen-horizontal flex flex-col gap-section-gap overflow-y-auto hide-scrollbar pb-[88px]">
+<!-- Patient Context (Subtle) -->
+<div class="flex items-center gap-3 w-full">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-body-strong text-body">AS</div>
+<div class="flex flex-col">
+<span class="font-label text-label text-text-secondary">Paciente</span>
+<span class="font-body-strong text-body-strong text-text-primary">Ana Silva</span>
+</div>
+</div>
+<!-- Main View Area: High-quality Image Presentation -->
+<div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden shadow-lg bg-surface-container-highest border border-outline-variant/30 group">
+<img alt="Panorâmica Inicial" class="w-full h-full object-cover transition-transform duration-500 ease-out group-active:scale-105" data-alt="A crisp, high-resolution panoramic dental x-ray film displayed on a modern, glowing medical light box. The aesthetic is clean, clinical, and sophisticated, reflecting a high-end corporate healthcare environment. Subtle ambient lighting highlights the details of the jaw and teeth. The overall color palette features stark blacks, bright whites, and soft, cool blue undertones indicative of advanced medical imaging technology." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWZeQiM48J_2pnqjzwqB6uQ041HUeB-iFtJrrRySqz77yBvhdBHGknVWymuCZzBoIKadzp_LLS8l31-iesVkeb4Lc5iDwyiD13rpGptXAnHBAd01jc5GMI9rFCEZ26VPLDT1HelDV4m3RopNJpOQblJOsm7wqo-jav9U30E-xVBSUP8GH5FFNLwOMhpKB8kfmycNZq2iuUujm_wCnXXacXvXaEX1_sI-xegLAkkbEH0xRtNX-njkftLg">
+<!-- Overlay for premium feel -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+<!-- Zoom Hint -->
+<div class="absolute bottom-3 right-3 bg-surface-glass backdrop-blur-md rounded-full p-2 border border-outline-variant/20 shadow-sm pointer-events-none">
+<span class="material-symbols-outlined text-primary text-sm">zoom_in</span>
+</div>
+</div>
+<!-- Quick Action Buttons Row -->
+<div class="flex items-start justify-between w-full pt-2 pb-1 overflow-x-auto hide-scrollbar gap-2 px-1">
+<button class="flex flex-col items-center gap-inline-gap min-w-[64px] active:scale-95 transition-transform duration-200 group">
+<div class="w-touch-target-min h-touch-target-min rounded-full bg-surface-glass backdrop-blur-md border border-outline-variant/40 flex items-center justify-center shadow-[0_2px_8px_rgba(31,67,126,0.08)] group-hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary">zoom_in</span>
+</div>
+<span class="font-caption text-caption text-text-secondary">Ampliar</span>
+</button>
+<button class="flex flex-col items-center gap-inline-gap min-w-[64px] active:scale-95 transition-transform duration-200 group">
+<div class="w-touch-target-min h-touch-target-min rounded-full bg-surface-glass backdrop-blur-md border border-outline-variant/40 flex items-center justify-center shadow-[0_2px_8px_rgba(31,67,126,0.08)] group-hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary">share</span>
+</div>
+<span class="font-caption text-caption text-text-secondary">Compartilhar</span>
+</button>
+<button class="flex flex-col items-center gap-inline-gap min-w-[64px] active:scale-95 transition-transform duration-200 group">
+<div class="w-touch-target-min h-touch-target-min rounded-full bg-surface-glass backdrop-blur-md border border-outline-variant/40 flex items-center justify-center shadow-[0_2px_8px_rgba(31,67,126,0.08)] group-hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary">download</span>
+</div>
+<span class="font-caption text-caption text-text-secondary">Baixar</span>
+</button>
+<button class="flex flex-col items-center gap-inline-gap min-w-[64px] active:scale-95 transition-transform duration-200 group">
+<div class="w-touch-target-min h-touch-target-min rounded-full bg-surface-glass backdrop-blur-md border border-outline-variant/40 flex items-center justify-center shadow-[0_2px_8px_rgba(31,67,126,0.08)] group-hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary">link</span>
+</div>
+<span class="font-caption text-caption text-text-secondary">Vincular</span>
+</button>
+<button class="flex flex-col items-center gap-inline-gap min-w-[64px] active:scale-95 transition-transform duration-200 group">
+<div class="w-touch-target-min h-touch-target-min rounded-full bg-surface-glass backdrop-blur-md border border-error/20 flex items-center justify-center shadow-[0_2px_8px_rgba(229,72,77,0.08)] group-hover:bg-error-container/50 transition-colors">
+<span class="material-symbols-outlined text-error">delete</span>
+</div>
+<span class="font-caption text-caption text-error">Excluir</span>
+</button>
+</div>
+<!-- Metadata Section (Glassmorphism Bento Style) -->
+<div class="w-full rounded-xl bg-surface-glass backdrop-blur-xl border border-outline-variant/30 shadow-[0_8px_32px_rgba(31,67,126,0.04)] p-card-padding flex flex-col gap-4">
+<h2 class="font-card-title text-card-title text-text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">info</span>
+                    Detalhes do Exame
+                </h2>
+<div class="grid grid-cols-2 gap-y-4 gap-x-2 border-b border-outline-variant/20 pb-4">
+<div class="flex flex-col gap-1">
+<span class="font-caption text-caption text-text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span> Data
+                        </span>
+<span class="font-body-strong text-body-strong text-text-primary">15 Out 2023</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-caption text-caption text-text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">person</span> Profissional
+                        </span>
+<span class="font-body-strong text-body-strong text-text-primary">Dr. Gabriel</span>
+</div>
+<div class="flex flex-col gap-1 col-span-2">
+<span class="font-caption text-caption text-text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">folder_open</span> Categoria
+                        </span>
+<span class="inline-flex max-w-max items-center px-2 py-1 rounded-full bg-primary-container/20 font-label text-label text-primary">
+                            Exame de Imagem
+                        </span>
+</div>
+</div>
+<div class="flex flex-col gap-2 pt-1">
+<span class="font-caption text-caption text-text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">edit_note</span> Observação Clínica
+                    </span>
+<div class="bg-surface-container-low rounded-lg p-3 border border-outline-variant/20">
+<p class="font-body text-body text-text-primary leading-relaxed">
+                            Paciente apresenta boa densidade óssea. Necessário avaliar região do 38.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Related Files Section -->
+<div class="flex flex-col gap-3 w-full pb-4">
+<div class="flex items-center justify-between w-full">
+<h3 class="font-card-title text-card-title text-text-primary">Arquivos Relacionados</h3>
+<button class="font-label text-label text-primary hover:underline">Ver todos</button>
+</div>
+<!-- Horizontal Scroll Container -->
+<div class="flex gap-card-gap overflow-x-auto snap-x hide-scrollbar pb-2 -mx-screen-horizontal px-screen-horizontal">
+<!-- Thumbnail Card 1 -->
+<button class="snap-start min-w-[140px] flex flex-col gap-2 group text-left active:scale-[0.98] transition-transform">
+<div class="w-full aspect-[4/3] rounded-lg bg-surface-container-highest border border-outline-variant/30 overflow-hidden relative shadow-sm">
+<img alt="Lateral" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A small, clear thumbnail image of a lateral cephalometric skull x-ray. The image is rendered in high contrast black and white, suitable for a premium medical interface. The style is professional and clinical, with smooth gradients and crisp edges." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD821GM6t1STP0OzGdwp3T-zLIIdf6kLzVhBSABcrG2OWfBdsfXC0bv9H4hSE30wvjbGN4KZwnXf71RLY-jG6IsCRT0Xx11WbNuPL498OmGFFTSIKPUgyNZrizv-LBA2FJzCikzsw-bj6fE85pia-tGjHQN0U3Yl--BAmKFOQkUiSrECHt2cx9Lks9R50QiU0mqS0nj0hCWxEDZ8HjIVPvDHtG2nSiHwp4HvJpAIP1rFRKAqBrmnux12g">
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors pointer-events-none"></div>
+</div>
+<span class="font-label text-label text-text-primary px-1 truncate">Lateral</span>
+</button>
+<!-- Thumbnail Card 2 -->
+<button class="snap-start min-w-[140px] flex flex-col gap-2 group text-left active:scale-[0.98] transition-transform">
+<div class="w-full aspect-[4/3] rounded-lg bg-surface-container-highest border border-outline-variant/30 overflow-hidden relative shadow-sm">
+<img alt="Oclusal" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A small, detailed thumbnail image of an occlusal dental x-ray showing the arch of the teeth. High contrast black and white rendering. Professional, clinical aesthetic with sharp focus and clean edges, appropriate for a modern health app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBr7eHlkcCd8Wkh7fkktU_6k4NDMDIGEtvU6ct37KnTG5BKBm1w2UhBxSzULRoRn-N0w7AUvysdrvIoSEYcA0cawgSfh4pdAhBFYKfikzyqdBw9mbPGIBvLMwQcZBgL6lS8cquRhVJCcPuQKgX9aC5KdIrTtOo4SFw5vv6mDHLYSe3TmCi3gUmdt9ZbCTAF8gCo3c61r0qAVGT7VN2XPtj8NEbFxvDCYMorTPJbjgnUjT396sqAExD_9A">
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors pointer-events-none"></div>
+</div>
+<span class="font-label text-label text-text-primary px-1 truncate">Oclusal</span>
+</button>
+<!-- Thumbnail Card 3 -->
+<button class="snap-start min-w-[140px] flex flex-col gap-2 group text-left active:scale-[0.98] transition-transform">
+<div class="w-full aspect-[4/3] rounded-lg bg-surface-container-highest border border-outline-variant/30 overflow-hidden relative shadow-sm">
+<img alt="Periapical" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A small, precise thumbnail image of a periapical dental x-ray focusing on a few specific teeth and their roots. High contrast black and white. Clean, professional medical imaging style, optimized for a modern digital health interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJRY-DTyCZZ75O_OuWB4e7DTTP8bsPrbC3lmOmZ9y0V_bP7LtPOmCN5ti340NlXJ9oJfQ4uupdnWlKDmDOKXHU1YbmBLWyl1BK6d7NSmrS-BAaT23_awBbSBwK7yuiDQTOpPAP5k4cWGHj7KOk_DRozQPHNxgFaRJIH-tEMlVgLpQQ0wwxC-vXbyda_aTCJq4nhoPCXVbIlBe9MTJVjelD-9he2mCpf5ni-8iuKKZkIJ1lNCFR9DwEbA">
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors pointer-events-none"></div>
+</div>
+<span class="font-label text-label text-text-primary px-1 truncate">Periapical</span>
+</button>
+<!-- Spacer for natural scrolling past last item -->
+<div class="min-w-[4px]"></div>
+</div>
+</div>
+</div>
+<nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[390px] h-[72px] bg-surface-glass backdrop-blur-xl border-t border-outline-variant/30 px-4 flex items-center justify-between z-50 shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
+  <button class="flex flex-col items-center gap-1 flex-1 text-text-secondary active:scale-95 transition-transform">
+    <span class="material-symbols-outlined text-[24px]">calendar_today</span>
+    <span class="font-label text-[10px]">Hoje</span>
+  </button>
+  <button class="flex flex-col items-center gap-1 flex-1 text-primary active:scale-95 transition-transform">
+    <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">groups</span>
+    <span class="font-label text-[10px]">Pacientes</span>
+  </button>
+  <div class="flex-1 flex justify-center -mt-8">
+    <button class="w-14 h-14 rounded-full bg-primary text-on-primary shadow-lg flex items-center justify-center active:scale-90 transition-transform">
+      <span class="material-symbols-outlined text-[32px]">add_circle</span>
+    </button>
+  </div>
+  <button class="flex flex-col items-center gap-1 flex-1 text-text-secondary active:scale-95 transition-transform">
+    <span class="material-symbols-outlined text-[24px]">account_tree</span>
+    <span class="font-label text-[10px]">Fluxos</span>
+  </button>
+  <button class="flex flex-col items-center gap-1 flex-1 text-text-secondary active:scale-95 transition-transform">
+    <span class="material-symbols-outlined text-[24px]">more_horiz</span>
+    <span class="font-label text-[10px]">Mais</span>
+  </button>
+</nav></main>
+
+
+
+
+</body></html>

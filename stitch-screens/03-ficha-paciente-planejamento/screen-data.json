@@ -1,0 +1,328 @@
+﻿{
+    "screenshot":  {
+                       "name":  "projects/12728606000277993741/files/623647332449892691",
+                       "downloadUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLuAFz5NGrivNHz0lhJ6j1dLpefrgb4zxHitpTLZQpSjJbKWEc5nv9dgud_CVqhZzg6ifus0B2NGrFeDUFvCD-frHQC1fYK2XLXAyA57pSKxy_bVDKBUxROLlf2wxZ8_1Wegfp4A-DzTSOUCl85VqVUBSAtcQlsyGbimtR3uonNDZEjeBFHcPaywUKH2H_PGhbvO2pltwa7XFrMach6j3hb9Mj-62L2ZjpGQ-L5qULaqbzRXfuAm66mhZ20"
+                   },
+    "htmlCode":  {
+                     "name":  "projects/12728606000277993741/files/15775295738023038047",
+                     "downloadUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1NmMxMWZlOTI0NzEwMDMwMjdkZGM5MDg2YTFiEgsSBxC6laT43x8YAZIBJAoKcHJvamVjdF9pZBIWQhQxMjcyODYwNjAwMDI3Nzk5Mzc0MQ\u0026filename=\u0026opi=89354086",
+                     "mimeType":  "text/html"
+                 },
+    "id":  "29cb94677fee44379bc6dbfdf6424ac3",
+    "generatedBy":  "figaro_agent",
+    "width":  "780",
+    "height":  "2416",
+    "title":  "Lifeum Flow - Ficha do Paciente (Planejamento)",
+    "prompt":  "Create the \"Ficha do Paciente — Planejamento\" screen for Ana Silva. \n\nMaintain the established visual identity: \n- Header: Compact with back button, patient photo (Ana Silva), name, age/phone line, active status, WhatsApp button, and menu.\n- Tab Navigation: Horizontal scrollable tabs (Resumo, Planejamento, Agendamentos, Evoluções, Arquivos, Histórico, Dados). Set \"Planejamento\" as active.\n- Bottom Bar: Use the existing 5-item navigation bar with the prominent blue \"+\" button.\n- Style: Premium, clean, clinical blue (#1463E6), Inter typography, subtle gradients, and rounded cards with glassmorphism.\n\nScreen Content:\n1. Planning Summary Card: \n   - 8 procedures planned, 3 completed, 5 pending.\n   - General progress bar (37%).\n   - Primary button: \"Adicionar planejamento\".\n\n2. Next Clinical Action Card:\n   - Task: \"Definir planejamento protético\".\n   - Priority: Medium (Amber).\n   - Deadline, Professional.\n   - Buttons: \"Abrir\", \"Reagendar\", \"Concluir\".\n\n3. Treatment Areas (Compact Cards):\n   - Dentística: 4 proc. (2 done, 2 pending), Current: \"restauração do dente 16\", Next: \"reconstrução do dente 24\", Progress indicator.\n   - Prótese: 3 proc. (1 done, 2 pending), Current: \"planejamento\", Next: \"escaneamento ou moldagem\", Progress indicator.\n   - Implantodontia: 1 proc. (pending), Current: \"avaliação de imagem\", Next: \"definição do componente protético\", Progress indicator.\n   - Other areas (Periodontia, Endodontia, Cirurgia, Ortodontia, Preventivo) as compact placeholders or cards indicating 0/0.\n\n4. \"Sem planejamento\" Section:\n   - List of remaining specialties with a subtle \"Adicionar\" button.\n\n5. Quick Actions: \n   - Small action buttons or a section for \"Adicionar área\", \"Adicionar procedimento\", \"Criar próxima ação\".\n\nApply negative constraints: No teal colors, no Manrope font, no administrative dashboard look. Use clinical blue and professional white/glass aesthetics. Height: 390x844px.",
+    "name":  "projects/12728606000277993741/screens/29cb94677fee44379bc6dbfdf6424ac3",
+    "theme":  {
+                  "colorMode":  "LIGHT",
+                  "font":  "INTER",
+                  "roundness":  "ROUND_EIGHT",
+                  "customColor":  "#1463e6",
+                  "headlineFont":  "INTER",
+                  "bodyFont":  "INTER",
+                  "labelFont":  "INTER",
+                  "namedColors":  {
+                                      "tertiary_container":  "#ba4500",
+                                      "surface_container_lowest":  "#ffffff",
+                                      "on_tertiary":  "#ffffff",
+                                      "on_primary_container":  "#e9edff",
+                                      "on_secondary_fixed_variant":  "#004a79",
+                                      "secondary_fixed_dim":  "#9acbff",
+                                      "primary_fixed":  "#dae2ff",
+                                      "surface_bright":  "#faf8ff",
+                                      "on_tertiary_fixed":  "#360f00",
+                                      "inverse_on_surface":  "#eff0fb",
+                                      "accent-indigo":  "#5C78F0",
+                                      "text-secondary":  "#5E6C86",
+                                      "surface_variant":  "#e1e2ed",
+                                      "secondary_container":  "#51aeff",
+                                      "on_error":  "#ffffff",
+                                      "surface_dim":  "#d8d9e4",
+                                      "on_tertiary_fixed_variant":  "#7e2c00",
+                                      "surface_container_low":  "#f2f3fe",
+                                      "surface_container_high":  "#e7e7f3",
+                                      "on_error_container":  "#93000a",
+                                      "warning":  "#D99214",
+                                      "error":  "#E5484D",
+                                      "inverse_primary":  "#b2c5ff",
+                                      "on_surface_variant":  "#424654",
+                                      "surface_tint":  "#0056d1",
+                                      "tertiary_fixed":  "#ffdbcd",
+                                      "primary_container":  "#1463e6",
+                                      "on_secondary_fixed":  "#001d34",
+                                      "success":  "#26B978",
+                                      "on_primary_fixed_variant":  "#0040a0",
+                                      "inverse_surface":  "#2e3039",
+                                      "on_background":  "#191b23",
+                                      "tertiary":  "#923400",
+                                      "surface_container":  "#ecedf8",
+                                      "on_primary_fixed":  "#001847",
+                                      "on_secondary_container":  "#00406a",
+                                      "tertiary_fixed_dim":  "#ffb598",
+                                      "on_surface":  "#191b23",
+                                      "text-primary":  "#102044",
+                                      "background":  "#F6F8FC",
+                                      "secondary":  "#00629e",
+                                      "on_tertiary_container":  "#ffe8e0",
+                                      "primary_fixed_dim":  "#b2c5ff",
+                                      "on_primary":  "#ffffff",
+                                      "primary":  "#004cba",
+                                      "surface":  "rgba(255, 255, 255, 0.88)",
+                                      "surface-glass":  "rgba(255, 255, 255, 0.72)",
+                                      "outline":  "#737786",
+                                      "error_container":  "#ffdad6",
+                                      "outline_variant":  "#c2c6d7",
+                                      "surface_container_highest":  "#e1e2ed",
+                                      "secondary_fixed":  "#cfe5ff",
+                                      "on_secondary":  "#ffffff"
+                                  },
+                  "colorVariant":  "FIDELITY",
+                  "overridePrimaryColor":  "#1463e6",
+                  "overrideSecondaryColor":  "#49a8f8",
+                  "spacingScale":  2,
+                  "typography":  {
+                                     "card-title":  {
+                                                        "fontFamily":  "Inter",
+                                                        "fontSize":  "16px",
+                                                        "fontWeight":  "700",
+                                                        "lineHeight":  "21px"
+                                                    },
+                                     "label":  {
+                                                   "fontFamily":  "Inter",
+                                                   "fontSize":  "12px",
+                                                   "fontWeight":  "500",
+                                                   "lineHeight":  "16px"
+                                               },
+                                     "body":  {
+                                                  "fontFamily":  "Inter",
+                                                  "fontSize":  "14px",
+                                                  "fontWeight":  "400",
+                                                  "lineHeight":  "20px"
+                                              },
+                                     "caption":  {
+                                                     "fontFamily":  "Inter",
+                                                     "fontSize":  "11px",
+                                                     "fontWeight":  "400",
+                                                     "lineHeight":  "15px"
+                                                 },
+                                     "status":  {
+                                                    "fontFamily":  "Inter",
+                                                    "fontSize":  "10px",
+                                                    "fontWeight":  "700",
+                                                    "lineHeight":  "14px",
+                                                    "letterSpacing":  "0.02em"
+                                                },
+                                     "weights":  {
+
+                                                 },
+                                     "page-title":  {
+                                                        "fontFamily":  "Inter",
+                                                        "fontSize":  "22px",
+                                                        "fontWeight":  "700",
+                                                        "lineHeight":  "28px",
+                                                        "letterSpacing":  "-0.02em"
+                                                    },
+                                     "styles":  {
+
+                                                },
+                                     "section-title":  {
+                                                           "fontFamily":  "Inter",
+                                                           "fontSize":  "18px",
+                                                           "fontWeight":  "700",
+                                                           "lineHeight":  "24px",
+                                                           "letterSpacing":  "-0.015em"
+                                                       },
+                                     "body-strong":  {
+                                                         "fontFamily":  "Inter",
+                                                         "fontSize":  "14px",
+                                                         "fontWeight":  "600",
+                                                         "lineHeight":  "20px"
+                                                     },
+                                     "family":  {
+
+                                                }
+                                 },
+                  "spacing":  {
+                                  "base-unit":  "4px",
+                                  "inline":  "8px",
+                                  "card-gap":  "12px",
+                                  "compact-card-padding":  "14px",
+                                  "screen-top":  "12px",
+                                  "inline-gap":  "8px",
+                                  "base":  "4px",
+                                  "touch-target-min":  "44px",
+                                  "card-padding":  "16px",
+                                  "screen-horizontal":  "16px",
+                                  "section-gap":  "20px",
+                                  "screen-margin":  "16px"
+                              },
+                  "headlineFontFamily":  "Inter",
+                  "bodyFontFamily":  "Inter",
+                  "labelFontFamily":  "Inter"
+              },
+    "deviceType":  "MOBILE",
+    "screenType":  "DESIGN",
+    "screenMetadata":  {
+                           "agentType":  "PRO_AGENT",
+                           "status":  "COMPLETE",
+                           "displayMode":  "HTML"
+                       },
+    "designSystem":  {
+                         "name":  "assets/0451d8c4df514d9388011a76273d5728",
+                         "designSystem":  {
+                                              "displayName":  "Lifeum Flow — Design System Oficial",
+                                              "styleGuidelines":  "## Brand \u0026 Style\nThis design system embodies a **Corporate Modern** aesthetic with a strong emphasis on **Glassmorphism** and soft, layered depth. It is tailored for high-performance mobile interfaces—specifically SaaS, health, or productivity tools—that require a balance of professional reliability and contemporary lightness.\n\nThe personality is clean, systematic, and fluid. The interface uses translucent surfaces, background blurs, and vibrant blue accents to create a sense of clarity and forward momentum. Visual hierarchy is established through \"soft-tactile\" elements: subtle gradients, high-quality blurs, and precise elevation that make the UI feel responsive and premium.\n\n## Layout \u0026 Spacing\nThe layout follows a **fluid grid** model optimized for mobile viewports (390px width as the baseline).\n\n- **Rhythm:** Spacing is built on a 4px base unit. \n- **Margins:** Standard screen margins are set to 16px. Vertical sections are separated by 20px to allow the content to breathe.\n- **Touch Targets:** A strict minimum of 44px is maintained for all interactive elements to ensure accessibility.\n- **Reflow:** On wider screens, card containers should cap their width or expand into multi-column layouts, maintaining the 12px internal gap.\n\n## Elevation \u0026 Depth\nDepth is created through a combination of **Glassmorphism** and **Ambient Shadows**.\n\n- **Glass Effects:** Interactive containers use a background blur (18px to 24px) combined with a semi-transparent white fill and a 0.5px \"glass stroke\" to simulate a physical edge.\n- **Shadows:** Shadows are highly diffused and tinted with the primary blue color (`rgba(31, 67, 126, 0.08)`) rather than using neutral grays. This keeps the interface feeling \"lit\" from within.\n- **Floating Action Buttons (FAB):** Use a high-intensity shadow and a subtle inner-stroke highlight to sit at the highest z-index.\n\n## Components\n- **Buttons:** Primary buttons feature a diagonal blue gradient and 16px rounding. Secondary buttons should use `surface-soft` or `surface-glass` with `primary` text.\n- **Cards:** The core of the UI. Cards must use the `card` elevation and `surface` glass fill. Internal padding is strictly 16px.\n- **Icons:** Use rounded, outline-style icons with a consistent 1.8px stroke width. Inactive states use a muted slate-blue, while active states use the primary brand blue.\n- **Chips/Badges:** Use the `status` typography and `pill` rounding. Backgrounds should be `primary-subtle` or semantic `soft` variants (e.g., `success-soft`).\n- **Inputs:** Fields should be styled with `surface-soft`, using a 12px radius and a subtle `border` stroke that strengthens to `primary` on focus.",
+                                              "theme":  {
+                                                            "colorMode":  "LIGHT",
+                                                            "font":  "INTER",
+                                                            "roundness":  "ROUND_EIGHT",
+                                                            "customColor":  "#1463e6",
+                                                            "headlineFont":  "INTER",
+                                                            "bodyFont":  "INTER",
+                                                            "labelFont":  "INTER",
+                                                            "namedColors":  {
+                                                                                "surface_dim":  "#d8d9e4",
+                                                                                "on_error":  "#ffffff",
+                                                                                "secondary_container":  "#51aeff",
+                                                                                "surface_variant":  "#e1e2ed",
+                                                                                "text-secondary":  "#5E6C86",
+                                                                                "accent-indigo":  "#5C78F0",
+                                                                                "inverse_on_surface":  "#eff0fb",
+                                                                                "on_tertiary_fixed":  "#360f00",
+                                                                                "surface_bright":  "#faf8ff",
+                                                                                "primary_fixed":  "#dae2ff",
+                                                                                "secondary_fixed_dim":  "#9acbff",
+                                                                                "on_secondary_fixed_variant":  "#004a79",
+                                                                                "on_tertiary":  "#ffffff",
+                                                                                "on_primary_container":  "#e9edff",
+                                                                                "surface_container_lowest":  "#ffffff",
+                                                                                "tertiary_container":  "#ba4500",
+                                                                                "surface_tint":  "#0056d1",
+                                                                                "on_surface_variant":  "#424654",
+                                                                                "inverse_primary":  "#b2c5ff",
+                                                                                "error":  "#E5484D",
+                                                                                "warning":  "#D99214",
+                                                                                "on_error_container":  "#93000a",
+                                                                                "surface_container_high":  "#e7e7f3",
+                                                                                "surface_container_low":  "#f2f3fe",
+                                                                                "on_tertiary_fixed_variant":  "#7e2c00",
+                                                                                "surface_container":  "#ecedf8",
+                                                                                "tertiary":  "#923400",
+                                                                                "on_background":  "#191b23",
+                                                                                "inverse_surface":  "#2e3039",
+                                                                                "on_primary_fixed_variant":  "#0040a0",
+                                                                                "success":  "#26B978",
+                                                                                "primary_container":  "#1463e6",
+                                                                                "on_secondary_fixed":  "#001d34",
+                                                                                "tertiary_fixed":  "#ffdbcd",
+                                                                                "on_secondary":  "#ffffff",
+                                                                                "secondary_fixed":  "#cfe5ff",
+                                                                                "surface_container_highest":  "#e1e2ed",
+                                                                                "outline_variant":  "#c2c6d7",
+                                                                                "error_container":  "#ffdad6",
+                                                                                "outline":  "#737786",
+                                                                                "surface-glass":  "rgba(255, 255, 255, 0.72)",
+                                                                                "surface":  "rgba(255, 255, 255, 0.88)",
+                                                                                "primary":  "#004cba",
+                                                                                "on_primary":  "#ffffff",
+                                                                                "primary_fixed_dim":  "#b2c5ff",
+                                                                                "on_tertiary_container":  "#ffe8e0",
+                                                                                "secondary":  "#00629e",
+                                                                                "text-primary":  "#102044",
+                                                                                "background":  "#F6F8FC",
+                                                                                "on_surface":  "#191b23",
+                                                                                "tertiary_fixed_dim":  "#ffb598",
+                                                                                "on_secondary_container":  "#00406a",
+                                                                                "on_primary_fixed":  "#001847"
+                                                                            },
+                                                            "designMd":  "---\nname: Lifeum Flow — Design System Oficial\nprimary: mobile\nviewport: 390x844\norientation: portrait\ncolors:\n  background: \u0027#F6F8FC\u0027\n  background-top: \u0027#FAFBFE\u0027\n  surface: rgba(255, 255, 255, 0.88)\n  surface-solid: \u0027#FFFFFF\u0027\n  surface-soft: \u0027#F2F5FA\u0027\n  surface-muted: \u0027#E9EEF6\u0027\n  surface-glass: rgba(255, 255, 255, 0.72)\n  surface-glass-strong: rgba(255, 255, 255, 0.84)\n  text-primary: \u0027#102044\u0027\n  text-secondary: \u0027#5E6C86\u0027\n  text-tertiary: \u0027#8C98AD\u0027\n  text-inverse: \u0027#FFFFFF\u0027\n  primary: \u0027#1463E6\u0027\n  primary-strong: \u0027#0A4FC7\u0027\n  primary-soft: \u0027#EAF2FF\u0027\n  primary-subtle: \u0027#F4F8FF\u0027\n  primary-glow: rgba(20, 99, 230, 0.20)\n  accent-cyan: \u0027#49A8F8\u0027\n  accent-indigo: \u0027#5C78F0\u0027\n  success: \u0027#26B978\u0027\n  success-soft: \u0027#E9F8F1\u0027\n  warning: \u0027#D99214\u0027\n  warning-soft: \u0027#FFF5DF\u0027\n  error: \u0027#E5484D\u0027\n  error-strong: \u0027#C92A31\u0027\n  error-soft: \u0027#FDEBEC\u0027\n  divider: rgba(130, 148, 179, 0.16)\n  border: rgba(130, 148, 179, 0.20)\n  border-strong: rgba(91, 115, 157, 0.28)\n  glass-stroke: rgba(255, 255, 255, 0.78)\n  surface-dim: \u0027#d8d9e4\u0027\n  surface-bright: \u0027#faf8ff\u0027\n  surface-container-lowest: \u0027#ffffff\u0027\n  surface-container-low: \u0027#f2f3fe\u0027\n  surface-container: \u0027#ecedf8\u0027\n  surface-container-high: \u0027#e7e7f3\u0027\n  surface-container-highest: \u0027#e1e2ed\u0027\n  on-surface: \u0027#191b23\u0027\n  on-surface-variant: \u0027#424654\u0027\n  inverse-surface: \u0027#2e3039\u0027\n  inverse-on-surface: \u0027#eff0fb\u0027\n  outline: \u0027#737786\u0027\n  outline-variant: \u0027#c2c6d7\u0027\n  surface-tint: \u0027#0056d1\u0027\n  on-primary: \u0027#ffffff\u0027\n  primary-container: \u0027#1463e6\u0027\n  on-primary-container: \u0027#e9edff\u0027\n  inverse-primary: \u0027#b2c5ff\u0027\n  secondary: \u0027#00629e\u0027\n  on-secondary: \u0027#ffffff\u0027\n  secondary-container: \u0027#51aeff\u0027\n  on-secondary-container: \u0027#00406a\u0027\n  tertiary: \u0027#923400\u0027\n  on-tertiary: \u0027#ffffff\u0027\n  tertiary-container: \u0027#ba4500\u0027\n  on-tertiary-container: \u0027#ffe8e0\u0027\n  on-error: \u0027#ffffff\u0027\n  error-container: \u0027#ffdad6\u0027\n  on-error-container: \u0027#93000a\u0027\n  primary-fixed: \u0027#dae2ff\u0027\n  primary-fixed-dim: \u0027#b2c5ff\u0027\n  on-primary-fixed: \u0027#001847\u0027\n  on-primary-fixed-variant: \u0027#0040a0\u0027\n  secondary-fixed: \u0027#cfe5ff\u0027\n  secondary-fixed-dim: \u0027#9acbff\u0027\n  on-secondary-fixed: \u0027#001d34\u0027\n  on-secondary-fixed-variant: \u0027#004a79\u0027\n  tertiary-fixed: \u0027#ffdbcd\u0027\n  tertiary-fixed-dim: \u0027#ffb598\u0027\n  on-tertiary-fixed: \u0027#360f00\u0027\n  on-tertiary-fixed-variant: \u0027#7e2c00\u0027\n  on-background: \u0027#191b23\u0027\n  surface-variant: \u0027#e1e2ed\u0027\ngradients:\n  app-background: \u0027linear-gradient(180deg, #FBFCFF 0%, #F4F7FC 52%, #EEF3FB 100%)\u0027\n  primary-button: \u0027linear-gradient(135deg, #2C7CF6 0%, #0B57D0 100%)\u0027\n  fab: \u0027linear-gradient(180deg, #3D8BFF 0%, #1164E8 100%)\u0027\n  active-day: \u0027linear-gradient(180deg, #4E94FF 0%, #1364E8 100%)\u0027\n  subtle-blue-glass: linear-gradient(135deg, rgba(255,255,255,0.94) 0%, rgba(238,245,255,0.82)\n    100%)\n  attention-soft: linear-gradient(135deg, rgba(255,255,255,0.94) 0%, rgba(255,245,246,0.88)\n    100%)\ntypography:\n  family:\n    primary: Inter, SF Pro Display, SF Pro Text, system-ui, -apple-system, BlinkMacSystemFont,\n      \"Segoe UI\", sans-serif\n  weights:\n    regular: 400\n    medium: 500\n    semibold: 600\n    bold: 700\n  styles:\n    page-title:\n      fontSize: 22px\n      lineHeight: 28px\n      fontWeight: 700\n      letterSpacing: -0.02em\n    section-title:\n      fontSize: 18px\n      lineHeight: 24px\n      fontWeight: 700\n      letterSpacing: -0.015em\n    card-title:\n      fontSize: 16px\n      lineHeight: 21px\n      fontWeight: 700\n    body:\n      fontSize: 14px\n      lineHeight: 20px\n      fontWeight: 400\n    body-strong:\n      fontSize: 14px\n      lineHeight: 20px\n      fontWeight: 600\n    label:\n      fontSize: 12px\n      lineHeight: 16px\n      fontWeight: 500\n    caption:\n      fontSize: 11px\n      lineHeight: 15px\n      fontWeight: 400\n    status:\n      fontSize: 10px\n      lineHeight: 14px\n      fontWeight: 700\n      letterSpacing: 0.02em\n  page-title:\n    fontFamily: Inter\n    fontSize: 22px\n    fontWeight: \u0027700\u0027\n    lineHeight: 28px\n    letterSpacing: -0.02em\n  section-title:\n    fontFamily: Inter\n    fontSize: 18px\n    fontWeight: \u0027700\u0027\n    lineHeight: 24px\n    letterSpacing: -0.015em\n  card-title:\n    fontFamily: Inter\n    fontSize: 16px\n    fontWeight: \u0027700\u0027\n    lineHeight: 21px\n  body:\n    fontFamily: Inter\n    fontSize: 14px\n    fontWeight: \u0027400\u0027\n    lineHeight: 20px\n  body-strong:\n    fontFamily: Inter\n    fontSize: 14px\n    fontWeight: \u0027600\u0027\n    lineHeight: 20px\n  label:\n    fontFamily: Inter\n    fontSize: 12px\n    fontWeight: \u0027500\u0027\n    lineHeight: 16px\n  caption:\n    fontFamily: Inter\n    fontSize: 11px\n    fontWeight: \u0027400\u0027\n    lineHeight: 15px\n  status:\n    fontFamily: Inter\n    fontSize: 10px\n    fontWeight: \u0027700\u0027\n    lineHeight: 14px\n    letterSpacing: 0.02em\nspacing:\n  base-unit: 4px\n  screen-horizontal: 16px\n  screen-top: 12px\n  section-gap: 20px\n  card-gap: 12px\n  card-padding: 16px\n  compact-card-padding: 14px\n  inline-gap: 8px\n  touch-target-min: 44px\n  base: 4px\n  screen-margin: 16px\n  inline: 8px\nradius:\n  xs: 8px\n  sm: 12px\n  md: 16px\n  lg: 22px\n  xl: 28px\n  pill: 999px\nelevation:\n  card: 0 8px 30px rgba(31, 67, 126, 0.08)\n  floating: 0 14px 34px rgba(20, 86, 190, 0.20)\n  fab: 0 12px 28px rgba(22, 98, 230, 0.34), inset 0 1px 0 rgba(255,255,255,0.55)\n  subtle: 0 4px 16px rgba(31, 67, 126, 0.06)\nblur:\n  glass: 18px\n  glass-strong: 24px\nicons:\n  style: outline, rounded, minimal\n  strokeWidth: 1.8\n  defaultColor: \u0027#60708C\u0027\n  activeColor: \u0027#1463E6\u0027\n  size:\n    nav: 22px\n    action: 20px\n    inline: 16px\nrounded:\n  sm: 0.25rem\n  DEFAULT: 0.5rem\n  md: 0.75rem\n  lg: 1rem\n  xl: 1.5rem\n  full: 9999px\n---\n\n",
+                                                            "colorVariant":  "FIDELITY",
+                                                            "overridePrimaryColor":  "#1463e6",
+                                                            "overrideSecondaryColor":  "#49a8f8",
+                                                            "spacingScale":  2,
+                                                            "typography":  {
+                                                                               "page-title":  {
+                                                                                                  "fontFamily":  "Inter",
+                                                                                                  "fontSize":  "22px",
+                                                                                                  "fontWeight":  "700",
+                                                                                                  "lineHeight":  "28px",
+                                                                                                  "letterSpacing":  "-0.02em"
+                                                                                              },
+                                                                               "weights":  {
+
+                                                                                           },
+                                                                               "body-strong":  {
+                                                                                                   "fontFamily":  "Inter",
+                                                                                                   "fontSize":  "14px",
+                                                                                                   "fontWeight":  "600",
+                                                                                                   "lineHeight":  "20px"
+                                                                                               },
+                                                                               "family":  {
+
+                                                                                          },
+                                                                               "styles":  {
+
+                                                                                          },
+                                                                               "section-title":  {
+                                                                                                     "fontFamily":  "Inter",
+                                                                                                     "fontSize":  "18px",
+                                                                                                     "fontWeight":  "700",
+                                                                                                     "lineHeight":  "24px",
+                                                                                                     "letterSpacing":  "-0.015em"
+                                                                                                 },
+                                                                               "status":  {
+                                                                                              "fontFamily":  "Inter",
+                                                                                              "fontSize":  "10px",
+                                                                                              "fontWeight":  "700",
+                                                                                              "lineHeight":  "14px",
+                                                                                              "letterSpacing":  "0.02em"
+                                                                                          },
+                                                                               "label":  {
+                                                                                             "fontFamily":  "Inter",
+                                                                                             "fontSize":  "12px",
+                                                                                             "fontWeight":  "500",
+                                                                                             "lineHeight":  "16px"
+                                                                                         },
+                                                                               "card-title":  {
+                                                                                                  "fontFamily":  "Inter",
+                                                                                                  "fontSize":  "16px",
+                                                                                                  "fontWeight":  "700",
+                                                                                                  "lineHeight":  "21px"
+                                                                                              },
+                                                                               "caption":  {
+                                                                                               "fontFamily":  "Inter",
+                                                                                               "fontSize":  "11px",
+                                                                                               "fontWeight":  "400",
+                                                                                               "lineHeight":  "15px"
+                                                                                           },
+                                                                               "body":  {
+                                                                                            "fontFamily":  "Inter",
+                                                                                            "fontSize":  "14px",
+                                                                                            "fontWeight":  "400",
+                                                                                            "lineHeight":  "20px"
+                                                                                        }
+                                                                           },
+                                                            "spacing":  {
+                                                                            "screen-margin":  "16px",
+                                                                            "card-padding":  "16px",
+                                                                            "section-gap":  "20px",
+                                                                            "screen-horizontal":  "16px",
+                                                                            "base":  "4px",
+                                                                            "touch-target-min":  "44px",
+                                                                            "screen-top":  "12px",
+                                                                            "compact-card-padding":  "14px",
+                                                                            "inline-gap":  "8px",
+                                                                            "base-unit":  "4px",
+                                                                            "inline":  "8px",
+                                                                            "card-gap":  "12px"
+                                                                        },
+                                                            "headlineFontFamily":  "Inter",
+                                                            "bodyFontFamily":  "Inter",
+                                                            "labelFontFamily":  "Inter"
+                                                        }
+                                          },
+                         "version":  "1"
+                     }
+}

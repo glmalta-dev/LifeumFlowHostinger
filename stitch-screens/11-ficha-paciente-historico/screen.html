@@ -1,0 +1,308 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Lifeum Flow - Ficha do Paciente</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#0056d1",
+                        "surface-bright": "#faf8ff",
+                        "surface-container-low": "#f2f3fe",
+                        "surface-glass": "rgba(255, 255, 255, 0.72)",
+                        "surface-container-highest": "#e1e2ed",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#191b23",
+                        "primary-container": "#1463e6",
+                        "on-surface-variant": "#424654",
+                        "success": "#26B978",
+                        "secondary-fixed-dim": "#9acbff",
+                        "surface": "rgba(255, 255, 255, 0.88)",
+                        "tertiary-fixed-dim": "#ffb598",
+                        "secondary": "#00629e",
+                        "on-secondary-fixed-variant": "#004a79",
+                        "surface-container": "#ecedf8",
+                        "on-primary-container": "#e9edff",
+                        "tertiary-container": "#ba4500",
+                        "inverse-surface": "#2e3039",
+                        "surface-dim": "#d8d9e4",
+                        "on-secondary-fixed": "#001d34",
+                        "inverse-on-surface": "#eff0fb",
+                        "warning": "#D99214",
+                        "primary": "#004cba",
+                        "text-primary": "#102044",
+                        "secondary-fixed": "#cfe5ff",
+                        "background": "#F6F8FC",
+                        "error-container": "#ffdad6",
+                        "text-secondary": "#5E6C86",
+                        "surface-container-high": "#e7e7f3",
+                        "accent-indigo": "#5C78F0",
+                        "on-secondary-container": "#00406a",
+                        "on-primary": "#ffffff",
+                        "outline": "#737786",
+                        "on-background": "#191b23",
+                        "tertiary": "#923400",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-primary-fixed": "#001847",
+                        "tertiary-fixed": "#ffdbcd",
+                        "outline-variant": "#c2c6d7",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#ffe8e0",
+                        "on-tertiary": "#ffffff",
+                        "error": "#E5484D",
+                        "surface-variant": "#e1e2ed",
+                        "on-tertiary-fixed-variant": "#7e2c00",
+                        "on-primary-fixed-variant": "#0040a0",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "primary-fixed": "#dae2ff",
+                        "secondary-container": "#51aeff",
+                        "inverse-primary": "#b2c5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "touch-target-min": "44px",
+                        "screen-margin": "16px",
+                        "card-gap": "12px",
+                        "base": "4px",
+                        "card-padding": "16px",
+                        "screen-top": "12px",
+                        "section-gap": "20px",
+                        "inline": "8px",
+                        "base-unit": "4px",
+                        "inline-gap": "8px",
+                        "screen-horizontal": "16px",
+                        "compact-card-padding": "14px"
+                    },
+                    "fontFamily": {
+                        "page-title": ["Inter"],
+                        "body": ["Inter"],
+                        "body-strong": ["Inter"],
+                        "label": ["Inter"],
+                        "section-title": ["Inter"],
+                        "status": ["Inter"],
+                        "card-title": ["Inter"],
+                        "caption": ["Inter"]
+                    },
+                    "fontSize": {
+                        "page-title": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "page-title-mobile": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-strong": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "label": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "section-title": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+                        "status": ["10px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "card-title": ["16px", { "lineHeight": "21px", "fontWeight": "700" }],
+                        "caption": ["11px", { "lineHeight": "15px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #F6F8FC;
+            /* Matches theme 'background' */
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Hide scrollbar for horizontal scrolling areas */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-[884px] max-w-[390px] mx-auto bg-background text-on-surface relative overflow-x-hidden pb-[80px]">
+<!-- TopAppBar (Patient Header) -->
+<header class="bg-surface-glass border-b border-outline-variant/30 shadow-sm flex flex-col w-full h-[56px] justify-center sticky top-0 z-40 backdrop-blur-xl">
+<!-- Main Header Row -->
+<div class="flex items-center justify-between px-4">
+<div class="flex items-center gap-3">
+<button class="h-touch-target-min w-touch-target-min flex items-center justify-center text-primary scale-95 active:opacity-80 transition-all hover:bg-surface-container-low rounded-full -ml-2">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div>
+<h1 class="font-page-title-mobile text-page-title-mobile text-text-primary">Ana Silva</h1>
+<p class="font-caption text-caption text-text-secondary">32 anos • (11) 98765-4321</p>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button class="h-touch-target-min px-3 flex items-center justify-center gap-2 text-primary font-label text-label scale-95 active:opacity-80 transition-all hover:bg-surface-container-low rounded-lg bg-surface-container-low">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+                    WhatsApp
+                </button>
+<button class="h-touch-target-min w-touch-target-min flex items-center justify-center text-text-secondary scale-95 active:opacity-80 transition-all hover:bg-surface-container-low rounded-full">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Scrollable Tabs -->
+<div class="flex overflow-x-auto no-scrollbar px-4 gap-6">
+<button class="font-body text-on-surface-variant hover:bg-surface-container-low transition-colors pb-3 pt-2 whitespace-nowrap">Resumo</button>
+<button class="font-body text-on-surface-variant hover:bg-surface-container-low transition-colors pb-3 pt-2 whitespace-nowrap">Planejamento</button>
+<button class="font-body text-on-surface-variant hover:bg-surface-container-low transition-colors pb-3 pt-2 whitespace-nowrap">Agendamentos</button>
+<button class="font-body text-on-surface-variant hover:bg-surface-container-low transition-colors pb-3 pt-2 whitespace-nowrap">Evoluções</button>
+<button class="font-body text-on-surface-variant hover:bg-surface-container-low transition-colors pb-3 pt-2 whitespace-nowrap">Arquivos</button>
+<button class="font-body-strong text-primary border-b-2 border-primary pb-3 pt-2 whitespace-nowrap">Histórico</button>
+<button class="font-body text-on-surface-variant hover:bg-surface-container-low transition-colors pb-3 pt-2 whitespace-nowrap">Dados</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col px-screen-margin py-section-gap gap-section-gap z-10">
+<!-- History Summary Card -->
+<section class="bg-surface rounded-xl p-card-padding shadow-[0_-4px_12px_rgba(31,67,126,0.08)] border-[0.5px] border-white/40 flex flex-col gap-4 backdrop-blur-lg">
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<span class="font-body text-text-secondary">Primeiro atendimento</span>
+<span class="font-body-strong text-text-primary">15 Jan 2023</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body text-text-secondary">Último atendimento</span>
+<span class="font-body-strong text-text-primary">15 Out 2023</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body text-text-secondary">Total de eventos</span>
+<span class="font-body-strong text-primary">42</span>
+</div>
+</div>
+<button class="h-touch-target-min w-full bg-surface-container-low text-primary rounded-lg font-body-strong flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined text-[20px]">download</span>
+                Exportar histórico
+            </button>
+</section>
+<!-- Filters (Chips) -->
+<section class="flex overflow-x-auto no-scrollbar gap-2 py-1 -mx-screen-margin px-screen-margin">
+<button class="h-8 px-4 rounded-full bg-primary text-on-primary font-label text-label whitespace-nowrap shadow-sm">Todos</button>
+<button class="h-8 px-4 rounded-full bg-surface text-on-surface-variant font-label text-label border border-outline-variant whitespace-nowrap shadow-sm">Agendamentos</button>
+<button class="h-8 px-4 rounded-full bg-surface text-on-surface-variant font-label text-label border border-outline-variant whitespace-nowrap shadow-sm">Evoluções</button>
+<button class="h-8 px-4 rounded-full bg-surface text-on-surface-variant font-label text-label border border-outline-variant whitespace-nowrap shadow-sm">Arquivos</button>
+<button class="h-8 px-4 rounded-full bg-surface text-on-surface-variant font-label text-label border border-outline-variant whitespace-nowrap shadow-sm">Planejamento</button>
+<button class="h-8 px-4 rounded-full bg-surface text-on-surface-variant font-label text-label border border-outline-variant whitespace-nowrap shadow-sm">Financeiro/adm</button>
+</section>
+<!-- Timeline -->
+<section class="flex flex-col relative pl-4 mt-2">
+<!-- Vertical Line -->
+<div class="absolute left-[33px] top-6 bottom-0 w-[2px] bg-outline-variant/40 rounded-full z-0"></div>
+<!-- Timeline Item 1 -->
+<div class="flex gap-4 mb-6 relative z-10 group cursor-pointer">
+<div class="w-[60px] flex-shrink-0 text-right pt-1">
+<p class="font-body-strong text-text-primary text-[13px] leading-tight">Hoje</p>
+<p class="font-caption text-text-secondary">10:30</p>
+</div>
+<div class="relative flex items-start justify-center pt-1">
+<div class="w-[14px] h-[14px] rounded-full bg-primary border-4 border-background absolute top-1.5 -ml-[7px]"></div>
+</div>
+<div class="flex-1 bg-surface rounded-xl p-compact-card-padding shadow-sm border border-outline-variant/20 flex items-center justify-between group-active:scale-[0.98] transition-transform">
+<div class="flex gap-3 items-start">
+<div class="w-8 h-8 rounded-full bg-surface-container-low text-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">description</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-body-strong text-text-primary line-clamp-2">Exame Panorâmico anexado</h3>
+<p class="font-caption text-text-secondary mt-0.5">Dr. Gabriel</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+</div>
+<!-- Timeline Item 2 -->
+<div class="flex gap-4 mb-6 relative z-10 group cursor-pointer">
+<div class="w-[60px] flex-shrink-0 text-right pt-1">
+<p class="font-body-strong text-text-primary text-[13px] leading-tight">15 Out</p>
+<p class="font-caption text-text-secondary">09:00</p>
+</div>
+<div class="relative flex items-start justify-center pt-1">
+<div class="w-[12px] h-[12px] rounded-full bg-outline-variant border-2 border-background absolute top-1.5 -ml-[6px]"></div>
+</div>
+<div class="flex-1 bg-surface rounded-xl p-compact-card-padding shadow-sm border border-outline-variant/20 flex items-center justify-between group-active:scale-[0.98] transition-transform opacity-80">
+<div class="flex gap-3 items-start">
+<div class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-body-strong text-text-primary line-clamp-2">Evolução registrada: Início de tratamento protético</h3>
+<p class="font-caption text-text-secondary mt-0.5">Dr. Gabriel</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+</div>
+<!-- Timeline Item 3 -->
+<div class="flex gap-4 mb-6 relative z-10 group cursor-pointer">
+<div class="w-[60px] flex-shrink-0 text-right pt-1">
+<p class="font-body-strong text-text-primary text-[13px] leading-tight">12 Out</p>
+<p class="font-caption text-text-secondary">14:00</p>
+</div>
+<div class="relative flex items-start justify-center pt-1">
+<div class="w-[12px] h-[12px] rounded-full bg-outline-variant border-2 border-background absolute top-1.5 -ml-[6px]"></div>
+</div>
+<div class="flex-1 bg-surface rounded-xl p-compact-card-padding shadow-sm border border-outline-variant/20 flex items-center justify-between group-active:scale-[0.98] transition-transform opacity-80">
+<div class="flex gap-3 items-start">
+<div class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-body-strong text-text-primary line-clamp-2">Agendamento confirmado: Prova de prótese</h3>
+<p class="font-caption text-text-secondary mt-0.5">Recepcionista</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+</div>
+<!-- Timeline Item 4 -->
+<div class="flex gap-4 mb-6 relative z-10 group cursor-pointer">
+<div class="w-[60px] flex-shrink-0 text-right pt-1">
+<p class="font-body-strong text-text-primary text-[13px] leading-tight">10 Out</p>
+<p class="font-caption text-text-secondary">16:20</p>
+</div>
+<div class="relative flex items-start justify-center pt-1">
+<div class="w-[12px] h-[12px] rounded-full bg-outline-variant border-2 border-background absolute top-1.5 -ml-[6px]"></div>
+</div>
+<div class="flex-1 bg-surface rounded-xl p-compact-card-padding shadow-sm border border-outline-variant/20 flex items-center justify-between group-active:scale-[0.98] transition-transform opacity-80">
+<div class="flex gap-3 items-start">
+<div class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-body-strong text-text-primary line-clamp-2">Orçamento enviado: Reabilitação Superior</h3>
+<p class="font-caption text-text-secondary mt-0.5">Adm. Financeiro</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-touch-target-min bg-surface-glass backdrop-blur-xl border-t border-outline-variant/30 shadow-[0_-4px_12px_rgba(31,67,126,0.08)] rounded-t-xl h-[64px]"><button class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:opacity-80 active:scale-90 transition-transform duration-200 w-16"><span class="material-symbols-outlined mb-1">calendar_today</span><span class="font-label text-[10px]">Hoje</span></button><button class="flex flex-col items-center justify-center text-primary hover:opacity-80 active:scale-90 transition-transform duration-200 w-16"><span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">groups</span><span class="font-label text-[10px]">Pacientes</span></button><button class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:opacity-80 active:scale-90 transition-transform duration-200 w-16 -mt-4 relative"><div class="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center shadow-md border-4 border-surface-bright absolute -top-4"><span class="material-symbols-outlined">add_circle</span></div><span class="font-label text-[10px] mt-8">Captura rápida</span></button><button class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:opacity-80 active:scale-90 transition-transform duration-200 w-16"><span class="material-symbols-outlined mb-1">account_tree</span><span class="font-label text-[10px]">Fluxos</span></button><button class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:opacity-80 active:scale-90 transition-transform duration-200 w-16"><span class="material-symbols-outlined mb-1">more_horiz</span><span class="font-label text-[10px]">Mais</span></button></nav>
+
+
+
+
+</body></html>

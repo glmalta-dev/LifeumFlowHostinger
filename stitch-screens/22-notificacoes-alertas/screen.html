@@ -1,0 +1,292 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=390, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>DentalPro Premium - Notificações</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#7e2c00",
+                      "text-secondary": "#5E6C86",
+                      "tertiary-fixed-dim": "#ffb598",
+                      "warning": "#D99214",
+                      "on-surface": "#191b23",
+                      "on-secondary-fixed": "#001d34",
+                      "primary": "#004cba",
+                      "surface-tint": "#0056d1",
+                      "secondary-fixed": "#cfe5ff",
+                      "outline": "#737786",
+                      "on-primary-fixed": "#001847",
+                      "on-background": "#191b23",
+                      "primary-fixed": "#dae2ff",
+                      "surface-dim": "#d8d9e4",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "on-primary-fixed-variant": "#0040a0",
+                      "tertiary-container": "#ba4500",
+                      "on-tertiary-container": "#ffe8e0",
+                      "error-container": "#ffdad6",
+                      "accent-indigo": "#5C78F0",
+                      "inverse-surface": "#2e3039",
+                      "surface-bright": "#faf8ff",
+                      "surface-glass": "rgba(255, 255, 255, 0.72)",
+                      "on-tertiary-fixed": "#360f00",
+                      "surface-container": "#ecedf8",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed": "#ffdbcd",
+                      "background": "#F6F8FC",
+                      "secondary-fixed-dim": "#9acbff",
+                      "on-surface-variant": "#424654",
+                      "success": "#26B978",
+                      "primary-container": "#1463e6",
+                      "outline-variant": "#c2c6d7",
+                      "tertiary": "#923400",
+                      "surface-container-highest": "#e1e2ed",
+                      "on-secondary-container": "#00406a",
+                      "inverse-primary": "#b2c5ff",
+                      "surface-container-high": "#e7e7f3",
+                      "on-error-container": "#93000a",
+                      "inverse-on-surface": "#eff0fb",
+                      "secondary-container": "#51aeff",
+                      "on-primary-container": "#e9edff",
+                      "primary-fixed-dim": "#b2c5ff",
+                      "error": "#E5484D",
+                      "text-primary": "#102044",
+                      "surface-container-low": "#f2f3fe",
+                      "surface": "rgba(255, 255, 255, 0.88)",
+                      "on-error": "#ffffff",
+                      "surface-variant": "#e1e2ed",
+                      "on-secondary-fixed-variant": "#004a79",
+                      "on-tertiary": "#ffffff",
+                      "secondary": "#00629e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "touch-target-min": "44px",
+                      "section-gap": "20px",
+                      "card-padding": "16px",
+                      "screen-top": "12px",
+                      "inline": "8px",
+                      "base": "4px",
+                      "screen-horizontal": "16px",
+                      "screen-margin": "16px",
+                      "compact-card-padding": "14px",
+                      "card-gap": "12px",
+                      "base-unit": "4px",
+                      "inline-gap": "8px"
+              },
+              "fontFamily": {
+                      "caption": ["Inter"],
+                      "page-title": ["Inter"],
+                      "body-strong": ["Inter"],
+                      "section-title": ["Inter"],
+                      "label": ["Inter"],
+                      "card-title": ["Inter"],
+                      "status": ["Inter"],
+                      "body": ["Inter"]
+              },
+              "fontSize": {
+                      "caption": ["11px", {"lineHeight": "15px", "fontWeight": "400"}],
+                      "page-title": ["22px", {"lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "page-title-mobile": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+                      "body-strong": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                      "section-title": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+                      "label": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "card-title": ["16px", {"lineHeight": "21px", "fontWeight": "700"}],
+                      "status": ["10px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                      "body": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Glassmorphism utility */
+        .glass-panel {
+            background: theme('colors.surface-glass');
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 0.5px solid theme('colors.outline-variant' / 30%);
+        }
+    </style>
+</head>
+<body class="w-[390px] h-[884px] mx-auto overflow-hidden relative flex flex-col bg-background">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full h-14 z-50 bg-surface-glass backdrop-blur-xl border-b border-outline-variant/30 transition-all duration-200">
+  <div class="flex justify-between items-center h-full px-4 max-w-xl mx-auto">
+    <div class="flex items-center gap-3">
+      <button class="w-10 h-10 rounded-full overflow-hidden bg-surface-container flex items-center justify-center transition-all duration-200 active:scale-95 border border-outline-variant/50">
+        <img alt="Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC64evGH0MavR7wFQBNOv_yd3kX7nDFYATKpEj_aWHIBxHJv3q1mUN8bPfZdeGjkzV473B3Ej9lEFleiiyg56ddHGTWLR5Pmfb2zVttq_qwqsvgAcPNZhY_HefbPd9TBphM4E3IN7Z6G1VNB6fufaBuFBTiIidblbOook7yyGlGymArFkMD6OzMm91GkPh2BOCaZ86R9VoRRz4yW9M6E7lzuPS32XU5q8Mxs6mMeHTE6cmGJla6Y5CYbA">
+      </button>
+      <h1 class="font-page-title text-page-title-mobile text-primary tracking-tight">Notificações</h1>
+    </div>
+    <button class="w-10 h-10 flex items-center justify-center rounded-full text-primary hover:bg-surface-container-low/50 transition-all duration-200 active:scale-95" title="Marcar todas como lidas">
+      <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">done_all</span>
+    </button>
+  </div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto pt-14 pb-[90px] px-screen-horizontal flex flex-col gap-section-gap hide-scrollbar relative z-10">
+<!-- Filters Header Area -->
+<section class="flex flex-col gap-4 mt-2">
+<div class="flex items-center justify-between">
+<h2 class="font-section-title text-section-title text-text-primary">Filtros</h2>
+</div>
+<!-- Filter Chips (Horizontal Scroll) -->
+<div class="flex gap-2 overflow-x-auto hide-scrollbar pb-2 -mx-screen-horizontal px-screen-horizontal">
+<button class="flex items-center justify-center px-4 h-9 rounded-full bg-primary text-on-primary font-body-strong text-body-strong whitespace-nowrap shadow-[0_4px_12px_rgba(31,67,126,0.15)] transition-all">
+                    Todas
+                </button>
+<button class="flex items-center justify-center px-4 h-9 rounded-full bg-surface-glass border border-outline-variant/50 text-on-surface-variant font-body-strong text-body-strong whitespace-nowrap active:scale-95 transition-all">
+                    Pendências
+                </button>
+<button class="flex items-center justify-center px-4 h-9 rounded-full bg-surface-glass border border-outline-variant/50 text-on-surface-variant font-body-strong text-body-strong whitespace-nowrap active:scale-95 transition-all">
+                    Agendamentos
+                </button>
+<button class="flex items-center justify-center px-4 h-9 rounded-full bg-surface-glass border border-outline-variant/50 text-on-surface-variant font-body-strong text-body-strong whitespace-nowrap active:scale-95 transition-all">
+                    Planejamento
+                </button>
+<button class="flex items-center justify-center px-4 h-9 rounded-full bg-surface-glass border border-outline-variant/50 text-on-surface-variant font-body-strong text-body-strong whitespace-nowrap active:scale-95 transition-all">
+                    Sistema
+                </button>
+</div>
+</section>
+<!-- Notifications List -->
+<section class="flex flex-col gap-card-gap">
+<!-- Unread System Alert Highlight -->
+<div class="glass-panel rounded-xl p-card-padding flex gap-3 relative overflow-hidden group">
+<div class="absolute inset-0 bg-primary/5"></div>
+<div class="w-1 absolute left-0 top-3 bottom-3 bg-primary rounded-r-full"></div>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center shrink-0 z-10">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">cloud_done</span>
+</div>
+<div class="flex flex-col gap-1 z-10 w-full">
+<div class="flex justify-between items-start w-full">
+<span class="font-card-title text-card-title text-text-primary">Atualização Concluída</span>
+<span class="font-caption text-caption text-text-secondary">Agora</span>
+</div>
+<p class="font-body text-body text-on-surface-variant leading-tight">Backup do sistema e sincronização de dados realizados com sucesso.</p>
+</div>
+</div>
+<!-- Unread Appointment Notification -->
+<div class="glass-panel rounded-xl p-card-padding flex gap-3 relative group">
+<div class="absolute inset-0 bg-primary/5"></div>
+<div class="w-1 absolute left-0 top-3 bottom-3 bg-primary rounded-r-full"></div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center shrink-0 z-10">
+<span class="material-symbols-outlined text-primary">event_available</span>
+</div>
+<div class="flex flex-col gap-1 z-10 w-full">
+<div class="flex justify-between items-start w-full">
+<span class="font-card-title text-card-title text-text-primary">Novo agendamento confirmado</span>
+<span class="font-caption text-caption text-text-secondary shrink-0 ml-2">10 min</span>
+</div>
+<p class="font-body text-body text-on-surface-variant">Ana Silva marcou para amanhã, 14:00.</p>
+</div>
+</div>
+<!-- Warning/Task Notification -->
+<div class="glass-panel rounded-xl p-card-padding flex gap-3 relative">
+<div class="w-10 h-10 rounded-full bg-error-container/50 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-error">assignment_late</span>
+</div>
+<div class="flex flex-col gap-1 w-full">
+<div class="flex justify-between items-start w-full">
+<span class="font-card-title text-card-title text-text-primary">Pendência atrasada</span>
+<span class="font-caption text-caption text-text-secondary shrink-0 ml-2">2 h</span>
+</div>
+<p class="font-body text-body text-on-surface-variant">Confirmar componentes para cirurgia de João Pedro.</p>
+</div>
+</div>
+<!-- Standard Notification -->
+<div class="glass-panel rounded-xl p-card-padding flex gap-3 relative opacity-80">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant">person_add</span>
+</div>
+<div class="flex flex-col gap-1 w-full">
+<div class="flex justify-between items-start w-full">
+<span class="font-card-title text-card-title text-text-primary">Novo lead recebido</span>
+<span class="font-caption text-caption text-text-secondary shrink-0 ml-2">Ontem</span>
+</div>
+<p class="font-body text-body text-on-surface-variant">Mariana Souza solicitou contato via site.</p>
+</div>
+</div>
+<!-- Older Notification -->
+<div class="glass-panel rounded-xl p-card-padding flex gap-3 relative opacity-70">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant">check_circle</span>
+</div>
+<div class="flex flex-col gap-1 w-full">
+<div class="flex justify-between items-start w-full">
+<span class="font-card-title text-card-title text-text-primary">Fluxo Concluído</span>
+<span class="font-caption text-caption text-text-secondary shrink-0 ml-2">Ontem</span>
+</div>
+<p class="font-body text-body text-on-surface-variant">Plano de tratamento de Carlos aprovado.</p>
+</div>
+</div>
+<div class="glass-panel rounded-xl p-card-padding flex gap-3 relative opacity-70 mb-4">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant">payment</span>
+</div>
+<div class="flex flex-col gap-1 w-full">
+<div class="flex justify-between items-start w-full">
+<span class="font-card-title text-card-title text-text-primary">Pagamento Recebido</span>
+<span class="font-caption text-caption text-text-secondary shrink-0 ml-2">2 dias</span>
+</div>
+<p class="font-body text-body text-on-surface-variant">Transferência de R$450,00 confirmada.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 rounded-t-xl bg-surface-glass dark:bg-inverse-surface/95 backdrop-blur-xl border-t border-outline-variant/30 dark:border-outline/20 shadow-[0_-4px_20px_rgba(31,67,126,0.08)]">
+<div class="flex justify-around items-center px-2 pb-5 pt-2 max-w-xl mx-auto">
+<button class="flex flex-col items-center justify-center w-touch-target-min h-touch-target-min text-on-surface-variant dark:text-outline hover:opacity-80 transition-transform duration-300 active:scale-90">
+<span class="material-symbols-outlined mb-1">calendar_today</span>
+<span class="font-label text-label">Hoje</span>
+</button>
+<button class="flex flex-col items-center justify-center w-touch-target-min h-touch-target-min text-on-surface-variant dark:text-outline hover:opacity-80 transition-transform duration-300 active:scale-90">
+<span class="material-symbols-outlined mb-1">groups</span>
+<span class="font-label text-label">Pacientes</span>
+</button>
+<button class="flex flex-col items-center justify-center w-14 h-14 -mt-6 bg-primary rounded-full text-on-primary shadow-[0_8px_16px_rgba(0,76,186,0.3)] hover:opacity-90 transition-transform duration-300 active:scale-90 relative">
+<span class="material-symbols-outlined" style="font-size: 28px;">add_circle</span>
+</button>
+<button class="flex flex-col items-center justify-center w-touch-target-min h-touch-target-min text-on-surface-variant dark:text-outline hover:opacity-80 transition-transform duration-300 active:scale-90">
+<span class="material-symbols-outlined mb-1">account_tree</span>
+<span class="font-label text-label">Fluxos</span>
+</button>
+<button class="flex flex-col items-center justify-center w-touch-target-min h-touch-target-min text-primary dark:text-primary-fixed-dim font-bold hover:opacity-80 transition-transform duration-300 active:scale-90">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">more_horiz</span>
+<span class="font-label text-label">Mais</span>
+</button>
+</div>
+</nav>
+
+
+
+
+</body></html>

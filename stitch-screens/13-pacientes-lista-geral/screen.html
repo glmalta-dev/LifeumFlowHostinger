@@ -1,0 +1,332 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Pacientes — Lista Geral</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "text-primary": "#102044",
+                      "on-primary": "#ffffff",
+                      "surface-dim": "#d8d9e4",
+                      "outline-variant": "#c2c6d7",
+                      "secondary-fixed": "#cfe5ff",
+                      "surface-variant": "#e1e2ed",
+                      "tertiary-container": "#ba4500",
+                      "surface": "rgba(255, 255, 255, 0.88)",
+                      "text-secondary": "#5E6C86",
+                      "on-tertiary-fixed-variant": "#7e2c00",
+                      "surface-container-low": "#f2f3fe",
+                      "surface-container": "#ecedf8",
+                      "on-primary-fixed-variant": "#0040a0",
+                      "surface-tint": "#0056d1",
+                      "surface-bright": "#faf8ff",
+                      "on-surface": "#191b23",
+                      "on-error-container": "#93000a",
+                      "accent-indigo": "#5C78F0",
+                      "inverse-primary": "#b2c5ff",
+                      "secondary-fixed-dim": "#9acbff",
+                      "on-primary-fixed": "#001847",
+                      "primary-fixed-dim": "#b2c5ff",
+                      "secondary": "#00629e",
+                      "on-secondary-fixed-variant": "#004a79",
+                      "tertiary": "#923400",
+                      "surface-container-highest": "#e1e2ed",
+                      "primary-fixed": "#dae2ff",
+                      "primary-container": "#1463e6",
+                      "on-surface-variant": "#424654",
+                      "tertiary-fixed-dim": "#ffb598",
+                      "surface-container-high": "#e7e7f3",
+                      "on-tertiary": "#ffffff",
+                      "on-background": "#191b23",
+                      "on-tertiary-fixed": "#360f00",
+                      "tertiary-fixed": "#ffdbcd",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-glass": "rgba(255, 255, 255, 0.72)",
+                      "background": "#F6F8FC",
+                      "on-secondary-fixed": "#001d34",
+                      "on-tertiary-container": "#ffe8e0",
+                      "warning": "#D99214",
+                      "error": "#E5484D",
+                      "success": "#26B978",
+                      "error-container": "#ffdad6",
+                      "secondary-container": "#51aeff",
+                      "inverse-on-surface": "#eff0fb",
+                      "on-secondary-container": "#00406a",
+                      "on-secondary": "#ffffff",
+                      "outline": "#737786",
+                      "primary": "#004cba",
+                      "inverse-surface": "#2e3039",
+                      "on-primary-container": "#e9edff",
+                      "on-error": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "screen-margin": "16px",
+                      "compact-card-padding": "14px",
+                      "screen-horizontal": "16px",
+                      "inline-gap": "8px",
+                      "section-gap": "20px",
+                      "card-gap": "12px",
+                      "inline": "8px",
+                      "base-unit": "4px",
+                      "screen-top": "12px",
+                      "base": "4px",
+                      "touch-target-min": "44px",
+                      "card-padding": "16px"
+              },
+              "fontFamily": {
+                      "label": [
+                              "Inter"
+                      ],
+                      "body-strong": [
+                              "Inter"
+                      ],
+                      "caption": [
+                              "Inter"
+                      ],
+                      "body": [
+                              "Inter"
+                      ],
+                      "card-title": [
+                              "Inter"
+                      ],
+                      "page-title": [
+                              "Inter"
+                      ],
+                      "section-title": [
+                              "Inter"
+                      ],
+                      "status": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-strong": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "caption": [
+                              "11px",
+                              {
+                                      "lineHeight": "15px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "card-title": [
+                              "16px",
+                              {
+                                      "lineHeight": "21px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "page-title": [
+                              "22px",
+                              {
+                                      "lineHeight": "28px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "section-title": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "-0.015em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "status": [
+                              "10px",
+                              {
+                                      "lineHeight": "14px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #F6F8FC; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 0.5px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 20px rgba(31, 67, 126, 0.04);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="text-text-primary antialiased bg-background pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-4 h-14 bg-surface-glass backdrop-blur-xl border-b border-outline-variant/30 shadow-sm">
+<div class="flex flex-col">
+<h1 class="font-page-title text-page-title text-text-primary tracking-tight">Pacientes</h1>
+
+</div>
+<div class="flex items-center gap-inline-gap">
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-low hover:bg-surface-container-high/50 transition-colors">
+<span class="material-symbols-outlined text-text-primary">search</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-low hover:bg-surface-container-high/50 transition-colors">
+<span class="material-symbols-outlined text-text-primary">filter_list</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-low hover:bg-surface-container-high/50 transition-colors relative">
+<span class="material-symbols-outlined text-text-primary">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+</div>
+</header>
+<main class="pt-[72px] px-screen-horizontal flex flex-col gap-section-gap max-w-md mx-auto">
+<!-- Search Bar -->
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary">search</span>
+<input class="w-full h-touch-target-min pl-12 pr-4 rounded-xl bg-surface-container-lowest border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary font-body text-body text-text-primary placeholder:text-text-secondary outline-none transition-all" placeholder="Buscar por nome, telefone ou CPF" type="text">
+</div>
+<!-- Summary Indicators -->
+<div class="flex gap-inline-gap">
+<div class="flex-1 glass-panel rounded-xl p-3 flex flex-col items-center justify-center text-center cursor-pointer active:scale-95 transition-transform">
+<span class="font-card-title text-card-title text-text-primary">248</span>
+<span class="font-label text-label text-text-secondary">pacientes</span>
+</div>
+<div class="flex-1 glass-panel rounded-xl p-3 flex flex-col items-center justify-center text-center cursor-pointer active:scale-95 transition-transform border-l-4 border-l-warning">
+<span class="font-card-title text-card-title text-text-primary">18</span>
+<span class="font-label text-label text-text-secondary">pendências</span>
+</div>
+<div class="flex-1 glass-panel rounded-xl p-3 flex flex-col items-center justify-center text-center cursor-pointer active:scale-95 transition-transform border-l-4 border-l-error">
+<span class="font-card-title text-card-title text-text-primary">12</span>
+<span class="font-label text-label text-text-secondary">sem agenda</span>
+</div>
+</div>
+<!-- Quick Filters -->
+<div class="flex gap-2 overflow-x-auto hide-scrollbar -mx-screen-horizontal px-screen-horizontal pb-2">
+<button class="px-4 py-2 rounded-full bg-primary-container text-on-primary-container font-label text-label whitespace-nowrap active:opacity-80 transition-opacity">Todos</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-low text-text-primary font-label text-label border border-outline-variant/30 whitespace-nowrap hover:bg-surface-container-high transition-colors">Ativos</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-low text-text-primary font-label text-label border border-outline-variant/30 whitespace-nowrap hover:bg-surface-container-high transition-colors">Com pendência</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-low text-text-primary font-label text-label border border-outline-variant/30 whitespace-nowrap hover:bg-surface-container-high transition-colors">Agendados</button>
+</div>
+<!-- Sorting -->
+<div class="flex justify-between items-center">
+<span class="font-body-strong text-body-strong text-text-primary">Lista de Pacientes</span>
+<button class="flex items-center gap-1 font-label text-label text-text-secondary hover:text-primary transition-colors">
+                Última atividade
+                <span class="material-symbols-outlined text-[16px]">arrow_drop_down</span>
+</button>
+</div>
+<!-- Patient List -->
+<div class="flex flex-col gap-card-gap">
+<!-- Patient 1 -->
+<div class="glass-panel rounded-xl p-card-padding flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div class="flex gap-3">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="A highly detailed professional headshot portrait of a female patient named Ana Silva with a warm smile, well-lit in a modern studio setting with a clean light grey background, high resolution, soft lighting emphasizing a trustworthy and approachable medical profile aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJ12Sn4njdp4nDZ44e87174E7tGagPpoPdTbVg6LzHbT6aHkcUnEdIhF7SEfd1K1b9TPDUjK6TZCiaIyd6wi7eMepX2XQxjiX_7IimBiYzMYmqPD_UYSpeQcKLmhqMJONcfzvgxjAD_4DvQ_TmkPJIFGOC5Y5LxM9fvg8BRhMn-6Q3qo0X-5alc-VrpNkKMzmu_T5kEuUGDy1Ae-9r0nKZwtxKjxks762VOyKR7o9CDxucRgRwbUebXA">
+<div class="flex flex-col">
+<span class="font-card-title text-card-title text-text-primary">Ana Silva</span>
+<span class="font-label text-label text-primary">Dentística e Prótese</span>
+</div>
+</div>
+<span class="px-2 py-1 rounded-full bg-error-container text-on-error-container font-status text-status uppercase">Alta</span>
+</div>
+<div class="flex items-center gap-2 text-error">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<span class="font-label text-label">Atraso de 2 dias - Responder solicitação</span>
+</div>
+<div class="flex items-center justify-between mt-2 pt-3 border-t border-outline-variant/30">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-text-secondary">Próximo agendamento</span>
+<span class="font-body-strong text-body-strong text-text-primary">26 Out às 09:30</span>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-low hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-success">chat</span>
+</button>
+</div>
+</div>
+<!-- Patient 2 -->
+<div class="glass-panel rounded-xl p-card-padding flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div class="flex gap-3">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="A professional headshot portrait of a male patient named Carlos Mendes, wearing a casual business shirt, slight smile, soft diffuse lighting, isolated on a bright neutral background, suitable for a modern healthcare application profile picture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgFqpaLvj9rVEmMJcj93rpgn9p22Lk8Yd8zIFquBSMtw4lt3y0jnTgbXuqWXrnVSYorXX0DokXnUx77fMISQOHkWdtqh6KwEMjuXPfVRIcQ0vUonHicGEctriLqOZqTh5wBjLvDGTsraDv5w1TlKSppYOXHoy_NI3xGdifaN-BGttJG9ieh5ssqx1IHxM-_R3S9iCGTtCw4nOdHE4qcQE470l24Ny3SN5-Nl1NW7lq9tgRhOL2X87tCA">
+<div class="flex flex-col">
+<span class="font-card-title text-card-title text-text-primary">Carlos Mendes</span>
+<span class="font-label text-label text-primary">Prótese</span>
+</div>
+</div>
+<span class="px-2 py-1 rounded-full bg-surface-container-highest text-text-secondary font-status text-status uppercase">Ativo</span>
+</div>
+<div class="flex items-center gap-2 text-warning">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-label text-label">Vence hoje - Aprovar orçamento</span>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB -->
+<button class="fixed bottom-[88px] right-screen-horizontal w-14 h-14 rounded-full bg-primary flex items-center justify-center shadow-lg hover:opacity-90 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined text-on-primary">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 bg-surface-glass backdrop-blur-xl border-t border-white/20 shadow-[0_-4px_20px_rgba(31,67,126,0.08)] rounded-t-xl md:hidden">
+<a class="flex flex-col items-center justify-center text-outline font-body hover:bg-primary-container/20 rounded-full p-2 active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-caption text-caption mt-1">Hoje</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-body-strong hover:bg-primary-container/20 rounded-full p-2 active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="font-caption text-caption mt-1">Pacientes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-body hover:bg-primary-container/20 rounded-full p-2 active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[28px]">add_circle</span>
+<span class="font-caption text-caption mt-1">Captura rápida</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline font-body hover:bg-primary-container/20 rounded-full p-2 active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-caption text-caption mt-1">Fluxos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline font-body hover:bg-primary-container/20 rounded-full p-2 active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="font-caption text-caption mt-1">Mais</span>
+</a>
+</nav>
+
+
+
+
+</body></html>

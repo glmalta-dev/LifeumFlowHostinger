@@ -1,0 +1,358 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Ficha do Paciente - Planejamento</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#1463e6",
+                    "on-surface-variant": "#424654",
+                    "tertiary": "#923400",
+                    "outline-variant": "#c2c6d7",
+                    "accent-indigo": "#5C78F0",
+                    "secondary": "#00629e",
+                    "on-primary-container": "#e9edff",
+                    "secondary-container": "#51aeff",
+                    "primary-fixed": "#dae2ff",
+                    "on-background": "#191b23",
+                    "primary-fixed-dim": "#b2c5ff",
+                    "on-primary-fixed-variant": "#0040a0",
+                    "surface-variant": "#e1e2ed",
+                    "warning": "#D99214",
+                    "secondary-fixed": "#cfe5ff",
+                    "inverse-on-surface": "#eff0fb",
+                    "text-primary": "#102044",
+                    "surface-container-highest": "#e1e2ed",
+                    "surface-glass": "rgba(255, 255, 255, 0.72)",
+                    "secondary-fixed-dim": "#9acbff",
+                    "error-container": "#ffdad6",
+                    "primary": "#004cba",
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#2e3039",
+                    "error": "#E5484D",
+                    "success": "#26B978",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-secondary-container": "#00406a",
+                    "surface-dim": "#d8d9e4",
+                    "text-secondary": "#5E6C86",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#ffdbcd",
+                    "on-tertiary-container": "#ffe8e0",
+                    "on-surface": "#191b23",
+                    "on-tertiary-fixed-variant": "#7e2c00",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#ba4500",
+                    "surface-bright": "#faf8ff",
+                    "background": "#F6F8FC",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb598",
+                    "surface-container": "#ecedf8",
+                    "surface-tint": "#0056d1",
+                    "surface": "rgba(255, 255, 255, 0.88)",
+                    "on-secondary-fixed-variant": "#004a79",
+                    "on-primary-fixed": "#001847",
+                    "on-tertiary-fixed": "#360f00",
+                    "on-secondary-fixed": "#001d34",
+                    "surface-container-high": "#e7e7f3",
+                    "surface-container-low": "#f2f3fe",
+                    "outline": "#737786",
+                    "inverse-primary": "#b2c5ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "touch-target-min": "44px",
+                    "card-padding": "16px",
+                    "card-gap": "12px",
+                    "screen-top": "12px",
+                    "base-unit": "4px",
+                    "compact-card-padding": "14px",
+                    "screen-horizontal": "16px",
+                    "screen-margin": "16px",
+                    "inline": "8px",
+                    "section-gap": "20px",
+                    "base": "4px",
+                    "inline-gap": "8px"
+            },
+            "fontFamily": {
+                    "status": ["Inter"],
+                    "page-title": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "caption": ["Inter"],
+                    "section-title": ["Inter"],
+                    "card-title": ["Inter"],
+                    "body-strong": ["Inter"]
+            },
+            "fontSize": {
+                    "status": ["10px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                    "page-title": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                    "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                    "label": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                    "caption": ["11px", { "lineHeight": "15px", "fontWeight": "400" }],
+                    "section-title": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+                    "card-title": ["16px", { "lineHeight": "21px", "fontWeight": "700" }],
+                    "body-strong": ["14px", { "lineHeight": "20px", "fontWeight": "600" }]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 0.5px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 24px rgba(31, 67, 126, 0.08);
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-text-primary min-h-screen flex justify-center pb-24">
+<div class="w-full max-w-[390px] relative bg-background shadow-xl min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full h-14 bg-surface-glass backdrop-blur-xl border-b border-outline-variant/30 flex items-center justify-between px-4">
+  <div class="flex items-center gap-3">
+    <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors text-text-primary">
+      <span class="material-symbols-outlined text-2xl">arrow_back</span>
+    </button>
+    <div class="flex items-center gap-3">
+      <div class="relative">
+        <img class="w-8 h-8 rounded-full object-cover shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATSK0WKsv51emQWNp_tn5TKE-6RU_Tpff93AYhjxeA4WGXIP8bEAOIoApUa0YhsjS3Ex6blaMrvZg8beq9lRc86DElv8rpqi5jc_L36V8vLza8D0VGl49L2Cx4ltKExzdxHMsfC-cdKWJUhWrlhKrUMYo-bYPF50g-IRJVA-FZgIaBZGzHEQ4kCJtnTsJHxc9HTMIwSHfo6OZZXkj5wyXPnoajFt_seRrvcu0kQp9HMLdmR4x9WE4-hQ" alt="Ana Silva">
+        <div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-success rounded-full border-2 border-white"></div>
+      </div>
+      <h1 class="font-card-title text-card-title text-text-primary truncate max-w-[150px]">Ana Silva</h1>
+    </div>
+  </div>
+  <div class="flex items-center gap-1">
+    <button class="w-10 h-10 flex items-center justify-center rounded-full text-success hover:bg-success/10 transition-colors">
+      <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat</span>
+    </button>
+    <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors text-text-secondary">
+      <span class="material-symbols-outlined">more_vert</span>
+    </button>
+  </div>
+</header>
+<!-- Horizontal Scrollable Tabs -->
+<div class="w-full overflow-x-auto hide-scrollbar border-b border-surface-variant bg-background sticky top-[73px] z-30">
+<div class="flex px-screen-margin gap-6">
+<button class="font-label text-label text-text-secondary py-3 whitespace-nowrap hover:text-text-primary transition-colors">Resumo</button>
+<button class="font-label text-label text-primary-container py-3 whitespace-nowrap border-b-2 border-primary-container font-semibold">Planejamento</button>
+<button class="font-label text-label text-text-secondary py-3 whitespace-nowrap hover:text-text-primary transition-colors">Agendamentos</button>
+<button class="font-label text-label text-text-secondary py-3 whitespace-nowrap hover:text-text-primary transition-colors">Evoluções</button>
+<button class="font-label text-label text-text-secondary py-3 whitespace-nowrap hover:text-text-primary transition-colors">Arquivos</button>
+<button class="font-label text-label text-text-secondary py-3 whitespace-nowrap hover:text-text-primary transition-colors">Histórico</button>
+<button class="font-label text-label text-text-secondary py-3 whitespace-nowrap hover:text-text-primary transition-colors">Dados</button>
+</div>
+</div>
+<main class="px-screen-margin py-5 flex flex-col gap-section-gap">
+<!-- Planning Summary Card -->
+<section class="glass-panel rounded-xl p-card-padding flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="flex flex-col">
+<h2 class="font-card-title text-card-title text-text-primary">Resumo do Planejamento</h2>
+<p class="font-body text-body text-text-secondary">8 procedimentos no total</p>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-highest px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-[14px] text-text-secondary">timeline</span>
+<span class="font-status text-status text-text-secondary">Em andamento</span>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex flex-col">
+<span class="font-status text-status text-text-secondary uppercase">Concluídos</span>
+<span class="font-page-title text-page-title text-success">3</span>
+</div>
+<div class="w-px bg-surface-variant"></div>
+<div class="flex flex-col">
+<span class="font-status text-status text-text-secondary uppercase">Pendentes</span>
+<span class="font-page-title text-page-title text-text-primary">5</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-center">
+<span class="font-caption text-caption text-text-secondary">Progresso Geral</span>
+<span class="font-label text-label text-primary-container font-semibold">37%</span>
+</div>
+<div class="w-full bg-surface-variant h-2 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 37%"></div>
+</div>
+</div>
+<button class="w-full bg-gradient-to-r from-primary-container to-secondary text-white font-body-strong text-body-strong py-3 rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2 mt-2 shadow-md">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                    Adicionar planejamento
+                </button>
+</section>
+<!-- Next Clinical Action Card -->
+<section class="flex flex-col gap-3">
+<h3 class="font-section-title text-section-title text-text-primary flex items-center justify-between">
+                    Próxima Ação
+                    <button class="font-label text-label text-primary-container flex items-center">Ver todas <span class="material-symbols-outlined text-[16px]">chevron_right</span></button>
+</h3>
+<div class="bg-white rounded-xl p-card-padding shadow-sm border border-surface-variant flex flex-col gap-3 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-warning"></div>
+<div class="flex justify-between items-start pl-2">
+<div class="flex flex-col">
+<span class="font-status text-status text-warning uppercase flex items-center gap-1"><div class="w-1.5 h-1.5 rounded-full bg-warning"></div> Prioridade Média</span>
+<h4 class="font-body-strong text-body-strong text-text-primary mt-1">Definir planejamento protético</h4>
+</div>
+</div>
+<div class="flex items-center gap-3 pl-2 text-text-secondary font-caption text-caption">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">event</span>
+                            Vence hoje
+                        </div>
+<div class="w-1 h-1 rounded-full bg-surface-variant"></div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">person</span>
+                            Dra. Camila
+                        </div>
+</div>
+<div class="flex gap-2 mt-2 pl-2">
+<button class="flex-1 bg-primary-container/10 text-primary-container font-label text-label py-2 rounded-lg hover:bg-primary-container/20 transition-colors">Abrir</button>
+<button class="flex-1 bg-surface-container-low text-text-secondary font-label text-label py-2 rounded-lg hover:bg-surface-variant transition-colors">Reagendar</button>
+<button class="flex-1 bg-surface-container-low text-text-secondary font-label text-label py-2 rounded-lg hover:bg-surface-variant transition-colors flex items-center justify-center"><span class="material-symbols-outlined text-[18px]">check</span></button>
+</div>
+</div>
+</section>
+<!-- Treatment Areas -->
+<section class="flex flex-col gap-3">
+<h3 class="font-section-title text-section-title text-text-primary">Áreas de Tratamento</h3>
+<div class="flex flex-col gap-3">
+<!-- Dentística Card -->
+<div class="bg-white rounded-xl p-card-padding shadow-sm border border-surface-variant flex flex-col gap-3">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-secondary-container/20 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]">dentistry</span>
+</div>
+<h4 class="font-body-strong text-body-strong text-text-primary">Dentística</h4>
+</div>
+<span class="font-label text-label text-text-secondary bg-surface-container-highest px-2 py-0.5 rounded-md">4 proc.</span>
+</div>
+<div class="flex gap-4">
+<div class="flex-1 flex flex-col">
+<span class="font-caption text-caption text-text-secondary">Atual</span>
+<span class="font-body text-body text-text-primary truncate">Restauração dente 16</span>
+</div>
+<div class="flex-1 flex flex-col pl-4 border-l border-surface-variant">
+<span class="font-caption text-caption text-text-secondary">Próximo</span>
+<span class="font-body text-body text-text-primary truncate">Reconstrução dente 24</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex-1 bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 50%"></div>
+</div>
+<span class="font-caption text-caption text-text-secondary w-8 text-right">2/4</span>
+</div>
+</div>
+<!-- Prótese Card -->
+<div class="bg-white rounded-xl p-card-padding shadow-sm border border-surface-variant flex flex-col gap-3">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-warning/10 flex items-center justify-center text-warning">
+<span class="material-symbols-outlined text-[18px]">medical_services</span>
+</div>
+<h4 class="font-body-strong text-body-strong text-text-primary">Prótese</h4>
+</div>
+<span class="font-label text-label text-text-secondary bg-surface-container-highest px-2 py-0.5 rounded-md">3 proc.</span>
+</div>
+<div class="flex gap-4">
+<div class="flex-1 flex flex-col">
+<span class="font-caption text-caption text-text-secondary">Atual</span>
+<span class="font-body text-body text-text-primary truncate">Planejamento</span>
+</div>
+<div class="flex-1 flex flex-col pl-4 border-l border-surface-variant">
+<span class="font-caption text-caption text-text-secondary">Próximo</span>
+<span class="font-body text-body text-text-primary truncate">Escaneamento/Moldagem</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex-1 bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-warning h-full rounded-full" style="width: 33%"></div>
+</div>
+<span class="font-caption text-caption text-text-secondary w-8 text-right">1/3</span>
+</div>
+</div>
+<!-- Implantodontia Card -->
+<div class="bg-white rounded-xl p-card-padding shadow-sm border border-surface-variant flex flex-col gap-3 opacity-80">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center text-text-secondary">
+<span class="material-symbols-outlined text-[18px]">planet</span>
+</div>
+<h4 class="font-body-strong text-body-strong text-text-primary">Implantodontia</h4>
+</div>
+<span class="font-label text-label text-text-secondary bg-surface-container-highest px-2 py-0.5 rounded-md">1 proc.</span>
+</div>
+<div class="flex gap-4">
+<div class="flex-1 flex flex-col">
+<span class="font-caption text-caption text-text-secondary">Atual</span>
+<span class="font-body text-body text-text-primary truncate">Avaliação de imagem</span>
+</div>
+<div class="flex-1 flex flex-col pl-4 border-l border-surface-variant">
+<span class="font-caption text-caption text-text-secondary">Próximo</span>
+<span class="font-body text-body text-text-primary truncate text-text-secondary">Definição do comp...</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex-1 bg-surface-variant h-1.5 rounded-full overflow-hidden">
+</div>
+<span class="font-caption text-caption text-text-secondary w-8 text-right">0/1</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (from JSON, filtered out via Navigation Logic? No, Patients screen is a top level for this flow but wait, this is a patient detail screen, logic says suppress bottom nav. Re-reading rules: "Suppress navigation if task-focused... implies a temporary departure". Patient Detail has a back button. BUT Prompt says: "Bottom Bar: Use the existing 5-item navigation bar with the prominent blue '+' button." -> Explicit user instruction overrides general semantic rule.) -->
+<nav class="bg-white/85 dark:bg-surface-container/85 backdrop-blur-xl border-t border-glass-stroke shadow-[0_-10px_30px_rgba(0,0,0,0.04)] fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 rounded-t-xl max-w-[390px] left-1/2 -translate-x-1/2">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant p-2 hover:bg-secondary-container/50 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined text-2xl mb-1">calendar_today</span>
+<span class="font-label-caps text-label-caps text-[10px]">Hoje</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl px-3 py-1.5 hover:bg-secondary-container/50 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined text-2xl mb-1" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="font-label-caps text-label-caps text-[10px]">Pacientes</span>
+</button>
+<div class="relative -top-5">
+<button class="w-14 h-14 rounded-full bg-gradient-to-b from-secondary-container to-primary-container text-white flex items-center justify-center shadow-[0_8px_16px_rgba(20,99,230,0.3)] hover:scale-105 active:scale-95 transition-all border-4 border-white dark:border-surface-container">
+<span class="material-symbols-outlined text-3xl">add_circle</span>
+</button>
+<span class="font-label-caps text-label-caps text-[10px] text-on-surface-variant absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap">Captura rápida</span>
+</div>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant p-2 hover:bg-secondary-container/50 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined text-2xl mb-1">account_tree</span>
+<span class="font-label-caps text-label-caps text-[10px]">Fluxos</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant p-2 hover:bg-secondary-container/50 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined text-2xl mb-1">more_horiz</span>
+<span class="font-label-caps text-label-caps text-[10px]">Mais</span>
+</button>
+</nav>
+</div>
+
+
+
+
+</body></html>
