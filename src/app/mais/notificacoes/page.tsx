@@ -24,9 +24,12 @@ export default function NotificacoesPage() {
   const refresh = useCallback(async () => setCapability(await getPushCapability()), []);
 
   useEffect(() => {
-    setIsIos(/iphone|ipad|ipod/i.test(navigator.userAgent));
-    setIsStandalone(window.matchMedia("(display-mode: standalone)").matches || Boolean((navigator as Navigator & { standalone?: boolean }).standalone));
+    const environmentTimer = window.setTimeout(() => {
+      setIsIos(/iphone|ipad|ipod/i.test(navigator.userAgent));
+      setIsStandalone(window.matchMedia("(display-mode: standalone)").matches || Boolean((navigator as Navigator & { standalone?: boolean }).standalone));
+    }, 0);
     refresh().catch(() => setCapability({ supported: false, permission: "unsupported", subscribed: false }));
+    return () => window.clearTimeout(environmentTimer);
   }, [refresh]);
 
   const run = async (action: () => Promise<unknown>, success: string) => {

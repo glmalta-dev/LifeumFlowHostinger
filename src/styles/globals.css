@@ -47,7 +47,7 @@ select:focus-visible, textarea:focus-visible, [role="button"]:focus-visible {
 }
 
 /* Responsivo para celulares reais */
-@media (max-width: 480px), (max-height: 700px) {
+@media (max-width: 600px), (max-height: 700px) {
   body {
     background-color: var(--bg-app);
   }
@@ -59,6 +59,9 @@ select:focus-visible, textarea:focus-visible, [role="button"]:focus-visible {
   }
   .simulator-content {
     padding: max(14px, env(safe-area-inset-top)) max(14px, env(safe-area-inset-right)) calc(84px + env(safe-area-inset-bottom)) max(14px, env(safe-area-inset-left));
+  }
+  .simulator-content--without-nav {
+    padding-bottom: calc(20px + env(safe-area-inset-bottom));
   }
   .app-bottom-navigation {
     height: calc(68px + env(safe-area-inset-bottom)) !important;

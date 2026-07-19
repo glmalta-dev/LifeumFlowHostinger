@@ -23,6 +23,9 @@ export const AppShell: React.FC<AppShellProps> = ({ children }) => {
 
   // Hide BottomNavigation on form sub-routes for total focus
   const hideBottomNav = 
+    pathname === "/login" ||
+    pathname === "/recuperar-senha" ||
+    pathname === "/redefinir-senha" ||
     pathname.includes("/novo") || 
     pathname.includes("/editar") || 
     pathname.includes("/nova") ||
@@ -71,7 +74,7 @@ export const AppShell: React.FC<AppShellProps> = ({ children }) => {
       <Toast />
 
       {/* Conteúdo Principal */}
-      <main className="simulator-content">
+      <main className={`simulator-content${hideBottomNav ? " simulator-content--without-nav" : ""}`}>
         {children}
       </main>
 
