@@ -1,25 +1,18 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useApp } from "@/context/AppContext";
 import { BackHeader } from "@/components/layout/BackHeader";
 import { supabase } from "@/lib/supabaseClient";
 
 export default function PerfilPage() {
   const { currentUser, showToast } = useApp();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+  const email = currentUser?.email || "";
+  const [name, setName] = useState(currentUser?.user_metadata?.name || "");
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(currentUser?.user_metadata?.avatar_url || null);
   const [uploading, setUploading] = useState(false);
   const [saving, setSaving] = useState(false);
-
-  useEffect(() => {
-    if (currentUser) {
-      setName(currentUser.user_metadata?.name || "");
-      setEmail(currentUser.email || "");
-      setAvatarUrl(currentUser.user_metadata?.avatar_url || null);
-    }
-  }, [currentUser]);
 
   const handleAvatarUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
