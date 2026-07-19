@@ -11,6 +11,10 @@ export default function PacientesPage() {
   const { patients } = useApp();
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState<"all" | "active" | "alert" | "inactive">("all");
+  const [cityFilter, setCityFilter] = useState("all");
+  const [actionFilter, setActionFilter] = useState<"all" | "with" | "without">("all");
+  const [sortBy, setSortBy] = useState<"name" | "nextAction">("name");
+  const cities = Array.from(new Set(patients.map(patient => patient.city).filter((city): city is string => Boolean(city)))).sort();
 
   const filteredPatients = patients.filter((patient) => {
     const matchesSearch = patient.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -19,8 +23,12 @@ export default function PacientesPage() {
       
     const matchesStatus = statusFilter === "all" ? true : patient.status === statusFilter;
     
-    return matchesSearch && matchesStatus;
-  });
+    const matchesCity = cityFilter === "all" || patient.city === cityFilter;
+    const matchesAction = actionFilter === "all" || (actionFilter === "with" ? Boolean(patient.nextAction) : !patient.nextAction);
+    return matchesSearch && matchesStatus && matchesCity && matchesAction;
+  }).sort((a, b) => sortBy === "name"
+    ? a.name.localeCompare(b.name, "pt-BR")
+    : (a.nextActionDate || "9999-12-31").localeCompare(b.nextActionDate || "9999-12-31"));
 
   return (
     <>
@@ -61,6 +69,12 @@ export default function PacientesPage() {
           >
             Atenção
           </button>
+          <button onClick={() => setStatusFilter("inactive")} style={statusFilter === "inactive" ? styles.activePill : styles.pill}>Inativos</button>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 8 }}>
+          <select className="form-control" aria-label="Filtrar por cidade" value={cityFilter} onChange={event => setCityFilter(event.target.value)}><option value="all">Todas cidades</option>{cities.map(city => <option key={city} value={city}>{city}</option>)}</select>
+          <select className="form-control" aria-label="Filtrar por proxima acao" value={actionFilter} onChange={event => setActionFilter(event.target.value as typeof actionFilter)}><option value="all">Todas acoes</option><option value="with">Com proxima acao</option><option value="without">Sem proxima acao</option></select>
+          <select className="form-control" aria-label="Ordenar pacientes" value={sortBy} onChange={event => setSortBy(event.target.value as typeof sortBy)}><option value="name">Ordem alfabetica</option><option value="nextAction">Proxima acao</option></select>
         </div>
       </div>
 

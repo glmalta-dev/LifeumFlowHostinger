@@ -5,10 +5,15 @@ import { useRouter } from "next/navigation";
 import { useApp } from "@/context/AppContext";
 import { BackHeader } from "@/components/layout/BackHeader";
 import type { Patient } from "@/types";
+import { normalizeBrazilianPhone } from "@/lib/phone";
+import { isValidBirthDate, isValidCpf, normalizeCpf } from "@/lib/validation";
 
 export default function NovoPacientePage() {
   const router = useRouter();
-  const { addPatient } = useApp();
+  const { addPatient, patients, showToast } = useApp();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [duplicateWarning, setDuplicateWarning] = useState<string | null>(null);
+  const [duplicateAcknowledged, setDuplicateAcknowledged] = useState(false);
 
   // Form states
   const [name, setName] = useState("");
@@ -29,32 +34,58 @@ export default function NovoPacientePage() {
   const [state, setState] = useState("");
   const [postalCode, setPostalCode] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !phone) {
+    if (!name.trim() || !phone.trim() || !isValidBirthDate(birthDate)) {
+      showToast("Informe nome, telefone e uma data de nascimento valida.", "error");
+      return;
+    }
+    const normalizedPhone = normalizeBrazilianPhone(phone);
+    if (!normalizedPhone.valid) {
+      showToast(normalizedPhone.reason, "error");
+      return;
+    }
+    if (cpf && !isValidCpf(cpf)) {
+      showToast("CPF invalido.", "error");
+      return;
+    }
+    const cpfDigits = normalizeCpf(cpf);
+    const duplicate = patients.find((patient) => {
+      const existingPhone = normalizeBrazilianPhone(patient.phone);
+      return Boolean(cpfDigits && normalizeCpf(patient.cpf) === cpfDigits)
+        || (existingPhone.valid && existingPhone.national === normalizedPhone.national);
+    });
+    if (duplicate && !duplicateAcknowledged) {
+      setDuplicateWarning(`Possivel duplicidade com ${duplicate.name}. Revise os dados ou confirme o cadastro.`);
+      setDuplicateAcknowledged(true);
       return;
     }
 
-    const newId = addPatient({
-      name,
-      phone,
-      email,
-      birthDate,
-      sex,
-      status: "active",
-      cpf: cpf || undefined,
-      nextAction: nextAction || undefined,
-      notes: notes || undefined,
-      address: address || undefined,
-      addressNumber: addressNumber || undefined,
-      addressComplement: addressComplement || undefined,
-      neighborhood: neighborhood || undefined,
-      city: city || undefined,
-      state: state || undefined,
-      postalCode: postalCode || undefined
-    });
+    setIsSubmitting(true);
+    try {
+      const newId = await addPatient({
+        name,
+        phone,
+        email,
+        birthDate,
+        sex,
+        status: "active",
+        cpf: cpfDigits || undefined,
+        nextAction: nextAction || undefined,
+        notes: notes || undefined,
+        address: address || undefined,
+        addressNumber: addressNumber || undefined,
+        addressComplement: addressComplement || undefined,
+        neighborhood: neighborhood || undefined,
+        city: city || undefined,
+        state: state || undefined,
+        postalCode: postalCode || undefined
+      });
 
-    router.push(`/pacientes/${newId}/resumo`);
+      router.push(`/pacientes/${newId}/resumo`);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -62,6 +93,7 @@ export default function NovoPacientePage() {
       <BackHeader title="Cadastrar Paciente" backUrl="/pacientes" />
 
       <form onSubmit={handleSubmit} style={styles.form}>
+        {duplicateWarning && <div role="alert" style={{ padding: "10px", borderRadius: "8px", background: "#fff4d6", color: "#7a4b00", fontSize: "12px" }}>{duplicateWarning}</div>}
         {/* Nome */}
         <div className="form-group">
           <label htmlFor="new-patient-name" className="form-label">NOME COMPLETO *</label>
@@ -88,7 +120,7 @@ export default function NovoPacientePage() {
               className="form-control" 
               placeholder="(11) 98765-4321"
               value={phone} 
-              onChange={(e) => setPhone(e.target.value)} 
+              onChange={(e) => { setPhone(e.target.value); setDuplicateAcknowledged(false); setDuplicateWarning(null); }}
               required
             />
           </div>
@@ -102,7 +134,7 @@ export default function NovoPacientePage() {
               className="form-control" 
               placeholder="000.000.000-00"
               value={cpf} 
-              onChange={(e) => setCpf(e.target.value)} 
+              onChange={(e) => { setCpf(e.target.value); setDuplicateAcknowledged(false); setDuplicateWarning(null); }}
             />
           </div>
         </div>
@@ -132,6 +164,7 @@ export default function NovoPacientePage() {
               className="form-control" 
               value={birthDate} 
               onChange={(e) => setBirthDate(e.target.value)} 
+              required
             />
           </div>
 
@@ -281,8 +314,8 @@ export default function NovoPacientePage() {
 
         {/* Actions */}
         <div style={styles.actions}>
-          <button type="submit" className="btn btn-primary">
-            Cadastrar e Abrir Ficha
+          <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+            {isSubmitting ? "Salvando..." : duplicateAcknowledged ? "Confirmar cadastro" : "Cadastrar e Abrir Ficha"}
           </button>
           <button 
             type="button" 

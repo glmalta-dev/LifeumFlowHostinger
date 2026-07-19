@@ -16,9 +16,8 @@ export default function VisualizarArquivoPage() {
   useEffect(() => {
     if (!file) return;
 
-    // Se for um arquivo armazenado no Supabase Storage
-    if (file.downloadUrl.startsWith("patient-exams/") && supabase) {
-      const filePath = file.downloadUrl.replace("patient-exams/", "");
+    if (!file.externalUrl && supabase) {
+      const filePath = file.downloadUrl.replace(/^patient-exams\//, "");
       
       supabase.storage
         .from("patient-exams")
@@ -44,7 +43,7 @@ export default function VisualizarArquivoPage() {
     );
   }
 
-  const resolvedUrl = file.downloadUrl.startsWith("patient-exams/") ? urlToUse : file.downloadUrl;
+  const resolvedUrl = file.externalUrl || urlToUse;
   const isImage = file.mimeType.startsWith("image/") && resolvedUrl;
 
   return (
@@ -62,7 +61,7 @@ export default function VisualizarArquivoPage() {
             <span style={{ fontSize: 52 }} aria-hidden="true">{file.mimeType.includes("pdf") ? "📄" : "🖼️"}</span>
           )}
         </div>
-        <h2 id="file-title" style={{ fontSize: 18, overflowWrap: "anywhere", marginTop: "14px" }}>{file.name}</h2>
+        <h2 id="file-title" style={{ fontSize: 18, overflowWrap: "anywhere", marginTop: "14px" }}>{file.title || file.name}</h2>
         <p>Enviado em {file.uploadDate} · {file.size}</p>
         
         {resolvedUrl && (

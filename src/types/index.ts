@@ -18,6 +18,7 @@ export interface Patient {
   city?: string;
   state?: string;
   postalCode?: string;
+  version?: number;
 }
 
 export interface Appointment {
@@ -37,6 +38,9 @@ export interface Appointment {
   recurrence?: string;
   treatmentStage?: string;
   reminder?: string;
+  cleanupInterval?: number;
+  outcome?: string;
+  version?: number;
 }
 
 export interface Task {
@@ -58,6 +62,9 @@ export interface Task {
   origin?: string;
   waitingCondition?: string;
   nextAction?: string;
+  completedAt?: string;
+  outcome?: string;
+  version?: number;
 }
 
 export interface ClinicalEvolution {
@@ -74,6 +81,8 @@ export interface ClinicalEvolution {
   complication?: string;
   conduct?: string;
   guidance?: string;
+  changeReason?: string;
+  version?: number;
 }
 
 export interface PatientFile {
@@ -85,6 +94,14 @@ export interface PatientFile {
   size: string;
   mimeType: string;
   downloadUrl: string;
+  title?: string;
+  category?: string;
+  notes?: string;
+  externalUrl?: string;
+  appointmentId?: string;
+  plannerId?: string;
+  evolutionId?: string;
+  version?: number;
 }
 
 export interface Lead {
@@ -96,6 +113,7 @@ export interface Lead {
   status: "novo" | "contatado" | "agendado" | "arquivado";
   lastContactDate?: string;
   notes?: string;
+  version?: number;
 }
 
 export interface FlowStage {
@@ -139,4 +157,67 @@ export interface MessageTemplate {
   bodyText: string;
   isActive: boolean;
   createdAt: string;
+}
+
+export type PlanStepStatus = "pending" | "ready" | "in_progress" | "waiting" | "completed" | "skipped" | "cancelled";
+
+export interface PlanWorkflow {
+  id: string;
+  clinicId: string;
+  patientId: string;
+  areaId: string;
+  name: string;
+  status: "active" | "paused" | "completed" | "cancelled";
+  responsible?: string;
+  description?: string;
+  startDate?: string;
+  nextAction?: string;
+  version?: number;
+}
+
+export interface PlanStep {
+  id: string;
+  clinicId: string;
+  workflowId: string;
+  title: string;
+  status: PlanStepStatus;
+  dueDate?: string;
+  notes?: string;
+  responsible?: string;
+  sortOrder: number;
+  taskId?: string;
+  dependsOn?: string;
+  version?: number;
+}
+
+export interface EvolutionRevision {
+  id: string;
+  clinicId: string;
+  evolutionId: string;
+  previousData: Record<string, unknown>;
+  currentData: Record<string, unknown>;
+  changeReason: string;
+  changedBy: string;
+  changedAt: string;
+}
+
+export interface ClinicSettings {
+  clinicId: string;
+  administrativePhone?: string;
+  businessHours: Record<string, unknown>;
+  resources: string[];
+  preferences: Record<string, unknown>;
+  inactivityDays: number;
+  version?: number;
+}
+
+export interface ContactEvent {
+  id: string;
+  clinicId: string;
+  patientId?: string;
+  leadId?: string;
+  channel: "whatsapp" | "phone" | "email" | "other";
+  outcome: string;
+  notes?: string;
+  contactedAt: string;
 }

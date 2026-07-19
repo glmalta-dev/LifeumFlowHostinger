@@ -1,10 +1,6 @@
-import { createClient } from "@supabase/supabase-js";
-import {
-  isSupabaseConfigured,
-  supabasePublishableKey,
-  supabaseUrl,
-} from "@/lib/supabaseConfig";
+import { createClient } from "@/lib/supabase/client";
+import { isSupabaseConfigured } from "@/lib/supabaseConfig";
 
 export const supabase = isSupabaseConfigured
-  ? createClient(supabaseUrl, supabasePublishableKey)
+  ? createClient()
   : null;

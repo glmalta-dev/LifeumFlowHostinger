@@ -24,10 +24,9 @@ export default function MaisPage() {
     }
     
     // Expirar o cookie de sessão real
-    document.cookie = "lifeum-flow-session-jwt=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Lax; Secure";
-    localStorage.removeItem("user-email");
     showToast("Sessão finalizada com sucesso!", "success");
-    router.push("/login");
+    router.replace("/login");
+    router.refresh();
   };
 
   const menuItems = [

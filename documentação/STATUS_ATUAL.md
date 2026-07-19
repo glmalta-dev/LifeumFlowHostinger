@@ -1,50 +1,41 @@
 # STATUS ATUAL
 
-- **Ultima atualizacao:** 19/07/2026 18:50 (America/Sao_Paulo)
-- **Fase atual:** Hardening e fechamento funcional do MVP
+- **Ultima atualizacao:** 19/07/2026 20:15 (America/Sao_Paulo)
+- **Fase atual:** fechamento funcional e publicacao do MVP
 - **Branch:** `main`
 - **Supabase:** `jcteqdvkviodempumgqp`
 
-## Implementado e validado nesta rodada
+## Implementado e validado
 
-- ESLint sem erros ou avisos.
-- TypeScript (`tsc --noEmit`) sem erros.
-- Build de producao Next.js concluido.
-- Supabase mantido como unica fonte de dados clinicos; removidos mocks e fallback em localStorage.
-- RLS multitenant corrigida com policies qualificadas e helper privado.
-- Storage `patient-exams` isolado pelo primeiro segmento `{clinicId}` e por membership ativa.
-- Teste transacional de isolamento: zero linhas e zero objetos de outra clinica ficaram visiveis; rollback executado.
-- Captura rapida exige paciente real e nao usa mais `pat-1`.
-- Telefone centralizado e validado para WhatsApp e `tel:` sem numero ficticio.
-- CRUD de modelos de WhatsApp disponivel em `/mais/configuracoes`.
-- Pendencias ganharam estados operacionais e atualizacao persistida.
-- Agenda ganhou desfecho manual: compareceu, faltou, cancelou ou reagendou.
-- Evolucoes ganharam campos estruturados de intercorrencia, conduta e orientacao.
-- Schema de planejamento hierarquico criado (`plan_workflows` e `plan_steps`).
-- Historico local e remoto das migrations sincronizado; `db push --dry-run` informou banco atualizado.
+- Supabase e Storage como fontes reais, com RLS multitenant por clinica.
+- Auth por cookies SSR, renovacao no Proxy, login, logout e recuperacao/redefinicao de senha.
+- Pacientes com validacao de CPF, telefone e nascimento, aviso de duplicidade, filtros e ordenacao.
+- Agenda com desfechos e bloqueio transacional de choque de profissional ou sala/cadeira.
+- Pendencias com estados operacionais e persistencia real.
+- Planejamento visual em `plan_workflows`/`plan_steps`, sem progresso ficticio.
+- Evolucoes estruturadas e revisao atomica com justificativa e historico.
+- Arquivos privados com metadados, links externos, URL assinada, exclusao e rollback de upload.
+- CRM com cadastro de lead, eventos de contato e conversao atomica em paciente.
+- Configuracoes da clinica persistidas; auditoria e versao nas entidades operacionais.
+- Tela Hoje com filtros reais e alternancia entre cards e lista.
 
-## Implementado, aguardando validacao manual autenticada
+## Aguardando validacao manual autenticada
 
-- Login invalido, logout, recarga de sessao e expiracao/invalidez do token pela UI real.
-- CRUD vertical completo com dados reais para paciente, pendencia, agenda, evolucao, arquivo e planejamento.
-- Upload, URL assinada e exclusao de arquivo pelo usuario autenticado.
+- Login invalido, logout, recovery, recarga e expiracao de sessao no navegador publicado.
+- CRUD vertical com reload para paciente, pendencia, agenda, evolucao, arquivo e planejamento.
 - Responsividade visual em aparelho real de aproximadamente 390 px.
-- Pipeline GitHub Actions e deploy publico da Hostinger apos o push desta rodada.
+- GitHub Actions e deploy Hostinger apos o push desta rodada.
 
-## Pendencias remanescentes
+## Pendencias externas ou decisoes abertas
 
-- Habilitar `Leaked Password Protection` nas configuracoes do Supabase Auth; e configuracao de painel/plano e nao migration SQL.
-- Integrar a UI atual de checklist de planejamento diretamente ao novo modelo `plan_workflows`/`plan_steps`.
-- Implementar versionamento de edicao de evolucoes usando `evolution_revisions`; novas evolucoes ja sao persistidas, mas edicao versionada ainda nao possui interface.
-- Completar metadados e exclusao de arquivos na interface.
-- Completar filtros avancados da lista de pacientes e alternancia cards/lista da tela Hoje.
+- Habilitar `Leaked Password Protection` no painel do Supabase Auth.
+- Papeis finais, multiunidade, limites definitivos de arquivos, retencao, exportacoes, assinatura, politica final de CPF, navegacao final de fluxos e Clinicorp dependem de decisao explicita.
 
 ## Evidencias
 
 - `npm.cmd run lint`: sucesso.
 - `npx.cmd tsc --noEmit`: sucesso.
-- `npm.cmd run build`: sucesso, 16 paginas estaticas e rotas dinamicas geradas.
-- Advisors de seguranca: somente `auth_leaked_password_protection` permanece.
-- Teste RLS SQL transacional: `unauthorized_rows_visible = 0`.
-- Teste Storage SQL transacional: `unauthorized_storage_objects_visible = 0`.
-- `npx.cmd supabase db push --linked --dry-run --yes`: `Remote database is up to date`.
+- `npm.cmd run build`: sucesso, 18 paginas estaticas e rotas dinamicas geradas.
+- Migrations locais e remotas alinhadas e aplicadas.
+- Testes SQL transacionais com rollback: auditoria, conflito de agenda e conversao de lead aprovados sem dados residuais.
+- Advisor de seguranca: somente `auth_leaked_password_protection` permanece.

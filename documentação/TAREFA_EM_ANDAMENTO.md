@@ -1,9 +1,9 @@
 # TAREFA EM ANDAMENTO
 
-**Tarefa:** fechamento e publicacao do MVP funcional conforme checklist anexado.
+**Tarefa:** fechamento e publicacao do MVP funcional conforme a documentacao mestra.
 
-**Concluido nesta rodada:** hardening RLS/Storage, remocao de mocks/fallback local, telefone canonico, captura rapida com paciente real, modelos de mensagem, estados de pendencia, desfechos de agenda, schema de planejamento/evolucoes e gates locais.
+**Concluido nesta rodada:** autenticacao SSR, configuracoes da clinica, auditoria e versao, conflito de agenda no banco, planejamento normalizado, revisao de evolucao, Storage privado completo, CRM com conversao atomica, filtros de pacientes e visualizacao cards/lista em Hoje.
 
-**Ponto atual:** codigo e banco prontos para commit e push. Depois do push, validar o GitHub Actions e o deploy Hostinger.
+**Ponto atual:** codigo e Supabase remoto validados e prontos para commit/push nos repositorios de origem e deploy.
 
-**Validacoes manuais ainda necessarias:** autenticacao completa pela UI, CRUD vertical com reload, upload/download e viewport real de smartphone.
+**Validacoes manuais ainda necessarias:** sessao e CRUD com reload no navegador publicado, upload/download e viewport real de smartphone.

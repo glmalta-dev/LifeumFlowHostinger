@@ -9,7 +9,7 @@ import { getErrorMessage } from "@/lib/errors";
 export default function ArquivosPage() {
   const params = useParams();
   const router = useRouter();
-  const { files, addFile, activeClinicId, showToast } = useApp();
+  const { files, addFile, deleteFile, activeClinicId, showToast } = useApp();
   
   const patientId = params.patientId as string;
   const filteredFiles = files.filter((f) => f.patientId === patientId);
@@ -17,19 +17,37 @@ export default function ArquivosPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [uploadFile, setUploadFile] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
+  const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("exame");
+  const [notes, setNotes] = useState("");
+  const [externalUrl, setExternalUrl] = useState("");
 
   const handleUploadReal = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!uploadFile) return;
+    if (!uploadFile && !externalUrl.trim()) {
+      showToast("Selecione um arquivo ou informe um link externo.", "error");
+      return;
+    }
     if (!supabase || !activeClinicId) {
       showToast("Conexão com o Supabase ou clínica não ativa.", "error");
       return;
     }
     
     setIsUploading(true);
-    showToast("Fazendo upload do arquivo...", "success");
 
     try {
+      if (!uploadFile) {
+        const parsed = new URL(externalUrl);
+        if (parsed.protocol !== "https:") throw new Error("O link externo deve usar HTTPS.");
+        await addFile({
+          patientId, name: title.trim() || parsed.hostname, title: title.trim() || undefined,
+          category, notes: notes.trim() || undefined, externalUrl: parsed.toString(),
+          uploadDate: new Date().toISOString().split("T")[0], size: "Link externo",
+          mimeType: "text/uri-list", downloadUrl: parsed.toString()
+        });
+        setExternalUrl(""); setTitle(""); setNotes(""); setIsModalOpen(false);
+        return;
+      }
       const fileExt = uploadFile.name.split(".").pop();
       const fileName = `${activeClinicId}/${patientId}/${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
       
@@ -52,16 +70,19 @@ export default function ArquivosPage() {
         ? `${sizeInMB.toFixed(1)} MB` 
         : `${(uploadFile.size / 1024).toFixed(0)} KB`;
 
-      await addFile({
-        patientId,
-        name: uploadFile.name,
-        uploadDate: new Date().toISOString().split("T")[0],
-        size: friendlySize,
-        mimeType: uploadFile.type || "application/octet-stream",
-        downloadUrl: `patient-exams/${fileName}`
-      });
+      try {
+        await addFile({
+          patientId, name: uploadFile.name, title: title.trim() || undefined,
+          category, notes: notes.trim() || undefined,
+          uploadDate: new Date().toISOString().split("T")[0], size: friendlySize,
+          mimeType: uploadFile.type || "application/octet-stream", downloadUrl: fileName
+        });
+      } catch (metadataError) {
+        await supabase.storage.from("patient-exams").remove([fileName]);
+        throw metadataError;
+      }
 
-      setUploadFile(null);
+      setUploadFile(null); setTitle(""); setNotes("");
       setIsModalOpen(false);
     } catch (err: unknown) {
       console.error("Falha ao salvar arquivo no banco:", err);
@@ -69,6 +90,23 @@ export default function ArquivosPage() {
     } finally {
       setIsUploading(false);
     }
+  };
+
+  const openFile = async (file: (typeof files)[number]) => {
+    if (file.externalUrl) {
+      window.open(file.externalUrl, "_blank", "noopener,noreferrer");
+      return;
+    }
+    if (!supabase) return;
+    const storagePath = file.downloadUrl.replace(/^patient-exams\//, "");
+    const { data, error } = await supabase.storage.from("patient-exams").createSignedUrl(storagePath, 60);
+    if (error) { showToast(`Erro ao abrir arquivo: ${error.message}`, "error"); return; }
+    window.open(data.signedUrl, "_blank", "noopener,noreferrer");
+  };
+
+  const removeFile = async (id: string) => {
+    if (!window.confirm("Remover este arquivo permanentemente?")) return;
+    await deleteFile(id);
   };
 
   return (
@@ -79,6 +117,17 @@ export default function ArquivosPage() {
             <h4 style={{ marginBottom: "12px", fontSize: "14px", fontWeight: 700 }}>Anexar Exame Clínico</h4>
             <form onSubmit={handleUploadReal} style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
               <div className="form-group">
+                <label htmlFor="file-title" className="form-label">TITULO</label>
+                <input id="file-title" className="form-control" value={title} onChange={e => setTitle(e.target.value)} placeholder="Ex: Radiografia panoramica" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="file-category" className="form-label">CATEGORIA</label>
+                <select id="file-category" className="form-control" value={category} onChange={e => setCategory(e.target.value)}>
+                  <option value="exame">Exame</option><option value="imagem">Imagem</option>
+                  <option value="documento">Documento</option><option value="outros">Outros</option>
+                </select>
+              </div>
+              <div className="form-group">
                 <label htmlFor="file-input" className="form-label">SELECIONE O EXAME (PDF OU IMAGEM)</label>
                 <input
                   id="file-input"
@@ -86,12 +135,19 @@ export default function ArquivosPage() {
                   accept="image/jpeg,image/png,application/pdf"
                   className="form-control"
                   onChange={e => setUploadFile(e.target.files?.[0] || null)}
-                  required
                   disabled={isUploading}
                 />
               </div>
+              <div className="form-group">
+                <label htmlFor="external-url" className="form-label">OU LINK EXTERNO HTTPS</label>
+                <input id="external-url" type="url" className="form-control" value={externalUrl} onChange={e => setExternalUrl(e.target.value)} disabled={isUploading} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="file-notes" className="form-label">OBSERVACOES</label>
+                <textarea id="file-notes" className="form-control" rows={2} value={notes} onChange={e => setNotes(e.target.value)} disabled={isUploading} />
+              </div>
               <div style={{ display: "flex", gap: "8px", marginTop: "4px" }}>
-                <button type="submit" className="btn btn-primary" style={{ flex: 1, padding: "10px" }} disabled={isUploading || !uploadFile}>
+                <button type="submit" className="btn btn-primary" style={{ flex: 1, padding: "10px" }} disabled={isUploading || (!uploadFile && !externalUrl.trim())}>
                   {isUploading ? "Enviando..." : "Anexar"}
                 </button>
                 <button type="button" onClick={() => setIsModalOpen(false)} className="btn btn-secondary" style={{ flex: 1, padding: "10px" }} disabled={isUploading}>
@@ -140,24 +196,24 @@ export default function ArquivosPage() {
               </div>
               
               <button type="button" onClick={() => router.push(`/pacientes/${patientId}/arquivos/${file.id}`)} style={styles.fileInfoButton}>
-                <span style={styles.fileName}>{file.name}</span>
+                <span style={styles.fileName}>{file.title || file.name}</span>
                 <span style={styles.fileMeta}>Enviado em: {file.uploadDate} • {file.size}</span>
               </button>
 
               <div style={styles.actions}>
-                <a 
-                  href={file.downloadUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={() => void openFile(file)}
                   style={styles.actionBtn}
-                  title="Baixar"
+                  title="Abrir"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                     <polyline points="7 10 12 15 17 10"></polyline>
                     <line x1="12" y1="15" x2="12" y2="3"></line>
                   </svg>
-                </a>
+                </button>
+                <button type="button" onClick={() => void removeFile(file.id)} style={styles.actionBtn} title="Excluir">×</button>
               </div>
             </div>
           ))
@@ -250,6 +306,7 @@ const styles = {
     gap: "8px",
   },
   actionBtn: {
+    border: "none",
     width: "32px",
     height: "32px",
     borderRadius: "50%",

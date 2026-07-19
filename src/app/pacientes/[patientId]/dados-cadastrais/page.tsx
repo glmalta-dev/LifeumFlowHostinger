@@ -1,15 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useApp } from "@/context/AppContext";
 import { BackHeader } from "@/components/layout/BackHeader";
 import type { Patient } from "@/types";
+import { normalizeBrazilianPhone } from "@/lib/phone";
+import { isValidBirthDate, isValidCpf, normalizeCpf } from "@/lib/validation";
 
 export default function DadosCadastraisPage() {
   const params = useParams();
   const router = useRouter();
-  const { patients, updatePatient } = useApp();
+  const { patients, updatePatient, showToast } = useApp();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const patientId = params.patientId as string;
   const patient = patients.find((p) => p.id === patientId);
@@ -34,32 +37,53 @@ export default function DadosCadastraisPage() {
   const [state, setState] = useState(patient?.state ?? "");
   const [postalCode, setPostalCode] = useState(patient?.postalCode ?? "");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    if (!patient) return;
+    // O cadastro e carregado assincronamente pelo contexto.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setName(patient.name); setPhone(patient.phone); setEmail(patient.email);
+    setBirthDate(patient.birthDate); setSex(patient.sex ?? "not_informed"); setStatus(patient.status);
+    setNextAction(patient.nextAction ?? ""); setNotes(patient.notes ?? ""); setCpf(patient.cpf ?? "");
+    setAddress(patient.address ?? ""); setAddressNumber(patient.addressNumber ?? "");
+    setAddressComplement(patient.addressComplement ?? ""); setNeighborhood(patient.neighborhood ?? "");
+    setCity(patient.city ?? ""); setState(patient.state ?? ""); setPostalCode(patient.postalCode ?? "");
+  }, [patient]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !phone) {
+    if (!name.trim() || !phone.trim() || !isValidBirthDate(birthDate)) {
+      showToast("Informe nome, telefone e uma data de nascimento valida.", "error");
       return;
     }
+    const normalizedPhone = normalizeBrazilianPhone(phone);
+    if (!normalizedPhone.valid) { showToast(normalizedPhone.reason, "error"); return; }
+    if (cpf && !isValidCpf(cpf)) { showToast("CPF invalido.", "error"); return; }
 
-    updatePatient(patientId, {
-      name,
-      phone,
-      email,
-      birthDate,
-      sex,
-      status,
-      cpf: cpf || undefined,
-      nextAction: nextAction || undefined,
-      notes: notes || undefined,
-      address: address || undefined,
-      addressNumber: addressNumber || undefined,
-      addressComplement: addressComplement || undefined,
-      neighborhood: neighborhood || undefined,
-      city: city || undefined,
-      state: state || undefined,
-      postalCode: postalCode || undefined
-    });
+    setIsSubmitting(true);
+    try {
+      await updatePatient(patientId, {
+        name,
+        phone,
+        email,
+        birthDate,
+        sex,
+        status,
+        cpf: normalizeCpf(cpf) || undefined,
+        nextAction: nextAction || undefined,
+        notes: notes || undefined,
+        address: address || undefined,
+        addressNumber: addressNumber || undefined,
+        addressComplement: addressComplement || undefined,
+        neighborhood: neighborhood || undefined,
+        city: city || undefined,
+        state: state || undefined,
+        postalCode: postalCode || undefined
+      });
 
-    router.push(`/pacientes/${patientId}/resumo`);
+      router.push(`/pacientes/${patientId}/resumo`);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -134,6 +158,7 @@ export default function DadosCadastraisPage() {
               className="form-control" 
               value={birthDate} 
               onChange={(e) => setBirthDate(e.target.value)} 
+              required
             />
           </div>
 
@@ -298,8 +323,8 @@ export default function DadosCadastraisPage() {
 
         {/* Actions */}
         <div style={styles.actions}>
-          <button type="submit" className="btn btn-primary">
-            Salvar Alterações
+          <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+            {isSubmitting ? "Salvando..." : "Salvar Alteracoes"}
           </button>
           <button 
             type="button" 

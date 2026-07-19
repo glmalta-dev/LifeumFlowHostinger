@@ -1,13 +1,23 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { useApp } from "@/context/AppContext";
 import { BackHeader } from "@/components/layout/BackHeader";
 import type { Lead } from "@/types";
 import { buildWhatsAppUrl } from "@/lib/phone";
 
 export default function ContatosPage() {
-  const { leads, moveLead, showToast } = useApp();
+  const { leads, moveLead, showToast, addLead, registerContact, convertLeadToPatient } = useApp();
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [source, setSource] = useState("");
+  const [saving, setSaving] = useState(false);
+
+  const createLead = async (event: React.FormEvent) => {
+    event.preventDefault(); setSaving(true);
+    try { await addLead({ name: name.trim(), phone: phone.trim(), source: source.trim(), status: "novo" }); setName(""); setPhone(""); setSource(""); }
+    finally { setSaving(false); }
+  };
 
   const handleLeadContact = async (lead: Lead) => {
     const url = buildWhatsAppUrl(lead.phone, `Ola ${lead.name}, recebemos seu interesse pelo canal ${lead.source}.`);
@@ -17,19 +27,32 @@ export default function ContatosPage() {
     }
     window.open(url, "_blank", "noopener,noreferrer");
     
-    // Auto advance state for demo
-    if (lead.status === "novo") {
-      try {
-        await moveLead(lead.id, "contatado");
-      } catch (err) {
-        console.error("Falha ao mover lead:", err);
-      }
-    }
+  };
+
+  const recordContact = async (lead: Lead) => {
+    const outcome = window.prompt("Qual foi o resultado do contato?");
+    if (!outcome?.trim()) return;
+    await registerContact({ leadId: lead.id, channel: "whatsapp", outcome: outcome.trim() });
+    if (lead.status === "novo") await moveLead(lead.id, "contatado");
+  };
+
+  const convertLead = async (lead: Lead) => {
+    const birthDate = window.prompt("Data de nascimento do paciente (AAAA-MM-DD):");
+    if (!birthDate) return;
+    await convertLeadToPatient(lead.id, { name: lead.name, phone: lead.phone, email: "", birthDate, status: "active" });
   };
 
   return (
     <>
       <BackHeader title="Contatos e Leads (CRM)" backUrl="/mais" />
+
+      <form className="card" onSubmit={createLead} style={{ display: "grid", gap: 10 }}>
+        <h2 style={{ fontSize: 16 }}>Novo lead</h2>
+        <input className="form-control" aria-label="Nome do lead" placeholder="Nome" value={name} onChange={event => setName(event.target.value)} required />
+        <input className="form-control" aria-label="Telefone do lead" placeholder="Telefone com DDD" value={phone} onChange={event => setPhone(event.target.value)} required />
+        <input className="form-control" aria-label="Origem do lead" placeholder="Origem" value={source} onChange={event => setSource(event.target.value)} required />
+        <button className="btn btn-primary" disabled={saving}>{saving ? "Salvando..." : "Cadastrar lead"}</button>
+      </form>
 
       <div style={styles.leadList}>
         {leads.length === 0 ? (
@@ -66,6 +89,7 @@ export default function ContatosPage() {
                     </svg>
                     Iniciar Contato
                   </button>
+                  <button onClick={() => void recordContact(lead)} className="btn btn-secondary" style={styles.actionBtnSec}>Registrar resultado</button>
                   {lead.status === "contatado" && (
                     <button 
                       onClick={() => {
@@ -77,6 +101,7 @@ export default function ContatosPage() {
                       Marcar Agendamento
                     </button>
                   )}
+                  {lead.status !== "arquivado" && <button onClick={() => void convertLead(lead)} className="btn btn-secondary" style={styles.actionBtnSec}>Converter</button>}
                 </div>
               </div>
             );
@@ -135,6 +160,7 @@ const styles = {
   },
   cardActions: {
     display: "flex",
+    flexWrap: "wrap" as const,
     gap: "8px",
     marginTop: "4px",
   },

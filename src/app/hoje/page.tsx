@@ -17,6 +17,7 @@ export default function HojePage() {
   const [selectedPatientId, setSelectedPatientId] = useState("");
   const [selectedTaskId, setSelectedTaskId] = useState("");
   const [isPanelOpen, setIsPanelOpen] = useState(false);
+  const [viewMode, setViewMode] = useState<"cards" | "list">("cards");
 
   // Calculate today string in local timezone (YYYY-MM-DD)
   const getTodayStr = () => {
@@ -33,6 +34,12 @@ export default function HojePage() {
   const pendingTasks = tasks.filter(t => t.status !== "completed" && t.status !== "cancelled");
   const overdueTasks = pendingTasks.filter(t => t.dueDate < todayStr);
   const todayTasks = pendingTasks.filter(t => t.dueDate === todayStr);
+  const scheduleTasks = pendingTasks.filter(t => `${t.category || ""} ${t.title}`.toLowerCase().includes("agend"));
+  const rescheduleTasks = pendingTasks.filter(t => `${t.category || ""} ${t.title}`.toLowerCase().match(/reagend|remarc/));
+  const visibleTasks = activeFilter === "hoje" ? todayTasks
+    : activeFilter === "agendar" ? scheduleTasks
+    : activeFilter === "remarcar" ? rescheduleTasks
+    : overdueTasks;
 
   const totalActionsNeeded = overdueTasks.length;
   const totalTasksCount = pendingTasks.length;
@@ -127,7 +134,7 @@ export default function HojePage() {
               </svg>
             </div>
             <span style={styles.categoryLabel}>Agendar</span>
-            <span style={{ ...styles.categoryBadge, backgroundColor: "#00a8cc" }}>3</span>
+            <span style={{ ...styles.categoryBadge, backgroundColor: "#00a8cc" }}>{scheduleTasks.length}</span>
           </div>
 
           {/* Remarcar */}
@@ -141,7 +148,7 @@ export default function HojePage() {
               </svg>
             </div>
             <span style={styles.categoryLabel}>Remarcar</span>
-            <span style={{ ...styles.categoryBadge, backgroundColor: "var(--warning)" }}>{appointments.filter(a => a.status === "cancelado").length}</span>
+            <span style={{ ...styles.categoryBadge, backgroundColor: "var(--warning)" }}>{rescheduleTasks.length}</span>
           </div>
         </div>
       </section>
@@ -150,16 +157,21 @@ export default function HojePage() {
       <section style={styles.prioritiesSection}>
         <div style={styles.sectionHeader}>
           <h3 style={styles.sectionTitle}>Prioridades de agora</h3>
+          <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+          <button type="button" className="btn btn-secondary" aria-pressed={viewMode === "cards"} onClick={() => setViewMode("cards")} style={{ padding: "5px 8px", opacity: viewMode === "cards" ? 1 : .6 }}>Cards</button>
+          <button type="button" className="btn btn-secondary" aria-pressed={viewMode === "list"} onClick={() => setViewMode("list")} style={{ padding: "5px 8px", opacity: viewMode === "list" ? 1 : .6 }}>Lista</button>
           <Link href="/hoje/pendencias" style={styles.sectionLink}>
             Ver todas
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
           </Link>
+          </div>
         </div>
 
-        <div style={styles.priorityList}>
-          {pendingTasks.slice(0, 3).map((task) => {
+        <div style={{ ...styles.priorityList, ...(viewMode === "cards" ? { gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" } : { gridTemplateColumns: "1fr" }) }}>
+          {visibleTasks.length === 0 && <div className="card"><p>Nenhuma pendencia neste filtro.</p></div>}
+          {visibleTasks.slice(0, viewMode === "cards" ? 6 : 10).map((task) => {
             const isHigh = task.priority === "high";
             // Formatar data técnica 2026-07-16 -> 16/07/2026
             const formatDate = (dateStr: string) => {
@@ -174,7 +186,7 @@ export default function HojePage() {
             return (
               <div 
                 key={task.id} 
-                style={{ ...styles.priorityCard, cursor: "pointer" }}
+                style={{ ...styles.priorityCard, cursor: "pointer", ...(viewMode === "list" ? { borderRadius: 8 } : {}) }}
                 onClick={() => {
                   setSelectedPatientId(task.patientId);
                   setSelectedTaskId(task.id);
@@ -430,8 +442,7 @@ const styles = {
     textDecoration: "none",
   },
   priorityList: {
-    display: "flex",
-    flexDirection: "column" as const,
+    display: "grid",
     gap: "10px",
   },
   priorityCard: {
