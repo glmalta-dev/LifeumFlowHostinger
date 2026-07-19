@@ -14,6 +14,10 @@ export default function PerfilPage() {
   const [uploading, setUploading] = useState(false);
   const [saving, setSaving] = useState(false);
 
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [changingPassword, setChangingPassword] = useState(false);
+
   const handleAvatarUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file || !currentUser) return;
@@ -90,6 +94,39 @@ export default function PerfilPage() {
     }
   };
 
+  const handleChangePassword = async (event: React.FormEvent) => {
+    event.preventDefault();
+    if (newPassword.length < 6) {
+      showToast("A nova senha deve ter no minimo 6 caracteres.", "error");
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      showToast("As senhas nao coincidem.", "error");
+      return;
+    }
+
+    setChangingPassword(true);
+    try {
+      const client = supabase;
+      if (!client) throw new Error("Cliente Supabase indisponivel.");
+
+      const { error } = await client.auth.updateUser({
+        password: newPassword,
+      });
+
+      if (error) throw error;
+
+      showToast("Senha alterada com sucesso!", "success");
+      setNewPassword("");
+      setConfirmPassword("");
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Erro ao alterar a senha.";
+      showToast(message, "error");
+    } finally {
+      setChangingPassword(false);
+    }
+  };
+
   const avatarLetter = (name.trim() || email.trim() || "D").charAt(0).toUpperCase();
 
   return (
@@ -145,7 +182,42 @@ export default function PerfilPage() {
             </div>
 
             <button type="submit" className="btn btn-primary" disabled={saving || uploading} style={styles.submitBtn}>
-              {saving ? "Salvando..." : "Salvar Alterações"}
+              {saving ? "Salvando..." : "Salvar Alterações do Perfil"}
+            </button>
+          </form>
+        </div>
+
+        {/* Card de Alteração de Senha */}
+        <div className="card" style={styles.card}>
+          <h3 style={{ fontSize: "15px", fontWeight: 700 }}>Segurança e Acesso</h3>
+
+          <form onSubmit={handleChangePassword} style={styles.form}>
+            <div style={styles.field}>
+              <label style={styles.label}>Nova Senha</label>
+              <input
+                className="form-control"
+                type="password"
+                placeholder="No mínimo 6 caracteres"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                required
+              />
+            </div>
+
+            <div style={styles.field}>
+              <label style={styles.label}>Confirmar Nova Senha</label>
+              <input
+                className="form-control"
+                type="password"
+                placeholder="Repita a nova senha"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+              />
+            </div>
+
+            <button type="submit" className="btn btn-secondary" disabled={changingPassword} style={styles.submitBtn}>
+              {changingPassword ? "Alterando..." : "Alterar Senha de Acesso"}
             </button>
           </form>
         </div>
