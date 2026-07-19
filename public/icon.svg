@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#1a253c" />
+    </linearGradient>
+    <linearGradient id="flowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1463e6" />
+      <stop offset="100%" stop-color="#26b978" />
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="512" height="512" rx="120" fill="url(#bgGrad)" />
+  
+  <!-- Stylized Tooth + Flow Wave -->
+  <g transform="translate(106, 96)">
+    <!-- Tooth left cusp -->
+    <path d="M75,30 C110,15 140,55 150,90 C155,105 150,130 150,150 C150,180 120,240 100,260 C90,270 80,290 80,310 C80,320 85,325 90,325 C100,325 125,290 140,260 C155,230 170,180 180,180 C190,180 205,230 220,260 C235,290 260,325 270,325 C275,325 280,320 280,310 C280,290 270,270 260,260 C240,240 210,180 210,150 C210,130 205,105 210,90 C220,55 250,15 285,30 C320,45 290,140 280,170 C270,200 240,230 220,270 C200,310 190,340 180,340 C170,340 160,310 140,270 C120,230 90,200 80,170 C70,140 40,45 75,30 Z" fill="url(#flowGrad)" />
+    <!-- Dynamic shine dot -->
+    <circle cx="120" cy="80" r="15" fill="#ffffff" opacity="0.3" />
+  </g>
+</svg>

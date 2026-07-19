@@ -1,0 +1,396 @@
+<!DOCTYPE html><html class="light" lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Ana Silva - Dados Cadastrais | Lifeum Flow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "background": "#F6F8FC",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#d8d9e4",
+                        "surface-glass": "rgba(255, 255, 255, 0.72)",
+                        "inverse-surface": "#2e3039",
+                        "surface": "rgba(255, 255, 255, 0.88)",
+                        "inverse-on-surface": "#eff0fb",
+                        "surface-container-low": "#f2f3fe",
+                        "on-error": "#ffffff",
+                        "primary-container": "#1463e6",
+                        "error": "#E5484D",
+                        "on-surface-variant": "#424654",
+                        "on-tertiary": "#ffffff",
+                        "accent-indigo": "#5C78F0",
+                        "tertiary-fixed": "#ffdbcd",
+                        "primary-fixed": "#dae2ff",
+                        "on-primary-fixed-variant": "#0040a0",
+                        "surface-variant": "#e1e2ed",
+                        "surface-container": "#ecedf8",
+                        "secondary": "#00629e",
+                        "on-primary-fixed": "#001847",
+                        "success": "#26B978",
+                        "surface-container-highest": "#e1e2ed",
+                        "secondary-container": "#51aeff",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "outline": "#737786",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-secondary-fixed": "#001d34",
+                        "on-tertiary-container": "#ffe8e0",
+                        "on-primary-container": "#e9edff",
+                        "text-secondary": "#5E6C86",
+                        "surface-container-high": "#e7e7f3",
+                        "warning": "#D99214",
+                        "on-surface": "#191b23",
+                        "on-error-container": "#93000a",
+                        "text-primary": "#102044",
+                        "inverse-primary": "#b2c5ff",
+                        "on-background": "#191b23",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb598",
+                        "tertiary-container": "#ba4500",
+                        "surface-bright": "#faf8ff",
+                        "secondary-fixed-dim": "#9acbff",
+                        "on-secondary-fixed-variant": "#004a79",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#cfe5ff",
+                        "surface-tint": "#0056d1",
+                        "primary": "#004cba",
+                        "on-secondary-container": "#00406a",
+                        "tertiary": "#923400",
+                        "outline-variant": "#c2c6d7",
+                        "on-tertiary-fixed-variant": "#7e2c00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "card-gap": "12px",
+                        "inline": "8px",
+                        "compact-card-padding": "14px",
+                        "base": "4px",
+                        "touch-target-min": "44px",
+                        "inline-gap": "8px",
+                        "base-unit": "4px",
+                        "section-gap": "20px",
+                        "screen-top": "12px",
+                        "screen-margin": "16px",
+                        "screen-horizontal": "16px",
+                        "card-padding": "16px"
+                    },
+                    "fontFamily": {
+                        "label": ["Inter", "sans-serif"],
+                        "caption": ["Inter", "sans-serif"],
+                        "section-title": ["Inter", "sans-serif"],
+                        "body-strong": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "card-title": ["Inter", "sans-serif"],
+                        "status": ["Inter", "sans-serif"],
+                        "page-title": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "label": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "caption": ["11px", { "lineHeight": "15px", "fontWeight": "400" }],
+                        "section-title": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+                        "body-strong": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "card-title": ["16px", { "lineHeight": "21px", "fontWeight": "700" }],
+                        "status": ["10px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "page-title": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    },
+                    "boxShadow": {
+                        "ambient": "0 4px 12px rgba(31, 67, 126, 0.08)",
+                        "glass": "inset 0 0 0 0.5px rgba(255,255,255,0.4), 0 8px 24px rgba(31,67,126,0.06)",
+                        "fab": "0 8px 24px rgba(31,67,126,0.15), inset 0 1px 1px rgba(255,255,255,0.2)"
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom scrollbar for horizontal lists */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.4), 0 8px 24px rgba(31, 67, 126, 0.06);
+        }
+        
+        body {
+            /* Simulate mobile device height for preview if viewed on desktop */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body max-w-[390px] mx-auto relative h-screen overflow-hidden shadow-2xl">
+<!-- TopAppBar -->
+<header class="bg-surface-glass dark:bg-inverse-surface/80 fixed top-0 w-full max-w-[390px] z-50 backdrop-blur-xl border-b border-outline-variant/30 shadow-sm flex flex-col transition-colors active:scale-95 duration-200">
+<div class="flex items-center justify-between px-screen-horizontal h-14 w-full">
+<button class="w-touch-target-min h-touch-target-min flex items-center justify-center text-primary dark:text-primary-fixed hover:bg-primary-container/10 transition-colors rounded-full rounded-full">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex flex-col items-center justify-center flex-1">
+<h1 class="font-page-title text-page-title text-primary dark:text-primary-fixed truncate px-2">Ana Silva</h1>
+<p class="font-caption text-caption text-on-surface-variant flex items-center gap-1">
+                    32 anos <span class="w-1 h-1 rounded-full bg-outline-variant"></span> (11) 98765-4321
+                </p>
+</div>
+<div class="flex items-center">
+<button class="w-10 h-touch-target-min flex items-center justify-center text-primary dark:text-primary-fixed hover:bg-primary-container/10 transition-colors rounded-full">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat</span>
+</button>
+<button class="w-10 h-touch-target-min flex items-center justify-center text-primary dark:text-primary-fixed hover:bg-primary-container/10 transition-colors rounded-full">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Tab Bar (Horizontal Scroll) -->
+<nav class="w-full overflow-x-auto hide-scrollbar border-t border-outline-variant/10">
+<ul class="flex items-center px-4 h-12 w-max gap-6">
+<li class=""><a class="font-body text-body text-on-surface-variant dark:text-outline whitespace-nowrap" href="#">Resumo</a></li>
+<li class=""><a class="font-body text-body text-on-surface-variant dark:text-outline whitespace-nowrap" href="#">Planejamento</a></li>
+<li class=""><a class="font-body text-body text-on-surface-variant dark:text-outline whitespace-nowrap" href="#">Agendamentos</a></li>
+<li class=""><a class="font-body text-body text-on-surface-variant dark:text-outline whitespace-nowrap" href="#">Evoluções</a></li>
+<li class=""><a class="font-body text-body text-on-surface-variant dark:text-outline whitespace-nowrap" href="#">Arquivos</a></li>
+<li class=""><a class="font-body text-body text-on-surface-variant dark:text-outline whitespace-nowrap" href="#">Histórico</a></li>
+<li class="relative h-full flex items-center">
+<a class="font-body-strong text-body-strong text-primary dark:text-primary-fixed whitespace-nowrap" href="#">Dados</a>
+<div class="absolute bottom-0 left-0 w-full h-[2px] bg-primary rounded-t-full"></div>
+</li>
+</ul>
+</nav>
+</header>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto pt-[104px] pb-[88px] px-screen-horizontal space-y-section-gap">
+<!-- Section 1: Resumo do Cadastro -->
+<section class="mt-4">
+<div class="glass-card rounded-2xl p-card-padding">
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-section-title text-section-title text-text-primary">Resumo do Cadastro</h2>
+<span class="font-status text-status bg-success/10 text-success px-2 py-1 rounded-full uppercase tracking-wider">Ativo</span>
+</div>
+<div class="grid grid-cols-2 gap-y-4 gap-x-2">
+<div>
+<p class="font-caption text-caption text-text-secondary mb-0.5">Criado em</p>
+<p class="font-body-strong text-body-strong text-on-surface">15 Jan 2023</p>
+</div>
+<div>
+<p class="font-caption text-caption text-text-secondary mb-0.5">Origem</p>
+<p class="font-body-strong text-body-strong text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">search</span> Google Search
+                        </p>
+</div>
+<div class="col-span-2 pt-2 border-t border-outline-variant/20">
+<p class="font-caption text-caption text-text-secondary mb-0.5">Responsável</p>
+<div class="flex items-center gap-2 mt-1">
+<div class="w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-label text-[10px]">DG</div>
+<p class="font-body-strong text-body-strong text-on-surface">Dr. Gabriel</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Dados Pessoais -->
+<section>
+<div class="flex items-center justify-between mb-3 px-1">
+<h2 class="font-section-title text-section-title text-text-primary">Dados Pessoais</h2>
+<button class="text-primary p-1 hover:bg-primary/5 rounded-full transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+<div class="glass-card rounded-2xl p-0 overflow-hidden">
+<ul class="divide-y divide-outline-variant/20">
+<li class="p-compact-card-padding flex items-start gap-3">
+<span class="material-symbols-outlined text-outline mt-0.5">person</span>
+<div class="flex-1">
+<p class="font-caption text-caption text-text-secondary">Nome Completo</p>
+<p class="font-body-strong text-body-strong text-on-surface mt-0.5">Ana Silva</p>
+</div>
+</li>
+<li class="p-compact-card-padding flex items-start gap-3">
+<span class="material-symbols-outlined text-outline mt-0.5">cake</span>
+<div class="flex-1 flex justify-between">
+<div>
+<p class="font-caption text-caption text-text-secondary">Nascimento</p>
+<p class="font-body-strong text-body-strong text-on-surface mt-0.5">12/05/1991</p>
+</div>
+<div class="text-right">
+<p class="font-caption text-caption text-text-secondary">Idade</p>
+<p class="font-body-strong text-body-strong text-on-surface mt-0.5">32 anos</p>
+</div>
+</div>
+</li>
+<li class="p-compact-card-padding flex items-start gap-3">
+<span class="material-symbols-outlined text-outline mt-0.5">badge</span>
+<div class="flex-1">
+<p class="font-caption text-caption text-text-secondary">CPF</p>
+<p class="font-body text-body text-on-surface mt-0.5 font-mono">123.456.789-00</p>
+</div>
+</li>
+<li class="p-compact-card-padding flex items-start gap-3">
+<span class="material-symbols-outlined text-outline mt-0.5">call</span>
+<div class="flex-1">
+<p class="font-caption text-caption text-text-secondary">Telefone</p>
+<p class="font-body-strong text-body-strong text-primary mt-0.5">(11) 98765-4321</p>
+</div>
+<button class="w-8 h-8 rounded-full bg-success/10 text-success flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</button>
+</li>
+<li class="p-compact-card-padding flex items-start gap-3">
+<span class="material-symbols-outlined text-outline mt-0.5">mail</span>
+<div class="flex-1">
+<p class="font-caption text-caption text-text-secondary">Email</p>
+<p class="font-body-strong text-body-strong text-on-surface mt-0.5 truncate">ana.silva@email.com</p>
+</div>
+</li>
+</ul>
+</div>
+</section>
+<!-- Section 3: Endereço (Bento Grid Style) -->
+<section>
+<div class="flex items-center justify-between mb-3 px-1">
+<h2 class="font-section-title text-section-title text-text-primary">Endereço</h2>
+<button class="text-primary p-1 hover:bg-primary/5 rounded-full transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<div class="col-span-2 glass-card rounded-2xl p-compact-card-padding flex gap-3">
+<span class="material-symbols-outlined text-outline mt-0.5">home</span>
+<div>
+<p class="font-caption text-caption text-text-secondary">Logradouro</p>
+<p class="font-body-strong text-body-strong text-on-surface mt-0.5">Rua das Flores, 123</p>
+</div>
+</div>
+<div class="glass-card rounded-2xl p-compact-card-padding">
+<p class="font-caption text-caption text-text-secondary">Cidade / UF</p>
+<p class="font-body-strong text-body-strong text-on-surface mt-0.5">São Paulo - SP</p>
+</div>
+<div class="glass-card rounded-2xl p-compact-card-padding">
+<p class="font-caption text-caption text-text-secondary">CEP</p>
+<p class="font-body text-body text-on-surface mt-0.5 font-mono">01234-567</p>
+</div>
+</div>
+</section>
+<!-- Section 4: Dados Complementares -->
+<section>
+<div class="flex items-center justify-between mb-3 px-1">
+<h2 class="font-section-title text-section-title text-text-primary">Dados Complementares</h2>
+<button class="text-primary p-1 hover:bg-primary/5 rounded-full transition-colors">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+<div class="glass-card rounded-2xl p-card-padding space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-surface-variant flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">health_and_safety</span>
+</div>
+<div>
+<p class="font-caption text-caption text-text-secondary">Convênio</p>
+<p class="font-body-strong text-body-strong text-on-surface">Bradesco Saúde</p>
+</div>
+</div>
+</div>
+<div class="bg-error-container/40 p-3 rounded-xl border border-error/20 flex items-start gap-2">
+<span class="material-symbols-outlined text-error mt-0.5 text-[20px]">warning</span>
+<div>
+<p class="font-label text-label text-error">Alergias Registradas</p>
+<p class="font-body text-body text-on-surface mt-1">Penicilina</p>
+</div>
+</div>
+<div class="bg-surface-variant/40 p-3 rounded-xl border border-outline-variant/20">
+<p class="font-label text-label text-text-secondary flex items-center gap-1 mb-1">
+<span class="material-symbols-outlined text-[14px]">note</span> Observações Administrativas
+                    </p>
+<p class="font-body text-body text-on-surface">Prefere agendamentos no período da manhã.</p>
+</div>
+</div>
+</section>
+<!-- Quick Actions Grid -->
+<section class="pt-2">
+<div class="grid grid-cols-2 gap-3">
+<button class="bg-primary hover:opacity-90 text-on-primary py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-ambient active:scale-95">
+<span class="material-symbols-outlined text-[20px]">edit_square</span>
+<span class="font-body-strong text-body-strong">Editar cadastro</span>
+</button>
+<button class="bg-surface-glass border border-outline-variant/30 text-primary py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">contact_phone</span>
+<span class="font-body-strong text-body-strong">Atualizar contato</span>
+</button>
+<button class="bg-surface-glass border border-outline-variant/30 text-primary py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">post_add</span>
+<span class="font-body-strong text-body-strong">Nova observação</span>
+</button>
+<button class="bg-surface-glass border border-outline-variant/30 text-on-surface-variant hover:text-primary py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">print</span>
+<span class="font-body-strong text-body-strong">Imprimir ficha</span>
+</button>
+</div>
+</section>
+<!-- Bottom spacing for nav -->
+<div class="h-4"></div>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface-glass dark:bg-inverse-surface/90 fixed bottom-0 w-full max-w-[390px] z-50 backdrop-blur-xl rounded-t-xl border-t border-outline-variant/20 shadow-[0_-4px_12px_rgba(31,67,126,0.08)]">
+<ul class="flex justify-around items-center h-16 w-full px-2 pb-safe">
+<li class="">
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:opacity-80 active:scale-90 duration-150 transition-transform p-2 w-touch-target-min h-touch-target-min" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-label text-label mt-1">Hoje</span>
+</a>
+</li>
+<li class="">
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-bold hover:opacity-80 active:scale-90 duration-150 transition-transform p-2 w-touch-target-min h-touch-target-min" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="font-label text-label mt-1">Pacientes</span>
+</a>
+</li>
+<li class="-mt-6 relative z-10">
+<a class="flex flex-col items-center justify-center bg-primary text-on-primary rounded-full w-14 h-14 shadow-fab active:scale-90 duration-150 transition-transform" href="#">
+<span class="material-symbols-outlined text-[32px]">add_circle</span>
+<span class="sr-only">Captura rápida</span>
+</a>
+</li>
+<li class="">
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:opacity-80 active:scale-90 duration-150 transition-transform p-2 w-touch-target-min h-touch-target-min" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-label text-label mt-1">Fluxos</span>
+</a>
+</li>
+<li class="">
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:opacity-80 active:scale-90 duration-150 transition-transform p-2 w-touch-target-min h-touch-target-min" href="#">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="font-label text-label mt-1">Mais</span>
+</a>
+</li>
+</ul>
+</nav>
+
+
+</body></html>

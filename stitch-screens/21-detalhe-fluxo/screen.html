@@ -1,0 +1,328 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Detalhe de um Fluxo</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#7e2c00",
+                      "text-secondary": "#5E6C86",
+                      "tertiary-fixed-dim": "#ffb598",
+                      "warning": "#D99214",
+                      "on-surface": "#191b23",
+                      "on-secondary-fixed": "#001d34",
+                      "primary": "#004cba",
+                      "surface-tint": "#0056d1",
+                      "secondary-fixed": "#cfe5ff",
+                      "outline": "#737786",
+                      "on-primary-fixed": "#001847",
+                      "on-background": "#191b23",
+                      "primary-fixed": "#dae2ff",
+                      "surface-dim": "#d8d9e4",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "on-primary-fixed-variant": "#0040a0",
+                      "tertiary-container": "#ba4500",
+                      "on-tertiary-container": "#ffe8e0",
+                      "error-container": "#ffdad6",
+                      "accent-indigo": "#5C78F0",
+                      "inverse-surface": "#2e3039",
+                      "surface-bright": "#faf8ff",
+                      "surface-glass": "rgba(255, 255, 255, 0.72)",
+                      "on-tertiary-fixed": "#360f00",
+                      "surface-container": "#ecedf8",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed": "#ffdbcd",
+                      "background": "#F6F8FC",
+                      "secondary-fixed-dim": "#9acbff",
+                      "on-surface-variant": "#424654",
+                      "success": "#26B978",
+                      "primary-container": "#1463e6",
+                      "outline-variant": "#c2c6d7",
+                      "tertiary": "#923400",
+                      "surface-container-highest": "#e1e2ed",
+                      "on-secondary-container": "#00406a",
+                      "inverse-primary": "#b2c5ff",
+                      "surface-container-high": "#e7e7f3",
+                      "on-error-container": "#93000a",
+                      "inverse-on-surface": "#eff0fb",
+                      "secondary-container": "#51aeff",
+                      "on-primary-container": "#e9edff",
+                      "primary-fixed-dim": "#b2c5ff",
+                      "error": "#E5484D",
+                      "text-primary": "#102044",
+                      "surface-container-low": "#f2f3fe",
+                      "surface": "rgba(255, 255, 255, 0.88)",
+                      "on-error": "#ffffff",
+                      "surface-variant": "#e1e2ed",
+                      "on-secondary-fixed-variant": "#004a79",
+                      "on-tertiary": "#ffffff",
+                      "secondary": "#00629e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "touch-target-min": "44px",
+                      "section-gap": "20px",
+                      "card-padding": "16px",
+                      "screen-top": "12px",
+                      "inline": "8px",
+                      "base": "4px",
+                      "screen-horizontal": "16px",
+                      "screen-margin": "16px",
+                      "compact-card-padding": "14px",
+                      "card-gap": "12px",
+                      "base-unit": "4px",
+                      "inline-gap": "8px"
+              },
+              "fontFamily": {
+                      "caption": ["Inter"],
+                      "page-title": ["Inter"],
+                      "body-strong": ["Inter"],
+                      "section-title": ["Inter"],
+                      "label": ["Inter"],
+                      "card-title": ["Inter"],
+                      "status": ["Inter"],
+                      "body": ["Inter"]
+              },
+              "fontSize": {
+                      "caption": ["11px", {"lineHeight": "15px", "fontWeight": "400"}],
+                      "page-title": ["22px", {"lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "page-title-mobile": ["20px", {"lineHeight": "26px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+                      "body-strong": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                      "section-title": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+                      "section-title-mobile": ["16px", {"lineHeight": "22px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "label": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "card-title": ["16px", {"lineHeight": "21px", "fontWeight": "700"}],
+                      "status": ["10px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                      "body": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body { background-color: #F6F8FC; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(194, 198, 215, 0.3);
+        }
+        .timeline-line {
+            width: 2px;
+            background: linear-gradient(to bottom, #004cba 0%, #c2c6d7 100%);
+        }
+    </style>
+</head>
+<body class="text-on-background font-body text-body antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen w-full max-w-[390px] mx-auto bg-background relative shadow-2xl overflow-x-hidden">
+<!-- Top Navigation (Detail View Context) -->
+<header class="sticky top-0 z-50 bg-surface-glass backdrop-blur-xl h-14 flex items-center justify-between px-4 border-b border-outline-variant/30">
+<button aria-label="Voltar" class="w-10 h-10 flex items-center justify-center text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<div class="flex-1 text-center">
+<h1 class="font-section-title text-section-title-mobile text-on-surface truncate px-2">Planejamento protético</h1>
+</div>
+<button aria-label="Menu" class="w-10 h-10 flex items-center justify-center text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">more_vert</span>
+</button>
+</header>
+<main class="px-screen-horizontal py-section-gap flex flex-col gap-section-gap pb-24">
+<!-- Header & Quick Actions -->
+<section class="flex flex-col gap-4">
+<div class="flex items-start justify-between">
+<div>
+<h2 class="font-page-title text-page-title-mobile text-on-surface mb-1 tracking-tight">Planejamento protético</h2>
+<div class="inline-flex items-center gap-1.5 bg-success/15 px-2.5 py-1 rounded-full border border-success/20">
+<span class="w-1.5 h-1.5 rounded-full bg-success animate-pulse"></span>
+<span class="font-status text-status text-success uppercase tracking-wider">Ativo</span>
+</div>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 h-touch-target-min glass-panel rounded-lg flex items-center justify-center gap-2 text-primary font-body-strong text-body-strong shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+                    Editar
+                </button>
+<button class="flex-1 h-touch-target-min glass-panel rounded-lg flex items-center justify-center gap-2 text-on-surface-variant font-body-strong text-body-strong shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">pause</span>
+                    Pausar
+                </button>
+</div>
+</section>
+<!-- Summary Bento Grid -->
+<section class="grid grid-cols-2 gap-3">
+<div class="glass-panel rounded-xl p-compact-card-padding flex flex-col gap-1 shadow-sm">
+<div class="flex items-center gap-1.5 text-on-surface-variant mb-1">
+<span class="material-symbols-outlined text-[16px]">groups</span>
+<span class="font-caption text-caption">Pacientes</span>
+</div>
+<span class="font-section-title text-section-title-mobile text-on-surface">5 Ativos</span>
+</div>
+<div class="glass-panel rounded-xl p-compact-card-padding flex flex-col gap-1 shadow-sm">
+<div class="flex items-center gap-1.5 text-on-surface-variant mb-1">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span class="font-caption text-caption">Conclusão</span>
+</div>
+<span class="font-section-title text-section-title-mobile text-success">65%</span>
+</div>
+<div class="glass-panel rounded-xl p-compact-card-padding flex flex-col gap-1 shadow-sm col-span-2">
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">next_plan</span>
+<span class="font-caption text-caption">Próxima etapa geral</span>
+</div>
+<span class="font-body-strong text-body-strong text-on-surface">Moldagem</span>
+</div>
+<div class="flex flex-col items-end gap-1 text-right">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="font-caption text-caption">Responsável</span>
+<span class="material-symbols-outlined text-[16px]">person</span>
+</div>
+<span class="font-body-strong text-body-strong text-primary">Dr. Gabriel</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Flow Stages (Journey Visual) -->
+<section class="glass-panel rounded-xl p-card-padding shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-card-title text-card-title text-on-surface">Etapas do Fluxo</h3>
+<span class="font-status text-status text-on-surface-variant bg-surface-container px-2 py-1 rounded-md">6 Passos</span>
+</div>
+<div class="relative ml-2">
+<!-- Vertical Line -->
+<div class="absolute left-[7px] top-2 bottom-4 timeline-line"></div>
+<div class="space-y-6">
+<!-- Step 1 -->
+<div class="relative pl-8 flex items-start">
+<div class="absolute left-0 top-0.5 w-4 h-4 rounded-full bg-primary ring-4 ring-background z-10"></div>
+<div class="flex flex-col">
+<span class="font-body-strong text-body-strong text-on-surface">1. Entrada no fluxo</span>
+<span class="font-caption text-caption text-on-surface-variant">Automático</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative pl-8 flex items-start">
+<div class="absolute left-0 top-0.5 w-4 h-4 rounded-full bg-primary ring-4 ring-background z-10"></div>
+<div class="flex flex-col">
+<span class="font-body-strong text-body-strong text-on-surface">2. Criar pendência</span>
+<span class="font-caption text-caption text-on-surface-variant">Ação manual requerida</span>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="relative pl-8 flex items-start">
+<div class="absolute left-0 top-0.5 w-4 h-4 rounded-full bg-primary ring-4 ring-background z-10"></div>
+<div class="flex flex-col">
+<span class="font-body-strong text-body-strong text-on-surface">3. Solicitar exame</span>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="relative pl-8 flex items-start">
+<div class="absolute left-[1px] top-1 w-3.5 h-3.5 rounded-full bg-surface border-2 border-primary ring-4 ring-background z-10"></div>
+<div class="flex flex-col">
+<span class="font-body-strong text-body-strong text-primary">4. Definir planejamento</span>
+<span class="font-caption text-caption text-primary">Etapa atual predominante</span>
+</div>
+</div>
+<!-- Step 5 -->
+<div class="relative pl-8 flex items-start opacity-60">
+<div class="absolute left-[2px] top-1.5 w-3 h-3 rounded-full bg-outline-variant ring-4 ring-background z-10"></div>
+<div class="flex flex-col">
+<span class="font-body-strong text-body-strong text-on-surface">5. Agendar retorno</span>
+</div>
+</div>
+<!-- Step 6 -->
+<div class="relative pl-8 flex items-start opacity-60">
+<div class="absolute left-[2px] top-1.5 w-3 h-3 rounded-full bg-outline-variant ring-4 ring-background z-10"></div>
+<div class="flex flex-col">
+<span class="font-body-strong text-body-strong text-on-surface">6. Concluir</span>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 h-touch-target-min border border-dashed border-primary/40 rounded-lg flex items-center justify-center gap-2 text-primary font-body-strong text-body-strong hover:bg-primary-fixed/20 transition-colors">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+                Adicionar etapa
+            </button>
+</section>
+<!-- Linked Patients -->
+<section class="glass-panel rounded-xl p-card-padding shadow-sm">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-card-title text-card-title text-on-surface">Pacientes Vinculados</h3>
+<button class="text-primary font-label text-label hover:underline">Ver todos</button>
+</div>
+<div class="flex flex-col divide-y divide-outline-variant/20">
+<!-- Patient 1 -->
+<div class="flex items-center gap-3 py-3 first:pt-0 last:pb-0">
+<img alt="Ana Silva" class="w-10 h-10 rounded-full object-cover bg-surface-container" data-alt="A professional headshot of a young woman named Ana Silva, smiling warmly in a bright, modern clinical setting with soft natural light. Corporate modern style, clean light-mode aesthetic, vibrant but soft colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3mtH1Iirykt8Oo5dv3fld8u69WZF6onVfNPnZRWmKXryf1BEDE2OHCHWT5C9nJE4IPosUwN8mdjTBDyU_dquT7LV8ZkZiQvGxGA3vWTY0glOdv0vf40Qm7Z5doWI6ShIpNgyt6i-hEM2MpMUJ_fZjowKbfJS84bgdikGZbzrIkGaW63CnRT-0kPvOto0MnwYzDGn2mnT00Yn4un1sr5U-hLpDcG1I_En8hUHUwYdeZRaL_TI7J6nb9A">
+<div class="flex flex-col flex-1">
+<span class="font-body-strong text-body-strong text-on-surface">Ana Silva</span>
+<span class="font-caption text-caption text-on-surface-variant">Etapa 4: Definir planejamento</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+<!-- Patient 2 -->
+<div class="flex items-center gap-3 py-3 first:pt-0 last:pb-0">
+<img alt="Carlos Mendes" class="w-10 h-10 rounded-full object-cover bg-surface-container" data-alt="A professional headshot of a middle-aged man named Carlos Mendes, looking confident in a bright, modern office setting with soft natural lighting. Corporate modern style, crisp light-mode aesthetic with subtle depth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIVPBVbXF4sFrP-D-GZgd2_Vpi88bYNxdH2kP84HT9TPV9_LMCGFm4LGNrinUPbcAG2IMZLtIvFcHW7LYDARgCvTs52ZDYCpGuKLKEuOqhzdsEJ-OcEuLBidqdS63uwGECQ6M7UATijYQqvRo0CzCt9WRLOkwXB1nDrjjL-A_SwUFSVLrdflPF0KnqP6wc2qeEmxddxMQdfbzzehxQzBHdhwqPyYr0EeF_IMlqDR2lxo7i8gQ-dw-nvg">
+<div class="flex flex-col flex-1">
+<span class="font-body-strong text-body-strong text-on-surface">Carlos Mendes</span>
+<span class="font-caption text-caption text-on-surface-variant">Etapa 3: Solicitar exame</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+<!-- Patient 3 -->
+<div class="flex items-center gap-3 py-3 first:pt-0 last:pb-0">
+<img alt="Juliana Costa" class="w-10 h-10 rounded-full object-cover bg-surface-container" data-alt="A professional headshot of a young woman named Juliana Costa, wearing professional attire in a modern, brightly lit interior. Soft ambient shadows, high-key lighting, clean corporate modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP0BHJA9tMrtvR4iYksWmIiIHfB8o2bxspFcpMHSjzr98AEGUapRcuwQETh60XRhIGL6QlcfttFr8EH5tIqQJg6748W7RERvWioLM8xwDt7_Xhu5iEQLr9N7e2iYBdyKAftDuRUc4pmyX1c0Bw49d5HUppsszvGgqDxibVZVSLqTt8cl60B8Mvsm0qP4x3yQmBgpW6W6KGrUwdS-EJhxt1rEpFKPLsoO1QDiYHZ4kGipzHPh1octRz3g">
+<div class="flex flex-col flex-1">
+<span class="font-body-strong text-body-strong text-on-surface">Juliana Costa</span>
+<span class="font-caption text-caption text-on-surface-variant">Etapa 2: Criar pendência</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+
+
+<nav class="fixed bottom-4 left-4 right-4 z-50 glass-panel rounded-xl shadow-2xl px-2 py-2 flex items-center justify-between">
+    <button class="flex flex-col items-center justify-center gap-1 flex-1 text-on-surface-variant hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[24px]">calendar_today</span>
+        <span class="font-label text-[10px]">Hoje</span>
+    </button>
+    <button class="flex flex-col items-center justify-center gap-1 flex-1 text-on-surface-variant hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[24px]">groups</span>
+        <span class="font-label text-[10px]">Pacientes</span>
+    </button>
+    <button class="flex flex-col items-center justify-center -mt-8 bg-primary text-on-primary w-14 h-14 rounded-full shadow-lg active:scale-95 transition-transform">
+        <span class="material-symbols-outlined text-[32px]">add_circle</span>
+    </button>
+    <button class="flex flex-col items-center justify-center gap-1 flex-1 text-primary">
+        <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+        <span class="font-label text-[10px]">Fluxos</span>
+    </button>
+    <button class="flex flex-col items-center justify-center gap-1 flex-1 text-on-surface-variant hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[24px]">more_horiz</span>
+        <span class="font-label text-[10px]">Mais</span>
+    </button>
+</nav>
+
+</body></html>

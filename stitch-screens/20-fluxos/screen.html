@@ -1,0 +1,323 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Fluxos - DentalPro Premium</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#7e2c00",
+                        "text-secondary": "#5E6C86",
+                        "tertiary-fixed-dim": "#ffb598",
+                        "warning": "#D99214",
+                        "on-surface": "#191b23",
+                        "on-secondary-fixed": "#001d34",
+                        "primary": "#004cba",
+                        "surface-tint": "#0056d1",
+                        "secondary-fixed": "#cfe5ff",
+                        "outline": "#737786",
+                        "on-primary-fixed": "#001847",
+                        "on-background": "#191b23",
+                        "primary-fixed": "#dae2ff",
+                        "surface-dim": "#d8d9e4",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#0040a0",
+                        "tertiary-container": "#ba4500",
+                        "on-tertiary-container": "#ffe8e0",
+                        "error-container": "#ffdad6",
+                        "accent-indigo": "#5C78F0",
+                        "inverse-surface": "#2e3039",
+                        "surface-bright": "#faf8ff",
+                        "surface-glass": "rgba(255, 255, 255, 0.72)",
+                        "on-tertiary-fixed": "#360f00",
+                        "surface-container": "#ecedf8",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#ffdbcd",
+                        "background": "#F6F8FC",
+                        "secondary-fixed-dim": "#9acbff",
+                        "on-surface-variant": "#424654",
+                        "success": "#26B978",
+                        "primary-container": "#1463e6",
+                        "outline-variant": "#c2c6d7",
+                        "tertiary": "#923400",
+                        "surface-container-highest": "#e1e2ed",
+                        "on-secondary-container": "#00406a",
+                        "inverse-primary": "#b2c5ff",
+                        "surface-container-high": "#e7e7f3",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#eff0fb",
+                        "secondary-container": "#51aeff",
+                        "on-primary-container": "#e9edff",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "error": "#E5484D",
+                        "text-primary": "#102044",
+                        "surface-container-low": "#f2f3fe",
+                        "surface": "rgba(255, 255, 255, 0.88)",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e1e2ed",
+                        "on-secondary-fixed-variant": "#004a79",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#00629e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "touch-target-min": "44px",
+                        "section-gap": "20px",
+                        "card-padding": "16px",
+                        "screen-top": "12px",
+                        "inline": "8px",
+                        "base": "4px",
+                        "screen-horizontal": "16px",
+                        "screen-margin": "16px",
+                        "compact-card-padding": "14px",
+                        "card-gap": "12px",
+                        "base-unit": "4px",
+                        "inline-gap": "8px"
+                    },
+                    "fontFamily": {
+                        "caption": ["Inter"],
+                        "page-title": ["Inter"],
+                        "body-strong": ["Inter"],
+                        "section-title": ["Inter"],
+                        "label": ["Inter"],
+                        "card-title": ["Inter"],
+                        "status": ["Inter"],
+                        "body": ["Inter"]
+                    },
+                    "fontSize": {
+                        "caption": ["11px", { "lineHeight": "15px", "fontWeight": "400" }],
+                        "page-title": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-strong": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "section-title": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+                        "label": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "card-title": ["16px", { "lineHeight": "21px", "fontWeight": "700" }],
+                        "status": ["10px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { -webkit-tap-highlight-color: transparent; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Glassmorphism utilities */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 0.5px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 20px rgba(31, 67, 126, 0.08);
+        }
+        
+        .glass-header {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 0.5px solid rgba(194, 198, 215, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body w-full max-w-[390px] mx-auto min-h-[884px] relative pb-[100px]">
+<!-- TopAppBar -->
+<header class="bg-surface-glass dark:bg-inverse-surface/90 backdrop-blur-xl font-page-title text-page-title-mobile fixed top-0 left-0 w-full z-50 border-b border-outline-variant/30 dark:border-outline/20 shadow-sm dark:shadow-none transition-all duration-200 active:scale-95 flex justify-between items-center px-4 py-3 max-w-xl mx-auto">
+<div class="flex items-center gap-3">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="A small, professional portrait photo of a smiling dental clinic manager wearing a white coat, set against a soft, well-lit blue background. Corporate modern aesthetic, high resolution." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwca2zScfjxo0VqgY2D4MUP4Fxb0-vQpGxdc7TduL57xXshjp0xoOxq9UKigPAGqLTu1MCRpmVdLn3bC6fRrIHev_bdmLXxm3xw6YWFTWHrayFCy4OeN1oM8UMk4B8sYLuZOMZtGQvqDUWbnQuM2V4faxMFEsZd-Tc5y9N4SALPsrX72CGl-KCPluUZLb-i8km3wmxrF7Nv19fUbUri_xQtygu0WM8Vr2H7ezrF6r2CTjG-5DpTNMXNA">
+<h1 class="font-page-title text-page-title text-primary dark:text-primary-fixed-dim tracking-tight">DentalPro Premium</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low/50 text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<main class="pt-[72px] px-screen-horizontal flex flex-col gap-section-gap">
+<!-- Page Header & Actions -->
+<div class="mt-4">
+<div class="flex justify-between items-center mb-4">
+<h2 class="font-page-title text-page-title text-text-primary">Fluxos</h2>
+<button class="bg-gradient-to-r from-primary to-surface-tint text-on-primary font-body-strong text-body-strong px-4 h-10 rounded-[16px] shadow-[0_4px_12px_rgba(31,67,126,0.2)] flex items-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">add</span>
+                    Novo fluxo
+                </button>
+</div>
+<div class="flex gap-2 mb-2">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full h-11 bg-surface-soft border-outline-variant/50 rounded-xl pl-10 pr-4 font-body text-body text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Buscar fluxos..." type="text">
+</div>
+<button class="w-11 h-11 bg-surface-soft border border-outline-variant/50 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+</div>
+<!-- Resumo Superior (Bento Grid Style) -->
+<div class="grid grid-cols-2 gap-3">
+<div class="glass-card rounded-xl p-3 flex flex-col justify-between min-h-[80px]">
+<div class="flex justify-between items-start">
+<span class="font-label text-label text-text-secondary">Ativos</span>
+<span class="material-symbols-outlined text-primary text-[16px]">play_circle</span>
+</div>
+<div class="font-page-title text-[24px] font-bold text-text-primary">6</div>
+</div>
+<div class="glass-card rounded-xl p-3 flex flex-col justify-between min-h-[80px]">
+<div class="flex justify-between items-start">
+<span class="font-label text-label text-text-secondary">Pausados</span>
+<span class="material-symbols-outlined text-warning text-[16px]">pause_circle</span>
+</div>
+<div class="font-page-title text-[24px] font-bold text-text-primary">1</div>
+</div>
+<div class="glass-card rounded-xl p-3 flex flex-col justify-between min-h-[80px]">
+<div class="flex justify-between items-start">
+<span class="font-label text-label text-text-secondary">Concluídos</span>
+<span class="material-symbols-outlined text-success text-[16px]">check_circle</span>
+</div>
+<div class="font-page-title text-[24px] font-bold text-text-primary">14</div>
+</div>
+<div class="glass-card rounded-xl p-3 flex flex-col justify-between min-h-[80px]">
+<div class="flex justify-between items-start">
+<span class="font-label text-label text-text-secondary">Automações</span>
+<span class="material-symbols-outlined text-accent-indigo text-[16px]">bolt</span>
+</div>
+<div class="font-page-title text-[24px] font-bold text-text-primary">8</div>
+</div>
+</div>
+<!-- Lista de Fluxos -->
+<div class="flex flex-col gap-3">
+<h3 class="font-section-title text-section-title text-text-primary mb-1">Seus Fluxos</h3>
+<!-- Item 1 -->
+<div class="glass-card rounded-xl p-card-padding flex flex-col gap-3 active:scale-[0.98] transition-transform">
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">waving_hand</span>
+</div>
+<div>
+<h4 class="font-card-title text-card-title text-text-primary">Novo paciente</h4>
+<p class="font-caption text-caption text-text-secondary mt-0.5">Boas-vindas</p>
+</div>
+</div>
+<span class="px-2 py-1 bg-surface-container text-primary font-status text-status rounded-full">Ativo</span>
+</div>
+<div class="flex justify-between items-center border-t border-outline-variant/20 pt-3 mt-1">
+<div class="flex items-center gap-1.5 text-text-secondary font-caption text-caption">
+<span class="material-symbols-outlined text-[14px]">groups</span>
+<span class="">12 pacientes ativos</span>
+</div>
+<button class="text-primary p-1">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="glass-card rounded-xl p-card-padding flex flex-col gap-3 active:scale-[0.98] transition-transform">
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">quickreply</span>
+</div>
+<div>
+<h4 class="font-card-title text-card-title text-text-primary">Pós-avaliação</h4>
+<p class="font-caption text-caption text-text-secondary mt-0.5">Follow-up</p>
+</div>
+</div>
+<span class="px-2 py-1 bg-surface-container text-primary font-status text-status rounded-full">Ativo</span>
+</div>
+<div class="flex justify-between items-center border-t border-outline-variant/20 pt-3 mt-1">
+<div class="flex items-center gap-1.5 text-text-secondary font-caption text-caption">
+<span class="material-symbols-outlined text-[14px]">groups</span>
+<span class="">8 pacientes</span>
+</div>
+<button class="text-primary p-1">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="glass-card rounded-xl p-card-padding flex flex-col gap-3 active:scale-[0.98] transition-transform">
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center text-error shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">event_repeat</span>
+</div>
+<div>
+<h4 class="font-card-title text-card-title text-text-primary">Retorno de manutenção</h4>
+<p class="font-caption text-caption text-text-secondary mt-0.5">Recall</p>
+</div>
+</div>
+<span class="px-2 py-1 bg-surface-container text-primary font-status text-status rounded-full">Ativo</span>
+</div>
+<div class="flex justify-between items-center border-t border-outline-variant/20 pt-3 mt-1">
+<div class="flex items-center gap-1.5 text-text-secondary font-caption text-caption">
+<span class="material-symbols-outlined text-[14px]">groups</span>
+<span class="">45 pacientes</span>
+</div>
+<button class="text-primary p-1">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="glass-card rounded-xl p-card-padding flex flex-col gap-3 active:scale-[0.98] transition-transform">
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">medical_information</span>
+</div>
+<div>
+<h4 class="font-card-title text-card-title text-text-primary">Planejamento protético</h4>
+<p class="font-caption text-caption text-text-secondary mt-0.5">Acompanhamento lab</p>
+</div>
+</div>
+<span class="px-2 py-1 bg-surface-container text-warning font-status text-status rounded-full">Pausado</span>
+</div>
+<div class="flex justify-between items-center border-t border-outline-variant/20 pt-3 mt-1">
+<div class="flex items-center gap-1.5 text-text-secondary font-caption text-caption">
+<span class="material-symbols-outlined text-[14px]">groups</span>
+<span class="">5 pacientes</span>
+</div>
+<button class="text-primary p-1">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface-glass dark:bg-inverse-surface/95 backdrop-blur-xl fixed bottom-0 left-0 w-full z-50 rounded-t-xl border-t border-outline-variant/30 dark:border-outline/20 shadow-[0_-4px_20px_rgba(31,67,126,0.08)] flex justify-around items-center px-2 pb-safe-area pt-2 max-w-xl mx-auto h-[72px]">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:opacity-80 w-16 h-full gap-1">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-label text-label">Hoje</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:opacity-80 w-16 h-full gap-1">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label text-label">Pacientes</span>
+</button>
+<div class="w-16 h-full flex justify-center items-start pt-1">
+<button class="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-surface-tint text-on-primary shadow-[0_4px_12px_rgba(31,67,126,0.3)] flex items-center justify-center hover:opacity-90 active:scale-90 transition-all z-10 -mt-4 border-4 border-background">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+</button>
+</div>
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold hover:opacity-80 w-16 h-full gap-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+<span class="font-label text-label">Fluxos</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:opacity-80 w-16 h-full gap-1">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="font-label text-label">Mais</span>
+</button>
+</nav>
+
+
+</body></html>

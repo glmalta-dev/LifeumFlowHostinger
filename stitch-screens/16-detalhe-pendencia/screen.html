@@ -1,0 +1,315 @@
+<!DOCTYPE html><html class="light" lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Detalhe de Pendência - DentalPro Premium</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#7e2c00",
+                        "text-secondary": "#5E6C86",
+                        "tertiary-fixed-dim": "#ffb598",
+                        "warning": "#D99214",
+                        "on-surface": "#191b23",
+                        "on-secondary-fixed": "#001d34",
+                        "primary": "#004cba",
+                        "surface-tint": "#0056d1",
+                        "secondary-fixed": "#cfe5ff",
+                        "outline": "#737786",
+                        "on-primary-fixed": "#001847",
+                        "on-background": "#191b23",
+                        "primary-fixed": "#dae2ff",
+                        "surface-dim": "#d8d9e4",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#0040a0",
+                        "tertiary-container": "#ba4500",
+                        "on-tertiary-container": "#ffe8e0",
+                        "error-container": "#ffdad6",
+                        "accent-indigo": "#5C78F0",
+                        "inverse-surface": "#2e3039",
+                        "surface-bright": "#faf8ff",
+                        "surface-glass": "rgba(255, 255, 255, 0.72)",
+                        "on-tertiary-fixed": "#360f00",
+                        "surface-container": "#ecedf8",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#ffdbcd",
+                        "background": "#F6F8FC",
+                        "secondary-fixed-dim": "#9acbff",
+                        "on-surface-variant": "#424654",
+                        "success": "#26B978",
+                        "primary-container": "#1463e6",
+                        "outline-variant": "#c2c6d7",
+                        "tertiary": "#923400",
+                        "surface-container-highest": "#e1e2ed",
+                        "on-secondary-container": "#00406a",
+                        "inverse-primary": "#b2c5ff",
+                        "surface-container-high": "#e7e7f3",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#eff0fb",
+                        "secondary-container": "#51aeff",
+                        "on-primary-container": "#e9edff",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "error": "#E5484D",
+                        "text-primary": "#102044",
+                        "surface-container-low": "#f2f3fe",
+                        "surface": "rgba(255, 255, 255, 0.88)",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e1e2ed",
+                        "on-secondary-fixed-variant": "#004a79",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#00629e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "touch-target-min": "44px",
+                        "section-gap": "20px",
+                        "card-padding": "16px",
+                        "screen-top": "12px",
+                        "inline": "8px",
+                        "base": "4px",
+                        "screen-horizontal": "16px",
+                        "screen-margin": "16px",
+                        "compact-card-padding": "14px",
+                        "card-gap": "12px",
+                        "base-unit": "4px",
+                        "inline-gap": "8px"
+                    },
+                    "fontFamily": {
+                        "caption": ["Inter"],
+                        "page-title": ["Inter"],
+                        "body-strong": ["Inter"],
+                        "section-title": ["Inter"],
+                        "label": ["Inter"],
+                        "card-title": ["Inter"],
+                        "status": ["Inter"],
+                        "body": ["Inter"]
+                    },
+                    "fontSize": {
+                        "caption": ["11px", { "lineHeight": "15px", "fontWeight": "400" }],
+                        "page-title": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-strong": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "section-title": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+                        "label": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "card-title": ["16px", { "lineHeight": "21px", "fontWeight": "700" }],
+                        "status": ["10px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 0.5px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(31, 67, 126, 0.08);
+        }
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 24px;
+            bottom: -24px;
+            width: 2px;
+            background-color: theme('colors.outline-variant');
+            opacity: 0.3;
+        }
+        .timeline-item:last-child .timeline-line::before {
+            display: none;
+        }
+    </style>
+</head>
+<body class="text-on-surface antialiased min-h-screen flex flex-col w-full max-w-[390px] mx-auto overflow-x-hidden relative pb-24">
+<!-- Background Decoration -->
+<div class="fixed top-0 left-0 right-0 h-64 bg-gradient-to-b from-primary-fixed/40 to-transparent -z-10 pointer-events-none"></div>
+<!-- Top App Bar -->
+<header class="bg-surface-glass backdrop-blur-xl fixed top-0 left-0 w-full z-50 border-b border-outline-variant/30 shadow-sm transition-all duration-200">
+<div class="flex justify-between items-center px-4 py-3 max-w-xl mx-auto">
+<button aria-label="Voltar" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low/50 active:scale-95 text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<h1 class="font-page-title text-[18px] leading-[24px] font-bold text-primary tracking-tight">Responder solicitação</h1>
+<span class="font-label text-label text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined" style="font-size: 14px;">person</span>
+                    Ana Silva
+                </span>
+</div>
+<button aria-label="Mais opções" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low/50 active:scale-95 text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-[72px] px-screen-horizontal space-y-section-gap">
+<!-- Principal Card -->
+<section class="glass-card rounded-xl p-card-padding">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-2 flex-wrap">
+<span class="font-status text-status px-2 py-1 rounded-full bg-primary-fixed text-on-primary-fixed uppercase">Agendamento</span>
+<span class="font-status text-status px-2 py-1 rounded-full bg-error-container text-on-error-container uppercase">Prioridade Alta</span>
+</div>
+<span class="font-status text-status px-2 py-1 rounded-full border border-warning text-warning flex items-center gap-1">
+<span class="material-symbols-outlined" style="font-size: 12px; font-variation-settings: 'FILL' 1;">error</span>
+                    Atraso de 2 dias
+                </span>
+</div>
+<h2 class="font-card-title text-card-title text-text-primary mb-4">Paciente solicitou via WhatsApp agendamento de retorno para avaliação de dente 14</h2>
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-outline-variant/30">
+<div>
+<p class="font-caption text-caption text-text-secondary mb-1">Responsável</p>
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A small, professional headshot of a male dentist with short brown hair, wearing a white clinical coat, set against a clean, light blue medical clinic background. The lighting is soft and natural, emphasizing a trustworthy and professional demeanor." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT09YMxYf4BecufSD82KCl6do6ORCETsIIN_6bBKYeo0pBVh_WYMIg6cZoqBU6jK2mfmJouIpO9zf9zwHi0VlQIZRwLIDdbV7jHKZMkSlljxW9_XPSX9sACagpx-ziAT40QyTx2BqAFYAn-zgdrzrKvKwLgHbxkikRUUV1BPlGlWF_H8xEjdR550fXFbyloOsFaDt5lcebpEarRxdqlT4GWhZ4b77lvLGQKAJTarCcte0RBiE7G6E5oA">
+</div>
+<p class="font-body-strong text-[13px] text-text-primary truncate">Dr. Gabriel</p>
+</div>
+</div>
+<div>
+<p class="font-caption text-caption text-text-secondary mb-1">Status</p>
+<p class="font-body-strong text-[13px] text-text-primary">Em aberto</p>
+</div>
+</div>
+</section>
+<!-- Ações Principais (Bento Grid Style) -->
+<section class="grid grid-cols-4 gap-3">
+<button class="flex flex-col items-center justify-center p-3 glass-card rounded-xl hover:bg-surface-container transition-colors active:scale-95 group">
+<div class="w-10 h-10 rounded-full bg-primary-fixed/50 text-primary flex items-center justify-center mb-2 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">contact_page</span>
+</div>
+<span class="font-label text-label text-text-primary text-center leading-tight">Abrir<br>ficha</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 glass-card rounded-xl hover:bg-surface-container transition-colors active:scale-95 group">
+<div class="w-10 h-10 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center mb-2 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">edit_calendar</span>
+</div>
+<span class="font-label text-label text-text-primary text-center leading-tight">Reagendar</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 glass-card rounded-xl hover:bg-surface-container transition-colors active:scale-95 group">
+<div class="w-10 h-10 rounded-full bg-success/20 text-success flex items-center justify-center mb-2 group-hover:bg-success group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="font-label text-label text-text-primary text-center leading-tight">Concluir</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 glass-card rounded-xl hover:bg-surface-container transition-colors active:scale-95 group">
+<div class="w-10 h-10 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center mb-2 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">swap_horiz</span>
+</div>
+<span class="font-label text-label text-text-primary text-center leading-tight">Transferir</span>
+</button>
+</section>
+<!-- Ação Secundária Completa -->
+<button class="w-full glass-card rounded-xl p-3 flex items-center justify-center gap-2 hover:bg-surface-container transition-colors active:scale-95 text-on-surface-variant">
+<span class="material-symbols-outlined">note_add</span>
+<span class="font-body-strong text-body-strong">Adicionar Observação</span>
+</button>
+<!-- Próximos Passos Sugeridos -->
+<section>
+<h3 class="font-section-title text-section-title text-text-primary mb-3">Próximos Passos</h3>
+<div class="flex flex-col gap-2">
+<button class="w-full glass-card rounded-xl p-4 flex items-center justify-between hover:bg-surface-container transition-colors active:scale-[0.98]">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-fixed/50 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 18px;">call</span>
+</div>
+<span class="font-body-strong text-body-strong text-text-primary">Ligar para paciente</span>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+<button class="w-full glass-card rounded-xl p-4 flex items-center justify-between hover:bg-surface-container transition-colors active:scale-[0.98]">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-fixed/50 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 18px;">meeting_room</span>
+</div>
+<span class="font-body-strong text-body-strong text-text-primary">Verificar sala 2</span>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Histórico (Timeline) -->
+<section class="mb-8">
+<h3 class="font-section-title text-section-title text-text-primary mb-4">Histórico</h3>
+<div class="glass-card rounded-xl p-5">
+<div class="relative">
+<!-- Item 1 -->
+<div class="timeline-item relative pl-8 pb-6">
+<div class="timeline-line absolute left-0 top-1 w-6 h-6 bg-surface-container-high rounded-full flex items-center justify-center z-10 border-2 border-surface">
+<span class="w-2 h-2 bg-primary rounded-full"></span>
+</div>
+<div>
+<p class="font-body-strong text-[13px] text-text-primary">Reagendamento solicitado</p>
+<p class="font-caption text-caption text-text-secondary mt-1">Agora mesmo</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="timeline-item relative pl-8 pb-6">
+<div class="timeline-line absolute left-0 top-1 w-6 h-6 bg-surface-container-high rounded-full flex items-center justify-center z-10 border-2 border-surface">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-size: 14px;">call</span>
+</div>
+<div>
+<p class="font-body-strong text-[13px] text-text-primary">Tentativa de contato (Sem sucesso)</p>
+<p class="font-caption text-caption text-text-secondary mt-1">16 Out, 14:30</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="timeline-item relative pl-8">
+<div class="timeline-line absolute left-0 top-1 w-6 h-6 bg-surface-container-high rounded-full flex items-center justify-center z-10 border-2 border-surface">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-size: 14px;">add</span>
+</div>
+<div>
+<p class="font-body-strong text-[13px] text-text-primary">Pendência criada (WhatsApp)</p>
+<p class="font-caption text-caption text-text-secondary mt-1">15 Out, 09:15</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-surface-glass backdrop-blur-xl border-t border-outline-variant/30 px-4 pb-6 pt-2">
+    <div class="max-w-xl mx-auto flex justify-between items-center">
+        <button class="flex flex-col items-center gap-1 px-2 py-1 text-text-secondary hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">calendar_today</span>
+            <span class="font-label text-[10px] uppercase tracking-wider">Hoje</span>
+        </button>
+        <button class="flex flex-col items-center gap-1 px-2 py-1 text-text-secondary hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">groups</span>
+            <span class="font-label text-[10px] uppercase tracking-wider">Pacientes</span>
+        </button>
+        <button class="relative -mt-8 flex flex-col items-center">
+            <div class="w-14 h-14 bg-primary rounded-full flex items-center justify-center shadow-lg shadow-primary/30 active:scale-95 transition-transform">
+                <span class="material-symbols-outlined text-on-primary" style="font-size: 32px;">add_circle</span>
+            </div>
+            <span class="font-label text-[10px] uppercase tracking-wider mt-1 text-primary font-bold">Captura</span>
+        </button>
+        <button class="flex flex-col items-center gap-1 px-2 py-1 text-text-secondary hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">account_tree</span>
+            <span class="font-label text-[10px] uppercase tracking-wider">Fluxos</span>
+        </button>
+        <button class="flex flex-col items-center gap-1 px-2 py-1 text-text-secondary hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">more_horiz</span>
+            <span class="font-label text-[10px] uppercase tracking-wider">Mais</span>
+        </button>
+    </div>
+</nav></body></html>

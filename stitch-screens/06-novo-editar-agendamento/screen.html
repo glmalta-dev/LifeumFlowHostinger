@@ -1,0 +1,308 @@
+<!DOCTYPE html><html class="light" lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Novo Agendamento - Ana Silva</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#ffe8e0",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#ecedf8",
+                        "on-primary-fixed": "#001847",
+                        "outline-variant": "#c2c6d7",
+                        "on-primary-fixed-variant": "#0040a0",
+                        "warning": "#D99214",
+                        "secondary-fixed": "#cfe5ff",
+                        "tertiary-fixed-dim": "#ffb598",
+                        "secondary-fixed-dim": "#9acbff",
+                        "inverse-on-surface": "#eff0fb",
+                        "tertiary-container": "#ba4500",
+                        "secondary-container": "#51aeff",
+                        "inverse-surface": "#2e3039",
+                        "surface-bright": "#faf8ff",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#737786",
+                        "text-secondary": "#5E6C86",
+                        "surface-container-low": "#f2f3fe",
+                        "tertiary-fixed": "#ffdbcd",
+                        "primary-container": "#1463e6",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e1e2ed",
+                        "tertiary": "#923400",
+                        "surface-container-high": "#e7e7f3",
+                        "success": "#26B978",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "on-tertiary-fixed": "#360f00",
+                        "inverse-primary": "#b2c5ff",
+                        "surface-variant": "#e1e2ed",
+                        "on-primary-container": "#e9edff",
+                        "primary": "#004cba",
+                        "on-tertiary-fixed-variant": "#7e2c00",
+                        "accent-indigo": "#5C78F0",
+                        "surface-dim": "#d8d9e4",
+                        "on-secondary-fixed-variant": "#004a79",
+                        "surface-tint": "#0056d1",
+                        "secondary": "#00629e",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#00406a",
+                        "primary-fixed": "#dae2ff",
+                        "on-surface": "#191b23",
+                        "on-secondary-fixed": "#001d34",
+                        "text-primary": "#102044",
+                        "error": "#E5484D",
+                        "error-container": "#ffdad6",
+                        "surface-glass": "rgba(255, 255, 255, 0.72)",
+                        "on-surface-variant": "#424654",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#F6F8FC",
+                        "surface": "rgba(255, 255, 255, 0.88)",
+                        "on-background": "#191b23"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "inline-gap": "8px",
+                        "inline": "8px",
+                        "base-unit": "4px",
+                        "compact-card-padding": "14px",
+                        "screen-margin": "16px",
+                        "screen-top": "12px",
+                        "card-padding": "16px",
+                        "base": "4px",
+                        "touch-target-min": "44px",
+                        "section-gap": "20px",
+                        "screen-horizontal": "16px",
+                        "card-gap": "12px"
+                    },
+                    "fontFamily": {
+                        "caption": ["Inter"],
+                        "status": ["Inter"],
+                        "label": ["Inter"],
+                        "section-title": ["Inter"],
+                        "body": ["Inter"],
+                        "page-title": ["Inter"],
+                        "card-title": ["Inter"],
+                        "body-strong": ["Inter"]
+                    },
+                    "fontSize": {
+                        "caption": ["11px", { "lineHeight": "15px", "fontWeight": "400" }],
+                        "status": ["10px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "label": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "section-title": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+                        "body": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "page-title": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "card-title": ["16px", { "lineHeight": "21px", "fontWeight": "700" }],
+                        "body-strong": ["14px", { "lineHeight": "20px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background: linear-gradient(180deg, #F6F8FC 0%, #EDF2FA 100%);
+            min-height: 100vh;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 0.5px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 20px rgba(31, 67, 126, 0.08);
+        }
+        .btn-primary-gradient {
+            background: linear-gradient(135deg, #1463E6 0%, #004CBA 100%);
+            box-shadow: 0 4px 12px rgba(20, 99, 230, 0.25);
+        }
+        .input-soft {
+            background-color: #F2F5FA;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        .input-soft:focus {
+            background-color: #ffffff;
+            border-color: #1463E6;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(20, 99, 230, 0.1);
+        }
+        
+        /* Custom Scrollbar for compact lists if needed */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #c2c6d7; border-radius: 4px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-text-primary font-body antialiased selection:bg-primary-container selection:text-white flex flex-col mx-auto max-w-[390px] relative h-[844px] overflow-hidden bg-background">
+<!-- Modal Header -->
+<header class="bg-surface-glass backdrop-blur-xl sticky top-0 z-50 flex items-center justify-between px-4 h-14 border-b border-outline-variant/30">
+  <div class="flex items-center gap-3">
+    <button aria-label="Voltar" class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high/50 rounded-full transition-colors">
+      <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+    </button>
+    <div class="flex flex-col">
+      <h1 class="font-section-title text-section-title text-text-primary leading-tight">Novo Agendamento</h1>
+      <p class="font-caption text-caption text-text-secondary">Ana Silva</p>
+    </div>
+  </div>
+  <button class="text-primary font-body-strong px-4 h-10 flex items-center justify-center hover:bg-primary-container/10 rounded-lg transition-colors">
+    Salvar
+  </button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto px-screen-horizontal pt-4 pb-32 space-y-5">
+<!-- Patient Summary Snippet -->
+<div class="glass-panel rounded-xl p-compact-card-padding flex items-center gap-3">
+<img alt="Ana Silva" class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="A professional, well-lit studio portrait of a 32-year-old woman smiling gently. She has medium-length brown hair and is wearing a light, neutral-colored blouse. The lighting is soft and flattering, creating a clean, modern aesthetic suitable for a medical or dental clinic app profile picture. High quality, realistic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDq1qxede1gJZC0j-2_arQ3EltsXKkoPCOsOzPS-i1SO3Pv_xcfXCeslvG2Xoblq8wxnXxkAvQkirGQU1L-z5fOUraSaiDA7NY-4xKAzc5FeekA4SI6AdcfDZ99J1hzpG0r3wdLvgj1joPk6pWhIOK-ILYgScBGLlR_Nu0Tm4lj66m14jmCn1CsL748GGBfBp8lAtFaY80-7U1l4B3GP9Cqq7goUxiy0t_QEX5g9SU8ADzoUqGLGsjmNw">
+<div>
+<h2 class="font-body-strong text-body-strong text-text-primary">Ana Silva</h2>
+<p class="font-caption text-caption text-text-secondary">Paciente • 32 anos</p>
+</div>
+</div>
+<!-- Form Section -->
+<form class="space-y-section-gap">
+<!-- Procedure -->
+<div class="space-y-1">
+<label class="font-label text-label text-on-surface-variant ml-1 block" for="procedure">Procedimento</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" style="font-size: 20px;">medical_services</span>
+<select class="input-soft w-full h-12 rounded-xl pl-10 pr-4 font-body text-text-primary appearance-none cursor-pointer" id="procedure">
+<option disabled="" selected="" value="">Selecione o procedimento...</option>
+<option value="restauracao">Restauração em Resina</option>
+<option value="limpeza">Profilaxia (Limpeza)</option>
+<option value="avaliacao">Avaliação Clínica</option>
+<option value="clareamento">Clareamento Dental</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none" style="font-size: 20px;">expand_more</span>
+</div>
+</div>
+<!-- Professional -->
+<div class="space-y-1">
+<label class="font-label text-label text-on-surface-variant ml-1 block" for="professional">Profissional</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" style="font-size: 20px;">person</span>
+<select class="input-soft w-full h-12 rounded-xl pl-10 pr-4 font-body text-text-primary appearance-none cursor-pointer" id="professional">
+<option disabled="" selected="" value="">Selecione o dentista...</option>
+<option value="camila">Dra. Camila</option>
+<option value="gabriel">Dr. Gabriel</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none" style="font-size: 20px;">expand_more</span>
+</div>
+</div>
+<!-- Date & Time Grid -->
+<div class="grid grid-cols-2 gap-3">
+<div class="space-y-1">
+<label class="font-label text-label text-on-surface-variant ml-1 block" for="date">Data</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" style="font-size: 20px;">calendar_today</span>
+<input class="input-soft w-full h-12 rounded-xl pl-10 pr-3 font-body text-text-primary" id="date" type="date">
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label text-label text-on-surface-variant ml-1 flex justify-between" for="time">
+<span class="">Horário</span>
+<a class="text-primary font-label text-label hover:underline" href="#">Ver agenda</a>
+</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" style="font-size: 20px;">schedule</span>
+<input class="input-soft w-full h-12 rounded-xl pl-10 pr-3 font-body text-text-primary" id="time" type="time">
+</div>
+</div>
+</div>
+<!-- Duration & Room Grid -->
+<div class="grid grid-cols-2 gap-3">
+<div class="space-y-1">
+<label class="font-label text-label text-on-surface-variant ml-1 block" for="duration">Duração</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" style="font-size: 20px;">timer</span>
+<select class="input-soft w-full h-12 rounded-xl pl-10 pr-8 font-body text-text-primary appearance-none cursor-pointer" id="duration">
+<option value="15">15 min</option>
+<option selected="" value="30">30 min</option>
+<option value="45">45 min</option>
+<option value="60">1h</option>
+<option value="90">1h 30min</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none" style="font-size: 20px;">expand_more</span>
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label text-label text-on-surface-variant ml-1 block" for="room">Sala</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" style="font-size: 20px;">meeting_room</span>
+<select class="input-soft w-full h-12 rounded-xl pl-10 pr-8 font-body text-text-primary appearance-none cursor-pointer" id="room">
+<option value="sala1">Sala 1</option>
+<option value="sala2">Sala 2</option>
+<option value="sala3">Sala 3</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none" style="font-size: 20px;">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Notes -->
+<div class="space-y-1">
+<label class="font-label text-label text-on-surface-variant ml-1 block" for="notes">Observações <span class="text-outline font-normal">(opcional)</span></label>
+<textarea class="input-soft w-full rounded-xl p-3 font-body text-text-primary resize-none" id="notes" placeholder="Detalhes adicionais para o agendamento..." rows="3"></textarea>
+</div>
+<!-- Recurrence Toggle -->
+<div class="glass-panel rounded-xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline" style="font-size: 24px;">repeat</span>
+<div>
+<p class="font-body-strong text-body-strong text-text-primary">Repetir agendamento</p>
+<p class="font-caption text-caption text-text-secondary">Configurar recorrência semanal ou mensal</p>
+</div>
+</div>
+<!-- Simple CSS Toggle -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value="">
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</form>
+</main>
+<!-- Fixed Bottom Actions -->
+<nav class="glass-panel fixed bottom-0 left-0 w-full h-[72px] px-4 flex items-center justify-between z-50 border-t border-white/40 rounded-t-2xl">
+  <button class="flex flex-col items-center justify-center gap-1 flex-1 text-text-secondary">
+    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0, 'wght' 400;">calendar_today</span>
+    <span class="text-[10px] font-medium">Hoje</span>
+  </button>
+  <button class="flex flex-col items-center justify-center gap-1 flex-1 text-primary">
+    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1, 'wght' 400;">groups</span>
+    <span class="text-[10px] font-medium">Pacientes</span>
+  </button>
+  <div class="flex-1 flex justify-center -translate-y-4">
+    <button class="w-14 h-14 rounded-full bg-primary text-white shadow-lg flex items-center justify-center active:scale-95 transition-transform">
+      <span class="material-symbols-outlined" style="font-size: 32px;">add_circle</span>
+    </button>
+  </div>
+  <button class="flex flex-col items-center justify-center gap-1 flex-1 text-text-secondary">
+    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0, 'wght' 400;">account_tree</span>
+    <span class="text-[10px] font-medium">Fluxos</span>
+  </button>
+  <button class="flex flex-col items-center justify-center gap-1 flex-1 text-text-secondary">
+    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0, 'wght' 400;">more_horiz</span>
+    <span class="text-[10px] font-medium">Mais</span>
+  </button>
+</nav>
+
+
+
+
+</body></html>

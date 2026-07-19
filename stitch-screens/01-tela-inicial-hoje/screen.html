@@ -1,0 +1,413 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Lifeum Flow - Hoje</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Manrope', 'sans-serif'],
+          },
+          colors: {
+            background: '#F6F8FA',
+            surface: '#FFFFFF',
+            primary: '#2B4A70',
+            primaryDark: '#1E3553',
+            danger: '#F43F5E',
+            dangerLight: '#FFE4E6',
+            warning: '#F59E0B',
+            warningLight: '#FEF3C7',
+            success: '#10B981',
+            textMain: '#111827',
+            textMuted: '#6B7280',
+            textLight: '#9CA3AF',
+            divider: '#E5E7EB',
+          },
+          boxShadow: {
+            'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+            'nav': '0 -4px 20px -2px rgba(0, 0, 0, 0.05)',
+            'fab': '0 8px 24px -4px rgba(59, 130, 246, 0.5)',
+          },
+          borderRadius: {
+            'xl': '1rem',
+            '2xl': '1.5rem',
+            '3xl': '2rem',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-utilities">
+    body {
+      background-color: theme('colors.background');
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 90px; /* Space for bottom nav */
+    }
+    
+    /* Hide scrollbar for horizontal scroll areas */
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    
+    .status-indicator {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+    }
+    
+    /* Header transition styles */
+    .header-full-content {
+      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, height 0.3s ease-in-out, margin 0.3s ease-in-out;
+      transform-origin: top;
+      opacity: 1;
+      height: 48px;
+    }
+    
+    header.is-compact {
+      padding-top: 1rem !important;
+      padding-bottom: 0.5rem !important;
+    }
+    
+    header.is-compact .header-full-content {
+      opacity: 0;
+      height: 0;
+      transform: scaleY(0);
+      pointer-events: none;
+    }
+    
+    header {
+      transition: padding 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+    header.is-compact {
+       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    }
+  </style>
+</head>
+<body class="text-textMain font-sans bg-background h-screen overflow-y-auto">
+<!-- BEGIN: Main Header -->
+<header class="px-6 pt-14 pb-4 sticky top-0 z-40 glass-effect" id="main-header">
+<div class="flex items-start justify-between">
+<div class="header-full-content flex items-center gap-3">
+<div class="relative">
+<img alt="Gabriel" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAH6DghNOpwVxNj7KcxHRysmfbU9wKFfnII--SErxY8noR9BUoI8rI-Cvrr7iHxZ8opNJLQ3Sw2b8tUd7heUFjWmWLaL64N0COfBTx3erhYQEdmKrnbxPQ069ZcHlweeWWQupnXUBYYRGiCAVlj8j517NxkxsL2fC0Bn_l1ulbND1cIpMi1w-Q5xzrtN865CJsGTr9535jW2JRCjndjkwo0vJ_MnUI1TgEeGTYJaKzGgDSuDqa0jiz6Gg">
+<div class="status-indicator bg-blue-500 bottom-0 right-0"></div>
+</div>
+<div>
+<h1 class="text-xl font-bold leading-tight">Olá, Gabriel</h1>
+<p class="text-sm text-textMuted font-medium">24 de Outubro, Sexta-feira</p>
+</div>
+</div>
+<div class="flex items-center gap-2 ml-auto shrink-0 transition-transform duration-300 ease-in-out" id="header-actions">
+<button class="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm relative">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="bell" aria-hidden="true" class="lucide lucide-bell w-5 h-5 text-textMain"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg>
+<span class="absolute top-2 right-2 w-2 h-2 bg-danger rounded-full border-2 border-white"></span>
+</button>
+<button class="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="search" aria-hidden="true" class="lucide lucide-search w-5 h-5 text-textMain"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
+</button>
+</div>
+</div>
+</header>
+<!-- END: Main Header -->
+<main class="px-5 pb-24 space-y-6 pt-2" id="scroll-target">
+<!-- BEGIN: Attention Card -->
+<section>
+<div class="bg-white rounded-3xl p-5 shadow-soft flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-dangerLight flex items-center justify-center shrink-0">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="triangle-alert" aria-hidden="true" class="lucide lucide-triangle-alert w-6 h-6 text-danger"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg>
+</div>
+<div>
+<p class="text-sm font-medium text-textMuted">Atenção necessária</p>
+<h2 class="text-lg font-bold text-danger">4 ações atrasadas</h2>
+<p class="text-xs text-textMuted mt-0.5">12 pendências no total</p>
+</div>
+</div>
+<button class="bg-gradient-to-r from-primary to-primaryDark text-white px-5 py-3 rounded-2xl text-sm font-semibold flex items-center gap-2 shadow-md">
+          Resolver agora
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" aria-hidden="true" class="lucide lucide-arrow-right w-4 h-4"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+</button>
+</div>
+</section>
+<!-- END: Attention Card -->
+<!-- BEGIN: Quick Categories -->
+<section>
+<div class="bg-white rounded-3xl p-5 shadow-soft">
+<div class="flex overflow-x-auto hide-scrollbar gap-4 pb-2 -mx-2 px-2">
+<!-- Item 1 -->
+<div class="flex flex-col items-center min-w-[70px] cursor-pointer">
+<div class="w-14 h-14 rounded-2xl bg-danger flex items-center justify-center mb-2 shadow-sm">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="clock" aria-hidden="true" class="lucide lucide-clock w-6 h-6 text-white"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+</div>
+<span class="text-[11px] font-bold text-danger mb-1">Atrasados</span>
+<span class="px-2 py-0.5 bg-danger text-white text-xs font-bold rounded-full">4</span>
+</div>
+<!-- Item 2 -->
+<div class="flex flex-col items-center min-w-[70px] cursor-pointer">
+<div class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center mb-2">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar" aria-hidden="true" class="lucide lucide-calendar w-6 h-6 text-blue-500"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+</div>
+<span class="text-[11px] font-medium text-textMuted mb-1">Hoje</span>
+<span class="px-2 py-0.5 bg-blue-100 text-blue-600 text-xs font-bold rounded-full">12</span>
+</div>
+<!-- Item 3 -->
+<div class="flex flex-col items-center min-w-[70px] cursor-pointer">
+<div class="w-14 h-14 rounded-2xl bg-cyan-50 flex items-center justify-center mb-2">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar-plus" aria-hidden="true" class="lucide lucide-calendar-plus w-6 h-6 text-cyan-500"><path d="M16 19h6"></path><path d="M16 2v4"></path><path d="M19 16v6"></path><path d="M21 12.598V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8.5"></path><path d="M3 10h18"></path><path d="M8 2v4"></path></svg>
+</div>
+<span class="text-[11px] font-medium text-textMuted mb-1">Agendar</span>
+<span class="px-2 py-0.5 bg-cyan-100 text-cyan-600 text-xs font-bold rounded-full">7</span>
+</div>
+<!-- Item 4 -->
+<div class="flex flex-col items-center min-w-[70px] cursor-pointer">
+<div class="w-14 h-14 rounded-2xl bg-warningLight flex items-center justify-center mb-2">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="refresh-cw" aria-hidden="true" class="lucide lucide-refresh-cw w-6 h-6 text-warning"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path><path d="M21 3v5h-5"></path><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path><path d="M8 16H3v5"></path></svg>
+</div>
+<span class="text-[11px] font-medium text-textMuted mb-1">Remarcar</span>
+<span class="px-2 py-0.5 bg-warningLight text-warning text-xs font-bold rounded-full">3</span>
+</div>
+<!-- Item 5 -->
+<div class="flex flex-col items-center min-w-[70px] cursor-pointer">
+<div class="w-14 h-14 rounded-2xl bg-emerald-50 flex items-center justify-center mb-2">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar-check" aria-hidden="true" class="lucide lucide-calendar-check w-6 h-6 text-emerald-500"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path><path d="m9 16 2 2 4-4"></path></svg>
+</div>
+<span class="text-[11px] font-medium text-textMuted mb-1">Retornos</span>
+<span class="px-2 py-0.5 bg-emerald-100 text-emerald-600 text-xs font-bold rounded-full">9</span>
+</div>
+<!-- Item 6 -->
+<div class="flex flex-col items-center min-w-[70px] cursor-pointer">
+<div class="w-14 h-14 rounded-2xl bg-purple-50 flex items-center justify-center mb-2">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="clipboard-list" aria-hidden="true" class="lucide lucide-clipboard-list w-6 h-6 text-purple-500"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><path d="M12 11h4"></path><path d="M12 16h4"></path><path d="M8 11h.01"></path><path d="M8 16h.01"></path></svg>
+</div>
+<span class="text-[11px] font-medium text-textMuted mb-1">Planejamentos</span>
+<span class="px-2 py-0.5 bg-purple-100 text-purple-600 text-xs font-bold rounded-full">5</span>
+</div>
+<!-- Item 7 -->
+<div class="flex flex-col items-center min-w-[70px] cursor-pointer">
+<div class="w-14 h-14 rounded-2xl bg-gray-100 flex items-center justify-center mb-2">
+<img alt="Tratamentos" class="w-6 h-6 opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIIaTt24Ewtz_gjZ4bOzXiZDb8w9WEv0ortwW0FAc0jpE7Z6nnE92Ykvg5BgjVp2OL1LryJ_wAVT6bAtHod2-bGtdoU8BPem-T2Ru-yu0qdtfy4xngW3kngS0-PIkKmIqIAmo_JyEmZajS3yqb96DGTnEXrg2lwlA_7b75JJq9lRylhOzRHYZRpWoq0UheflJxpkJJ8Qld8M6VawpiZl2YRuSTrCZ7yqNf5LHLDuvZfh9yFWrY2XR9kA"> <!-- Assuming custom icon for tooth -->
+</div>
+<span class="text-[11px] font-medium text-textMuted mb-1">Tratamentos</span>
+<span class="px-2 py-0.5 bg-gray-200 text-gray-600 text-xs font-bold rounded-full">14</span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Quick Categories -->
+<!-- BEGIN: Priorities List -->
+<section class="space-y-4">
+<div class="flex items-center justify-between px-1">
+<h3 class="text-lg font-bold text-textMain">Prioridades de agora</h3>
+<button class="text-sm font-medium text-primary flex items-center gap-1">
+          Ver todas <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-right" aria-hidden="true" class="lucide lucide-chevron-right w-4 h-4"><path d="m9 18 6-6-6-6"></path></svg>
+</button>
+</div>
+<div class="space-y-3">
+<!-- Card 1: Ana Silva -->
+<div class="bg-white rounded-3xl p-4 shadow-soft flex items-center gap-4 relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-danger"></div>
+<div class="relative">
+<img alt="Ana Silva" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcFp-yn4IzXHEUr7S_dOAQ70GMJBd5E4A2eEj895bIRdLcw6yllsCYoDIOlsXIhfYL0a4ov-Hed5O0aEoMXZoLxSgv8wrjR0bZwLlXUnUjv4GTJhOAcVzt4WkTwaPhAKgYG-Jc_6qk5t1dq7i7wY2wAjCwftXwlGkg5CDJuQIBWa_4qEkmFP0ywr8u418-be3LW5lk10eos-2qKiOgNWe1xP4ek9lmY3xGswVvJ6JxFU5uKcE6qEEMVA">
+<div class="status-indicator bg-danger top-0 right-0"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-0.5">
+<span class="text-[10px] font-bold text-danger tracking-wider uppercase">Alta</span>
+<span class="text-xs font-semibold text-danger">Atraso: 2 dias</span>
+</div>
+<h4 class="text-base font-bold text-textMain truncate">Ana Silva</h4>
+<p class="text-xs text-textMuted truncate">Responder solicitação de agendamento</p>
+<p class="text-xs font-medium text-primary mt-0.5">Clínico Geral</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-9 h-9 rounded-full bg-green-50 flex items-center justify-center border border-green-100">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="message-circle" aria-hidden="true" class="lucide lucide-message-circle w-4 h-4 text-green-600"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg>
+</button>
+<button class="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center border border-blue-100">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar" aria-hidden="true" class="lucide lucide-calendar w-4 h-4 text-blue-600"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+</button>
+<button class="w-9 h-9 rounded-full bg-gray-50 flex items-center justify-center border border-gray-200">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check" aria-hidden="true" class="lucide lucide-check w-4 h-4 text-textMuted"><path d="M20 6 9 17l-5-5"></path></svg>
+</button>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-right" aria-hidden="true" class="lucide lucide-chevron-right w-5 h-5 text-textLight ml-1"><path d="m9 18 6-6-6-6"></path></svg>
+</div>
+</div>
+<!-- Card 4: Rafael Lima -->
+<div class="bg-white rounded-3xl p-4 shadow-soft flex items-center gap-4 relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-danger"></div>
+<div class="relative">
+<img alt="Rafael Lima" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOLMfmeL3jxmNgVc5L1cuPmlg23vu089d3O6zJu-MZgCl0oB66aazBv82XFrXMFPChIFpu-d-JrBkdsMBF_o43sqq6Mgo7_JWeWECke-iFuPJ2IxRsR3swwuKWBIVmTVggKHVt0pA8hOqfCSa_pj9XwDO7JGDmbt8eqcel6Grh4oHUqxFaKLWGxgMk54GWmQBlOsa0ELNZT4MEJrqT3tv3lI72VEPnFj-guOIDPUFPa8T0OfBOTIQu5w">
+<div class="status-indicator bg-danger top-0 right-0"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-0.5">
+<span class="text-[10px] font-bold text-danger tracking-wider uppercase">Alta</span>
+<span class="text-xs font-semibold text-danger">Atraso: 1 dia</span>
+</div>
+<h4 class="text-base font-bold text-textMain truncate">Rafael Lima</h4>
+<p class="text-xs text-textMuted truncate">Paciente desmarcou e não reagendou</p>
+<p class="text-xs font-medium text-primary mt-0.5">Clínico Geral</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-9 h-9 rounded-full bg-green-50 flex items-center justify-center border border-green-100">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="message-circle" aria-hidden="true" class="lucide lucide-message-circle w-4 h-4 text-green-600"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg>
+</button>
+<button class="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center border border-blue-100">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar" aria-hidden="true" class="lucide lucide-calendar w-4 h-4 text-blue-600"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+</button>
+<button class="w-9 h-9 rounded-full bg-gray-50 flex items-center justify-center border border-gray-200">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check" aria-hidden="true" class="lucide lucide-check w-4 h-4 text-textMuted"><path d="M20 6 9 17l-5-5"></path></svg>
+</button>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-right" aria-hidden="true" class="lucide lucide-chevron-right w-5 h-5 text-textLight ml-1"><path d="m9 18 6-6-6-6"></path></svg>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Priorities List -->
+<!-- BEGIN: Upcoming Appointments -->
+<section class="space-y-4">
+<div class="flex items-center justify-between px-1">
+<h3 class="text-lg font-bold text-textMain">Próximos compromissos</h3>
+<button class="text-sm font-medium text-primary flex items-center gap-1">
+          Ver agenda <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-right" aria-hidden="true" class="lucide lucide-chevron-right w-4 h-4"><path d="m9 18 6-6-6-6"></path></svg>
+</button>
+</div>
+<div class="bg-white rounded-3xl p-2 shadow-soft">
+<!-- Appointment 1 -->
+<div class="flex items-center p-3 hover:bg-gray-50 rounded-2xl transition-colors cursor-pointer border-b border-gray-100 last:border-0">
+<div class="w-16 shrink-0 flex flex-col justify-center border-l-2 border-blue-500 pl-3">
+<span class="text-sm font-bold text-textMain">09:30</span>
+<span class="text-[10px] text-textMuted">Em 49 min</span>
+</div>
+<img alt="Mariana" class="w-10 h-10 rounded-full object-cover ml-2 mr-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQBDCW_RmdtqIA3ThtG8PgL9I98pgWho9gAX5EDT2rXRbkn7p_zE4AymsPYxKNnzQeG8DtljhsiizIGRySsFBnXDThMrMliJPonh626Vg_hPmPxkQermeBHN8gBas7fXrAPKqrxKkVPFlLSJI9-2RM2dYA055PdZgEdpuCMTHaA3jsbuz_S4-oVQxFZgX5y6sTfSEaSOcGcO0j_A3EjvWcuKSy9Vg4Kt-ZBg4_V-yV6shddv2Ux-5y7w">
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-bold text-textMain truncate">Mariana Souza</h4>
+<p class="text-[11px] text-textMuted truncate">Clareamento dental</p>
+<div class="flex items-center gap-1 mt-0.5 text-[10px] text-textLight">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar" aria-hidden="true" class="lucide lucide-calendar w-3 h-3"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+<span class="">Sala 1 • Dra. Camila</span>
+</div>
+</div>
+<div class="flex items-center gap-2 pl-2">
+<div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-500">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="file-text" aria-hidden="true" class="lucide lucide-file-text w-4 h-4"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
+</div>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-right" aria-hidden="true" class="lucide lucide-chevron-right w-4 h-4 text-textLight"><path d="m9 18 6-6-6-6"></path></svg>
+</div>
+</div>
+<!-- Appointment 2 -->
+<div class="flex items-center p-3 hover:bg-gray-50 rounded-2xl transition-colors cursor-pointer border-b border-gray-100 last:border-0">
+<div class="w-16 shrink-0 flex flex-col justify-center border-l-2 border-blue-500 pl-3">
+<span class="text-sm font-bold text-textMain">11:00</span>
+<span class="text-[10px] text-textMuted">Em 2h 19min</span>
+</div>
+<img alt="Lucas" class="w-10 h-10 rounded-full object-cover ml-2 mr-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaRUKZ5Io3CRRoKmuGPdnQ7iMFdSEziLvc5PC_xeKjgGL4Z6BTtVFI2FH023A3RXDBAEMC7sF7p7Jhsc8ECr-ECMj1J878sgshM2cqXlpcSauiq-Edj8kDe663dbUV8XmPR_6gEVDgBHdaBK6fkGbtAYf2bKd8K7sHLoHjjaK3X8SEBejrMdjoav2hDBXIzhANTjDiWqNR7jyZ994Zk40OAUhpp1BO7RvrTTtseWygBTUSw--iUrwB9Q">
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-bold text-textMain truncate">Lucas Ferreira</h4>
+<p class="text-[11px] text-textMuted truncate">Restauração em resina</p>
+<div class="flex items-center gap-1 mt-0.5 text-[10px] text-textLight">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar" aria-hidden="true" class="lucide lucide-calendar w-3 h-3"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+<span class="">Sala 2 • Dr. Gabriel</span>
+</div>
+</div>
+<div class="flex items-center gap-2 pl-2">
+<div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-500">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="file-text" aria-hidden="true" class="lucide lucide-file-text w-4 h-4"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
+</div>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-right" aria-hidden="true" class="lucide lucide-chevron-right w-4 h-4 text-textLight"><path d="m9 18 6-6-6-6"></path></svg>
+</div>
+</div>
+<!-- Appointment 3 -->
+<div class="flex items-center p-3 hover:bg-gray-50 rounded-2xl transition-colors cursor-pointer border-b border-gray-100 last:border-0">
+<div class="w-16 shrink-0 flex flex-col justify-center border-l-2 border-gray-300 pl-3">
+<span class="text-sm font-bold text-textMain">14:00</span>
+<span class="text-[10px] text-textMuted">Em 5h 19min</span>
+</div>
+<img alt="Fernanda" class="w-10 h-10 rounded-full object-cover ml-2 mr-3 opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF5T-v2WhDlO3NEiXlUOiTo_Gjep_CRCeIJB1WMVYl1VC3w0khD7YLsv3IYActpJPigQ44G-4drPfNCW4Eely8yC2hfI5OK_ogP-moxKXO7efzneVjemZfVmHADj4EI8QisvruzeRZmxlhiq-6w1ZPi3dI97h1OxKhgYIEh9hyYaf6DMinQUfoVP5mzk0jgzYiG-Se6U9aVCfihG1IMt-63PMx6ARU_dXKRtbTWHiGQ5hKIXi5MHZJNw">
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-bold text-textMain truncate">Fernanda Oliveira</h4>
+<p class="text-[11px] text-textMuted truncate">Avaliação + Planejamento</p>
+<div class="flex items-center gap-1 mt-0.5 text-[10px] text-textLight">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar" aria-hidden="true" class="lucide lucide-calendar w-3 h-3"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+<span class="">Sala 1 • Dra. Camila</span>
+</div>
+</div>
+<div class="flex items-center gap-2 pl-2">
+<div class="w-8 h-8 rounded-full bg-warningLight flex items-center justify-center text-warning">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="circle-alert" aria-hidden="true" class="lucide lucide-circle-alert w-4 h-4"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg>
+</div>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-right" aria-hidden="true" class="lucide lucide-chevron-right w-4 h-4 text-textLight"><path d="m9 18 6-6-6-6"></path></svg>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Upcoming Appointments -->
+</main>
+<!-- BEGIN: Bottom Navigation -->
+<nav class="fixed bottom-0 w-full bg-white/90 backdrop-blur-lg border-t border-gray-100 pb-safe shadow-nav z-50">
+  <div class="flex justify-around items-center h-20 px-2 relative">
+    <a class="flex flex-col items-center justify-center w-16 text-blue-600" href="#">
+      <span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24">calendar_today</span>
+      <span class="text-[10px] font-semibold">Hoje</span>
+    </a>
+    <a class="flex flex-col items-center justify-center w-16 text-textMuted hover:text-textMain transition-colors" href="#">
+      <span class="material-symbols-outlined mb-1">groups</span>
+      <span class="text-[10px] font-medium">Pacientes</span>
+    </a>
+    <div class="w-16 h-16 flex items-center justify-center relative -top-6">
+      <button class="w-16 h-16 bg-gradient-to-tr from-blue-600 to-blue-400 rounded-full shadow-fab flex items-center justify-center text-white border-4 border-white transform transition active:scale-95">
+        <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48">add_circle</span>
+      </button>
+      <span class="absolute -bottom-8 text-[10px] font-medium text-textMuted whitespace-nowrap">Captura rápida</span>
+    </div>
+    <a class="flex flex-col items-center justify-center w-16 text-textMuted hover:text-textMain transition-colors" href="#">
+      <span class="material-symbols-outlined mb-1">account_tree</span>
+      <span class="text-[10px] font-medium">Fluxos</span>
+    </a>
+    <a class="flex flex-col items-center justify-center w-16 text-textMuted hover:text-textMain transition-colors" href="#">
+      <span class="material-symbols-outlined mb-1">more_horiz</span>
+      <span class="text-[10px] font-medium">Mais</span>
+    </a>
+  </div>
+</nav>
+<!-- END: Bottom Navigation -->
+<script data-purpose="icons-init">
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Scroll triggered header script
+    document.addEventListener('DOMContentLoaded', () => {
+      const header = document.getElementById('main-header');
+      const body = document.body;
+
+      // Ensure body can be scrolled to detect scroll event
+      body.addEventListener('scroll', () => {
+         if (body.scrollTop > 50) {
+            header.classList.add('is-compact');
+         } else {
+            header.classList.remove('is-compact');
+         }
+      });
+    });
+  </script>
+
+
+</body></html>
